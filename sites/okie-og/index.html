@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Okie OG Cannabis — Tulsa's Local Dispensary</title>
+<meta name="description" content="Locally rooted, patient first. Okie OG Cannabis serves Tulsa with trusted Oklahoma-grown flower, concentrates, and edibles.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4ecd8;
+    --bg-2: #ede2c5;
+    --fg: #1f2a1c;
+    --fg-muted: #5a5340;
+    --accent: #2d3f2a;
+    --accent-2: #c87a3e;
+    --border: rgba(31,42,28,0.12);
+    --maxw: 1240px;
+  }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+  h1, h2, h3 { font-family: 'DM Serif Display', Georgia, serif; font-weight: 400; letter-spacing: -0.015em; line-height: 1.05; }
+  h1 { font-size: clamp(2.8rem, 8vw, 6.2rem); }
+  h2 { font-size: clamp(2rem, 4.6vw, 3.6rem); }
+  h3 { font-size: 1.5rem; line-height: 1.2; }
+  a { color: inherit; text-decoration: none; transition: opacity .25s ease; }
+  a:hover { opacity: .7; }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 22px 32px;
+    background: rgba(244,236,216,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  nav .brand { font-family: 'DM Serif Display', serif; font-size: 1.5rem; }
+  nav ul { list-style: none; display: flex; gap: 34px; }
+  nav ul a { font-size: 0.92rem; font-weight: 500; letter-spacing: 0.02em; }
+  nav .cta { background: var(--accent); color: var(--bg); padding: 11px 22px; border-radius: 4px; font-size: 0.9rem; font-weight: 600; }
+  nav .cta:hover { background: var(--accent-2); opacity: 1; }
+  @media (max-width: 820px) { nav ul { display: none; } }
+  .hero {
+    padding: 160px 32px 100px;
+    background:
+      radial-gradient(ellipse at 80% 20%, rgba(200,122,62,0.15), transparent 55%),
+      var(--bg);
+  }
+  .hero-inner { max-width: var(--maxw); margin: 0 auto; display: grid; grid-template-columns: 1.4fr 1fr; gap: 70px; align-items: center; }
+  @media (max-width: 980px) { .hero-inner { grid-template-columns: 1fr; gap: 50px; } }
+  .eyebrow { display: inline-flex; align-items: center; gap: 12px; font-size: 0.78rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--accent-2); font-weight: 600; margin-bottom: 30px; }
+  .eyebrow::before { content: ''; width: 32px; height: 1px; background: var(--accent-2); }
+  .hero h1 { margin-bottom: 28px; }
+  .hero h1 em { font-style: italic; color: var(--accent-2); }
+  .hero .lede { font-size: clamp(1.05rem, 1.5vw, 1.22rem); max-width: 50ch; color: var(--fg-muted); margin-bottom: 42px; }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 30px; border-radius: 4px; font-family: 'Manrope', sans-serif; font-size: 0.95rem; font-weight: 600; letter-spacing: 0.01em; cursor: pointer; border: none; transition: transform .25s ease, background .25s ease, opacity .25s ease; }
+  .btn-primary { background: var(--accent); color: var(--bg); }
+  .btn-primary:hover { background: var(--accent-2); transform: translateY(-2px); opacity: 1; }
+  .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--accent); }
+  .btn-ghost:hover { background: var(--accent); color: var(--bg); opacity: 1; }
+  .hero-card { background: var(--accent); color: var(--bg); padding: 48px 38px; border-radius: 8px; transform: rotate(0.5deg); box-shadow: 0 20px 60px rgba(31,42,28,0.18); }
+  .hero-card .label { font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; opacity: 0.7; margin-bottom: 18px; }
+  .hero-card .deal { font-family: 'DM Serif Display', serif; font-size: 2.4rem; line-height: 1.05; margin-bottom: 18px; }
+  .hero-card .deal em { color: var(--accent-2); font-style: italic; }
+  .hero-card .desc { font-size: 0.96rem; opacity: 0.85; margin-bottom: 28px; }
+  .hero-card .price { display: flex; align-items: baseline; gap: 8px; font-family: 'DM Serif Display', serif; }
+  .hero-card .price .sym { font-size: 1.4rem; color: var(--accent-2); }
+  .hero-card .price .num { font-size: 4.2rem; line-height: 1; color: var(--bg); }
+  .hero-card .price .per { font-size: 0.9rem; opacity: 0.7; font-family: 'Manrope', sans-serif; }
+  section { padding: 120px 32px; }
+  section + section { border-top: 1px solid var(--border); }
+  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 68px; flex-wrap: wrap; }
+  .section-head h2 { max-width: 18ch; }
+  .section-head p { max-width: 42ch; color: var(--fg-muted); font-size: 1rem; }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+  .about-grid p { font-size: 1.16rem; line-height: 1.65; max-width: 44ch; margin-bottom: 22px; }
+  .pillars { display: grid; grid-template-columns: 1fr; gap: 24px; }
+  .pillar { display: grid; grid-template-columns: 60px 1fr; gap: 22px; align-items: start; padding: 22px 0; border-top: 1px solid var(--border); }
+  .pillar .n { font-family: 'DM Serif Display', serif; font-size: 1.5rem; color: var(--accent-2); }
+  .pillar h3 { font-family: 'Manrope', sans-serif; font-size: 1.08rem; font-weight: 600; margin-bottom: 6px; }
+  .pillar p { font-size: 0.96rem; color: var(--fg-muted); margin: 0; }
+  @media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; gap: 50px; } }
+  .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
+  .menu-card { background: var(--bg-2); padding: 38px; border-radius: 8px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; transition: background .3s ease, transform .3s ease; cursor: pointer; }
+  .menu-card:hover { background: var(--accent); color: var(--bg); transform: translateY(-4px); }
+  .menu-card:hover .arrow { color: var(--accent-2); transform: translateX(6px); }
+  .menu-card h3 { margin-bottom: 6px; }
+  .menu-card p { font-size: 0.94rem; color: var(--fg-muted); margin: 0; }
+  .menu-card:hover p { color: rgba(244,236,216,0.7); }
+  .menu-card .arrow { font-family: 'DM Serif Display', serif; font-size: 2rem; color: var(--accent); transition: transform .3s ease, color .3s ease; }
+  @media (max-width: 820px) { .menu-grid { grid-template-columns: 1fr; } }
+  .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+  .visit-grid .info { padding: 40px 0; }
+  .visit-grid dl { display: grid; grid-template-columns: 120px 1fr; gap: 22px 28px; margin-bottom: 38px; }
+  .visit-grid dt { font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-muted); padding-top: 6px; font-weight: 600; }
+  .visit-grid dd { font-size: 1.08rem; }
+  .hours-card { background: var(--accent); color: var(--bg); padding: 50px 44px; border-radius: 8px; }
+  .hours-card h3 { font-family: 'DM Serif Display', serif; font-size: 1.8rem; margin-bottom: 28px; }
+  .hours-row { display: flex; justify-content: space-between; padding: 14px 0; border-bottom: 1px solid rgba(244,236,216,0.18); font-size: 1rem; }
+  .hours-row:last-child { border-bottom: none; }
+  .hours-row .day { opacity: 0.7; }
+  @media (max-width: 820px) { .visit-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .cta-band { padding: 100px 32px; background: var(--accent); color: var(--bg); text-align: center; }
+  .cta-band h2 { margin-bottom: 22px; max-width: 18ch; margin-left: auto; margin-right: auto; }
+  .cta-band h2 em { color: var(--accent-2); font-style: italic; }
+  .cta-band p { max-width: 50ch; margin: 0 auto 40px; opacity: 0.8; font-size: 1.08rem; }
+  .cta-band .btn-primary { background: var(--accent-2); color: var(--fg); }
+  .cta-band .btn-primary:hover { background: var(--bg); }
+  footer { padding: 50px 32px 36px; background: var(--bg-2); }
+  footer .inner { max-width: var(--maxw); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
+  footer .brand { font-family: 'DM Serif Display', serif; font-size: 1.3rem; }
+  footer .small { font-size: 0.85rem; color: var(--fg-muted); }
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<nav>
+  <div class="inner">
+    <a href="#top" class="brand">Okie <em style="color:var(--accent-2);font-style:italic;">OG</em></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:+19189328179" class="cta">Call (918) 932-8179</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div>
+      <div class="eyebrow">Locally grown · 3416 S Yale Ave, Tulsa</div>
+      <h1>Tulsa's trusted home for <em>Oklahoma-grown</em> cannabis.</h1>
+      <p class="lede">From flower to concentrates to edibles, Okie OG carries what Oklahoma farmers grow best — paired with the kind of advice and pricing that keeps patients coming back.</p>
+      <div class="hero-cta">
+        <a href="#menu" class="btn btn-primary">Shop the Menu →</a>
+        <a href="#visit" class="btn btn-ghost">Find the Shop</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="label">This Week's Patient Deal</div>
+      <div class="deal">Top-shelf <em>ounces</em>, hand-trimmed.</div>
+      <div class="desc">Premium Oklahoma flower at a price the rest of the state can't touch.</div>
+      <div class="price"><span class="sym">$</span><span class="num">70</span><span class="per">/oz starting</span></div>
+    </div>
+  </div>
+</header>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head fade-in">
+      <h2>Built for the patient, by the patient.</h2>
+      <p>We started Okie OG because Tulsa deserved a dispensary that treated quality and price like a promise, not a marketing line.</p>
+    </div>
+    <div class="about-grid">
+      <div class="fade-in">
+        <p>Every product on our shelf has been chosen by people who use it. We work directly with Oklahoma growers and processors, which means we know exactly what's in the jar and exactly how it was made.</p>
+        <p>First time in? Ask for a recommendation. Returning? Ask what's new. We're not here to upsell — we're here to make sure your visit is worth it.</p>
+      </div>
+      <div class="pillars fade-in">
+        <div class="pillar"><div class="n">01</div><div><h3>Oklahoma-First</h3><p>We partner with in-state cultivators and processors we know personally.</p></div></div>
+        <div class="pillar"><div class="n">02</div><div><h3>Patient-Forward</h3><p>20% off your first visit. Daily deals for regulars. Loyalty that doesn't expire.</p></div></div>
+        <div class="pillar"><div class="n">03</div><div><h3>Curbside & Pickup</h3><p>Order ahead, pick up at the door. No lines, no waiting.</p></div></div>
+        <div class="pillar"><div class="n">04</div><div><h3>Real Recommendations</h3><p>Our budtenders use what we sell. If it doesn't work, we won't carry it.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head fade-in">
+      <h2>What we carry.</h2>
+      <p>Updated daily. Walk in for the full menu or browse online before you come.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card fade-in"><div><h3>Flower</h3><p>Indica, sativa, hybrid — from $70/oz to top-shelf craft batches.</p></div><div class="arrow">→</div></div>
+      <div class="menu-card fade-in"><div><h3>Concentrates</h3><p>Live resin, rosin, shatter, wax, sauce. Daily rotating selection.</p></div><div class="arrow">→</div></div>
+      <div class="menu-card fade-in"><div><h3>Edibles</h3><p>Gummies, chocolates, baked goods — precisely dosed.</p></div><div class="arrow">→</div></div>
+      <div class="menu-card fade-in"><div><h3>Pre-Rolls</h3><p>Singles, packs, infused. House-rolled options too.</p></div><div class="arrow">→</div></div>
+      <div class="menu-card fade-in"><div><h3>Cartridges</h3><p>Distillate, live resin, full-spectrum from trusted Oklahoma brands.</p></div><div class="arrow">→</div></div>
+      <div class="menu-card fade-in"><div><h3>Topicals & CBD</h3><p>Balms, tinctures, and CBD products for daily relief.</p></div><div class="arrow">→</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="section-head fade-in">
+      <h2>Stop by.</h2>
+      <p>Walk-ins welcome. Bring your OK medical card and a valid ID — we'll handle the rest.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="info fade-in">
+        <dl>
+          <dt>Address</dt><dd>3416 S Yale Avenue<br>Tulsa, OK 74135</dd>
+          <dt>Phone</dt><dd><a href="tel:+19189328179">(918) 932-8179</a></dd>
+          <dt>Parking</dt><dd>Free on-site parking. Curbside pickup available.</dd>
+        </dl>
+        <a href="https://maps.google.com/?q=3416+S+Yale+Ave+Tulsa+OK" class="btn btn-ghost" target="_blank">Open in Google Maps →</a>
+      </div>
+      <div class="hours-card fade-in">
+        <h3>Hours</h3>
+        <div class="hours-row"><span class="day">Monday – Friday</span><span>10:00 AM – 9:00 PM</span></div>
+        <div class="hours-row"><span class="day">Saturday</span><span>10:00 AM – 9:00 PM</span></div>
+        <div class="hours-row"><span class="day">Sunday</span><span>12:00 PM – 7:00 PM</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <h2 class="fade-in">First time? Get <em>20% off</em>.</h2>
+  <p class="fade-in">Call ahead, place an order, or just walk in. We'll make sure you leave with exactly what you came for.</p>
+  <a href="tel:+19189328179" class="btn btn-primary fade-in">Call the Shop →</a>
+</section>
+
+<footer>
+  <div class="inner">
+    <div class="brand">Okie OG Cannabis</div>
+    <div class="small">© 2026 Okie OG · Tulsa, OK · OMMA Licensed Medical Dispensary</div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
