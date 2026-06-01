@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Iowa Cannabis Company — Medical Cannabis for Iowa Patients</title>
+<meta name="description" content="Medical cannabis built for Iowa patients since 2018. Three locations: Waterloo, Iowa City, Council Bluffs.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f7f2e2;
+    --bg-2: #ede6cb;
+    --fg: #142235;
+    --fg-2: #1d2f47;
+    --fg-muted: #545f6f;
+    --accent: #d4a444;
+    --accent-2: #b8862e;
+    --border: rgba(20,34,53,0.13);
+    --maxw: 1240px;
+  }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; letter-spacing: -0.005em; line-height: 1.1; }
+  h1 { font-size: clamp(2.8rem, 7vw, 5.6rem); font-weight: 400; }
+  h2 { font-size: clamp(2rem, 4.4vw, 3.4rem); font-weight: 400; }
+  h3 { font-size: 1.4rem; }
+  em, .ital { font-style: italic; color: var(--accent); }
+  a { color: inherit; text-decoration: none; transition: opacity .25s ease; }
+  a:hover { opacity: .7; }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 22px 32px;
+    background: rgba(247,242,226,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  nav .brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 500; }
+  nav .brand em { font-style: italic; color: var(--accent-2); font-weight: 400; }
+  nav ul { list-style: none; display: flex; gap: 36px; }
+  nav ul a { font-size: 0.94rem; letter-spacing: 0.02em; font-weight: 500; }
+  nav .cta { background: var(--fg); color: var(--bg); padding: 11px 22px; border-radius: 999px; font-size: 0.88rem; font-weight: 600; }
+  nav .cta:hover { background: var(--accent); color: var(--fg); opacity: 1; }
+  @media (max-width: 820px) { nav ul { display: none; } }
+  .hero {
+    min-height: 95vh; display: flex; align-items: center;
+    padding: 160px 32px 100px;
+    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
+    position: relative;
+  }
+  .hero-inner { max-width: var(--maxw); margin: 0 auto; width: 100%; }
+  .hero-content { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: end; }
+  @media (max-width: 980px) { .hero-content { grid-template-columns: 1fr; gap: 50px; } }
+  .eyebrow { display: inline-flex; align-items: center; gap: 14px; font-size: 0.82rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-2); font-weight: 600; margin-bottom: 36px; }
+  .eyebrow::before { content: ''; width: 36px; height: 1px; background: var(--accent-2); }
+  .hero h1 { margin-bottom: 38px; max-width: 14ch; }
+  .hero .hero-tag { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1.2rem, 1.8vw, 1.5rem); max-width: 50ch; color: var(--fg-2); margin-bottom: 46px; line-height: 1.45; }
+  .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; border-radius: 999px; font-family: 'Source Sans 3', sans-serif; font-size: 0.92rem; font-weight: 600; letter-spacing: 0.02em; cursor: pointer; border: none; transition: transform .25s ease, background .25s ease, opacity .25s ease; }
+  .btn-primary { background: var(--fg); color: var(--bg); }
+  .btn-primary:hover { background: var(--accent); color: var(--fg); transform: translateY(-2px); opacity: 1; }
+  .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--fg); }
+  .btn-ghost:hover { background: var(--fg); color: var(--bg); opacity: 1; }
+  .hero-aside { border-left: 1px solid var(--border); padding-left: 50px; }
+  .hero-aside .ks { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; color: var(--accent-2); margin-bottom: 24px; }
+  .hero-aside .row { display: flex; justify-content: space-between; padding: 16px 0; border-top: 1px solid var(--border); font-size: 0.96rem; }
+  .hero-aside .row:last-of-type { border-bottom: 1px solid var(--border); }
+  .hero-aside .row span:first-child { color: var(--fg-muted); }
+  @media (max-width: 980px) { .hero-aside { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 40px; } }
+  section { padding: 130px 32px; }
+  section + section { border-top: 1px solid var(--border); }
+  section .wrap { max-width: var(--maxw); margin: 0 auto; }
+  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 60px; margin-bottom: 74px; flex-wrap: wrap; }
+  .section-head h2 { max-width: 20ch; flex: 1 1 50%; }
+  .section-head p { flex: 1 1 40%; max-width: 42ch; color: var(--fg-muted); font-size: 1.04rem; font-style: italic; font-family: 'Playfair Display', serif; }
+  .commit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .commit-card { background: var(--fg); color: var(--bg); padding: 50px 44px; border-radius: 16px; transition: transform .3s ease; }
+  .commit-card:nth-child(2) { background: var(--accent); color: var(--fg); }
+  .commit-card:nth-child(3) { background: var(--bg-2); color: var(--fg); }
+  .commit-card:nth-child(4) { background: var(--fg-2); color: var(--bg); }
+  .commit-card:hover { transform: translateY(-6px); }
+  .commit-card .num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; opacity: 0.7; margin-bottom: 30px; }
+  .commit-card h3 { font-size: 1.6rem; margin-bottom: 14px; }
+  .commit-card p { font-size: 1rem; opacity: 0.86; line-height: 1.55; }
+  @media (max-width: 820px) { .commit-grid { grid-template-columns: 1fr; } }
+  .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .menu-card { padding: 40px 32px; background: var(--bg-2); border-radius: 12px; transition: transform .3s ease, background .3s ease; }
+  .menu-card:hover { background: var(--fg); color: var(--bg); transform: translateY(-4px); }
+  .menu-card .label { font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-2); font-weight: 600; margin-bottom: 22px; }
+  .menu-card:hover .label { color: var(--accent); }
+  .menu-card h3 { margin-bottom: 10px; }
+  .menu-card p { font-size: 0.96rem; color: var(--fg-muted); margin: 0; }
+  .menu-card:hover p { color: rgba(247,242,226,0.7); }
+  @media (max-width: 820px) { .menu-grid { grid-template-columns: 1fr; } }
+  .locations { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .loc-card { background: var(--bg-2); padding: 40px 32px; border-radius: 12px; border: 1px solid var(--border); }
+  .loc-card .city { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.4rem; color: var(--accent-2); margin-bottom: 14px; }
+  .loc-card h3 { font-family: 'Source Sans 3', sans-serif; font-size: 1rem; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 16px; }
+  .loc-card address { font-style: normal; font-size: 1rem; margin-bottom: 16px; line-height: 1.5; }
+  .loc-card .phone { color: var(--accent-2); font-weight: 600; display: block; margin-bottom: 22px; font-size: 1.08rem; }
+  .loc-card .hours { padding-top: 18px; border-top: 1px solid var(--border); font-size: 0.92rem; color: var(--fg-muted); }
+  @media (max-width: 820px) { .locations { grid-template-columns: 1fr; } }
+  .cta-band { padding: 130px 32px; background: var(--fg); color: var(--bg); text-align: center; }
+  .cta-band h2 { margin: 0 auto 22px; max-width: 22ch; }
+  .cta-band h2 em { color: var(--accent); font-style: italic; }
+  .cta-band p { max-width: 50ch; margin: 0 auto 42px; opacity: 0.84; font-size: 1.08rem; font-style: italic; font-family: 'Playfair Display', serif; }
+  .cta-band .btn-primary { background: var(--accent); color: var(--fg); }
+  .cta-band .btn-primary:hover { background: var(--bg); }
+  footer { padding: 50px 32px 38px; background: var(--bg-2); }
+  footer .inner { max-width: var(--maxw); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
+  footer .brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; }
+  footer .brand em { font-style: italic; color: var(--accent-2); }
+  footer .small { font-size: 0.85rem; color: var(--fg-muted); }
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<nav>
+  <div class="inner">
+    <a href="#top" class="brand">Iowa <em>Cannabis Co.</em></a>
+    <ul>
+      <li><a href="#commitments">Commitments</a></li>
+      <li><a href="#menu">Products</a></li>
+      <li><a href="#visit">Locations</a></li>
+      <li><a href="#contact">Get a Card</a></li>
+    </ul>
+    <a href="#contact" class="cta">Become a Patient</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-content">
+      <div>
+        <div class="eyebrow">Iowa medical cannabis · Est. 2018</div>
+        <h1>Medical cannabis, built for <em>Iowa patients</em>.</h1>
+        <p class="hero-tag">Three locations across the state. Tested, trusted products. Real conversations with patients who deserve more than a transaction.</p>
+        <div class="hero-cta">
+          <a href="#contact" class="btn btn-primary">Become a Patient →</a>
+          <a href="#menu" class="btn btn-ghost">Browse Products</a>
+        </div>
+      </div>
+      <div class="hero-aside">
+        <div class="ks">— By the numbers</div>
+        <div class="row"><span>Serving since</span><span>2018</span></div>
+        <div class="row"><span>Iowa locations</span><span>3</span></div>
+        <div class="row"><span>Days open weekly</span><span>7</span></div>
+        <div class="row"><span>Product categories</span><span>12+</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="commitments">
+  <div class="wrap">
+    <div class="section-head fade-in">
+      <h2>Patient care, the <em>Iowa way</em>.</h2>
+      <p>Four commitments we make to every patient who walks through any of our doors.</p>
+    </div>
+    <div class="commit-grid">
+      <div class="commit-card fade-in"><div class="num">i.</div><h3>Patient First, Always</h3><p>You set the pace of the conversation. We're here to listen, recommend, and only ever sell you what fits your needs.</p></div>
+      <div class="commit-card fade-in"><div class="num">ii.</div><h3>Tested &amp; Verified</h3><p>Every product we carry is independently lab-tested and traceable. No exceptions, no compromises.</p></div>
+      <div class="commit-card fade-in"><div class="num">iii.</div><h3>Fair, Predictable Pricing</h3><p>Patient pricing means honest pricing — no inflated MSRPs, no hidden fees, BOGO deals on the items you actually want.</p></div>
+      <div class="commit-card fade-in"><div class="num">iv.</div><h3>Education over Sales</h3><p>Whether it's CBD ratios or strain selection, our team takes the time to explain — because medical cannabis only works when you know how to use it.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head fade-in">
+      <h2>Featured <em>products</em>.</h2>
+      <p>A curated selection of tinctures, vapes, edibles, and topicals — all built for Iowa medical patients.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-card fade-in"><div class="label">— No. 01</div><h3>Vape Cartridges</h3><p>Full-spectrum and distillate. THC and CBD ratios for every patient type.</p></div>
+      <div class="menu-card fade-in"><div class="label">— No. 02</div><h3>Tinctures</h3><p>Sublingual drops in measured doses. Predictable, fast-acting relief.</p></div>
+      <div class="menu-card fade-in"><div class="label">— No. 03</div><h3>Capsules</h3><p>Pre-measured pills for patients who prefer a consistent daily routine.</p></div>
+      <div class="menu-card fade-in"><div class="label">— No. 04</div><h3>Edibles</h3><p>Chews and chocolates dosed for medical use. Mild, medium, and stronger options.</p></div>
+      <div class="menu-card fade-in"><div class="label">— No. 05</div><h3>Topicals</h3><p>Balms and lotions for targeted, localized relief — non-intoxicating.</p></div>
+      <div class="menu-card fade-in"><div class="label">— No. 06</div><h3>Suppositories</h3><p>An option for patients who need rapid, systemic delivery without inhalation.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="section-head fade-in">
+      <h2>Three locations, <em>one mission</em>.</h2>
+      <p>Open seven days a week. Walk in, or call ahead for a private consultation.</p>
+    </div>
+    <div class="locations">
+      <div class="loc-card fade-in">
+        <div class="city">Waterloo</div>
+        <h3>Iowa Cannabis Co. — Waterloo</h3>
+        <address>1955 LaPorte Road<br>Waterloo, IA 50702</address>
+        <a href="tel:+13192495398" class="phone">(319) 249-5398</a>
+        <div class="hours">Open daily<br>10:00 AM – 6:00 PM</div>
+      </div>
+      <div class="loc-card fade-in">
+        <div class="city">Iowa City</div>
+        <h3>Iowa Cannabis Co. — Iowa City</h3>
+        <address>322 Hwy 1 West<br>Iowa City, IA 52246</address>
+        <a href="tel:+13193823200" class="phone">(319) 382-3200</a>
+        <div class="hours">Open daily<br>9:00 AM – 7:30 PM</div>
+      </div>
+      <div class="loc-card fade-in">
+        <div class="city">Council Bluffs</div>
+        <h3>Iowa Cannabis Co. — Council Bluffs</h3>
+        <address>3615 9th Avenue<br>Council Bluffs, IA 51501</address>
+        <a href="tel:+17123368575" class="phone">(712) 336-8575</a>
+        <div class="hours">Open daily<br>10:00 AM – 6:00 PM</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <h2 class="fade-in">Not yet a patient? <em>We'll help.</em></h2>
+  <p class="fade-in">Iowa's medical cannabis program is more accessible than most people realize. Our team can walk you through qualifying conditions, documentation, and the application process.</p>
+  <a href="https://iacanna.com/become-a-patient" class="btn btn-primary fade-in">Start Your Application →</a>
+</section>
+
+<footer>
+  <div class="inner">
+    <div class="brand">Iowa <em>Cannabis Co.</em></div>
+    <div class="small">© 2026 Iowa Cannabis Company · Iowa Department of HHS Licensed Medical Dispensary</div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
