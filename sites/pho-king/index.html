@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pho King — Bangor, Maine's #1 Cannabis Dispensary</title>
+<meta name="description" content="Premium cannabis at fair prices. 30-minute pickup, top-shelf flower, and the best deals in Bangor.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0a0a0a;
+    --bg-2: #131313;
+    --bg-3: #1c1c1c;
+    --fg: #f9f5ec;
+    --fg-muted: #8a877f;
+    --accent: #6ce680;
+    --accent-2: #4cc863;
+    --hot: #ff5b5b;
+    --border: rgba(249,245,236,0.1);
+    --maxw: 1280px;
+  }
+  *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+  h1, h2 { font-family: 'Anton', sans-serif; font-weight: 400; letter-spacing: -0.02em; line-height: 0.9; text-transform: uppercase; }
+  h1 { font-size: clamp(3.4rem, 12vw, 9.5rem); }
+  h2 { font-size: clamp(2.4rem, 6vw, 5rem); }
+  h3 { font-family: 'Manrope', sans-serif; font-weight: 700; font-size: 1.3rem; letter-spacing: -0.01em; line-height: 1.2; }
+  a { color: inherit; text-decoration: none; transition: opacity .25s ease; }
+  a:hover { opacity: .7; }
+  .accent { color: var(--accent); }
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 22px 32px;
+    background: rgba(10,10,10,0.85);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  nav .inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  nav .brand { font-family: 'Anton', sans-serif; font-size: 1.4rem; letter-spacing: 0; text-transform: uppercase; }
+  nav .brand .accent { color: var(--accent); }
+  nav ul { list-style: none; display: flex; gap: 36px; }
+  nav ul a { font-size: 0.84rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+  nav .cta { background: var(--accent); color: var(--bg); padding: 12px 22px; border-radius: 999px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+  nav .cta:hover { background: var(--accent-2); opacity: 1; }
+  @media (max-width: 820px) { nav ul { display: none; } }
+  .hero {
+    min-height: 100vh; display: flex; align-items: center;
+    padding: 160px 32px 80px;
+    background:
+      radial-gradient(ellipse at 30% 50%, rgba(108,230,128,0.14), transparent 55%),
+      radial-gradient(circle at 80% 80%, rgba(255,91,91,0.06), transparent 50%),
+      var(--bg);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-inner { max-width: var(--maxw); margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+  .badge-row { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 38px; }
+  .badge { padding: 8px 16px; border: 1px solid var(--accent); border-radius: 999px; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+  .hero h1 { margin-bottom: 40px; }
+  .hero h1 .stack { display: block; }
+  .hero h1 .king { color: var(--accent); }
+  .hero h1 .small { font-size: 0.4em; font-family: 'Manrope', sans-serif; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--fg-muted); display: block; margin-top: 18px; }
+  .hero-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 60px; align-items: end; margin-top: 50px; }
+  @media (max-width: 980px) { .hero-grid { grid-template-columns: 1fr; gap: 40px; } }
+  .hero p { font-size: clamp(1.05rem, 1.5vw, 1.22rem); max-width: 50ch; color: var(--fg-muted); line-height: 1.55; margin-bottom: 38px; }
+  .hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 17px 32px; border-radius: 999px; font-family: 'Manrope', sans-serif; font-size: 0.86rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; border: none; transition: transform .25s ease, background .25s ease, opacity .25s ease; }
+  .btn-primary { background: var(--accent); color: var(--bg); }
+  .btn-primary:hover { background: var(--accent-2); transform: translateY(-2px); opacity: 1; }
+  .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--border); }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
+  .stat-card { background: var(--bg-2); padding: 38px 32px; border: 1px solid var(--border); border-radius: 16px; }
+  .stat-card .label { font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 14px; }
+  .stat-card .n { font-family: 'Anton', sans-serif; font-size: 4.2rem; line-height: 0.9; color: var(--fg); margin-bottom: 8px; letter-spacing: -0.02em; }
+  .stat-card p { color: var(--fg-muted); font-size: 0.96rem; margin: 0; }
+  section { padding: 130px 32px; border-top: 1px solid var(--border); }
+  section .wrap { max-width: var(--maxw); margin: 0 auto; }
+  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 50px; margin-bottom: 72px; flex-wrap: wrap; }
+  .section-head h2 { max-width: 14ch; }
+  .section-head p { max-width: 42ch; color: var(--fg-muted); font-size: 1.04rem; }
+  .features { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .feature { background: var(--bg-2); border: 1px solid var(--border); border-radius: 16px; padding: 40px 32px; transition: border-color .3s ease, transform .3s ease, background .3s ease; }
+  .feature:hover { border-color: var(--accent); transform: translateY(-6px); background: var(--bg-3); }
+  .feature .ic { font-family: 'Anton', sans-serif; color: var(--accent); font-size: 2.4rem; margin-bottom: 24px; line-height: 1; }
+  .feature h3 { margin-bottom: 10px; }
+  .feature p { color: var(--fg-muted); font-size: 0.96rem; margin: 0; }
+  @media (max-width: 820px) { .features { grid-template-columns: 1fr; } }
+  .menu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .menu-tile { background: var(--bg-2); border: 1px solid var(--border); border-radius: 16px; padding: 48px 40px; display: grid; grid-template-columns: 1fr auto; gap: 30px; align-items: center; transition: background .3s ease, transform .3s ease; cursor: pointer; }
+  .menu-tile:hover { background: var(--accent); color: var(--bg); transform: translateY(-4px); }
+  .menu-tile:hover .arrow { color: var(--bg); transform: translateX(6px); }
+  .menu-tile h3 { font-family: 'Anton', sans-serif; font-size: 2.2rem; text-transform: uppercase; letter-spacing: -0.01em; margin-bottom: 6px; }
+  .menu-tile p { color: var(--fg-muted); font-size: 0.96rem; margin: 0; }
+  .menu-tile:hover p { color: rgba(10,10,10,0.7); }
+  .menu-tile .arrow { font-family: 'Anton', sans-serif; font-size: 2.4rem; color: var(--accent); transition: transform .3s ease, color .3s ease; }
+  @media (max-width: 820px) { .menu-grid { grid-template-columns: 1fr; } }
+  .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+  .visit-card { background: var(--bg-2); padding: 50px 44px; border: 1px solid var(--border); border-radius: 16px; }
+  .visit-card .label { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 700; margin-bottom: 22px; }
+  .visit-card h3 { font-family: 'Anton', sans-serif; font-size: 2.2rem; text-transform: uppercase; margin-bottom: 22px; letter-spacing: -0.01em; }
+  .visit-card address { font-style: normal; font-size: 1.1rem; line-height: 1.5; margin-bottom: 20px; }
+  .visit-card .phone { font-family: 'Anton', sans-serif; font-size: 2rem; color: var(--accent); display: block; margin-bottom: 28px; }
+  .visit-card .hr { display: grid; grid-template-columns: 1fr auto; gap: 12px 30px; font-size: 0.98rem; padding-top: 24px; border-top: 1px solid var(--border); }
+  .visit-card .hr .day { color: var(--fg-muted); }
+  @media (max-width: 820px) { .visit-grid { grid-template-columns: 1fr; } }
+  .cta-band { padding: 140px 32px; background: var(--accent); color: var(--bg); text-align: center; }
+  .cta-band h2 { margin: 0 auto 26px; max-width: 14ch; }
+  .cta-band p { max-width: 50ch; margin: 0 auto 42px; font-size: 1.12rem; line-height: 1.55; }
+  .cta-band .btn-primary { background: var(--bg); color: var(--accent); }
+  .cta-band .btn-primary:hover { background: var(--bg-2); }
+  footer { padding: 60px 32px 40px; }
+  footer .inner { max-width: var(--maxw); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
+  footer .brand { font-family: 'Anton', sans-serif; font-size: 1.4rem; text-transform: uppercase; }
+  footer .brand .accent { color: var(--accent); }
+  footer .small { font-size: 0.8rem; color: var(--fg-muted); letter-spacing: 0.04em; }
+  .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+<nav>
+  <div class="inner">
+    <a href="#top" class="brand">PHO <span class="accent">KING</span></a>
+    <ul>
+      <li><a href="#why">Why Us</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#visit">Visit</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="tel:+12075734309" class="cta">Order Pickup</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="badge-row">
+      <div class="badge">★ #1 in Bangor</div>
+      <div class="badge">30-min pickup</div>
+      <div class="badge">No minimum</div>
+    </div>
+    <h1>
+      <span class="stack">Pho</span>
+      <span class="stack"><span class="king">King</span> great</span>
+      <span class="small">cannabis. Bangor, Maine.</span>
+    </h1>
+    <div class="hero-grid">
+      <div>
+        <p>Top-shelf flower, daily-priced edibles, fast pickup, and a budtender team that actually likes their job. We're #1 because we earn it every time you walk in.</p>
+        <div class="hero-cta">
+          <a href="#menu" class="btn btn-primary">Shop The Menu →</a>
+          <a href="#visit" class="btn btn-ghost">Find The Shop</a>
+        </div>
+      </div>
+      <div class="stat-card">
+        <div class="label">★★★★★ on Google</div>
+        <div class="n">5.0</div>
+        <p>From hundreds of Bangor regulars who keep coming back.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<section id="why">
+  <div class="wrap">
+    <div class="section-head fade-in">
+      <h2>Why we're <span class="accent">#1</span>.</h2>
+      <p>Other dispensaries are fine. We're built different. Here's why three of them are now closed and we keep growing.</p>
+    </div>
+    <div class="features">
+      <div class="feature fade-in"><div class="ic">⚡</div><h3>30-Minute Pickup</h3><p>Order online, walk in, walk out. We don't keep you waiting — full stop.</p></div>
+      <div class="feature fade-in"><div class="ic">✓</div><h3>State-Tested, Every Time</h3><p>Lab certificates on request. We don't carry anything we can't prove is clean.</p></div>
+      <div class="feature fade-in"><div class="ic">$</div><h3>No Minimum, No Pressure</h3><p>Buy a single pre-roll or fill a cart. Same friendly service either way.</p></div>
+      <div class="feature fade-in"><div class="ic">★</div><h3>Real Budtenders</h3><p>Our team uses what we sell. Ask anything — they'll give you a straight answer.</p></div>
+      <div class="feature fade-in"><div class="ic">↻</div><h3>Daily Drops</h3><p>New flower, fresh concentrates, and limited-edition collabs land every week.</p></div>
+      <div class="feature fade-in"><div class="ic">♥</div><h3>Bangor First</h3><p>Independent, locally owned, and committed to the city that built us.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="menu">
+  <div class="wrap">
+    <div class="section-head fade-in">
+      <h2>The <span class="accent">menu</span>.</h2>
+      <p>Four categories, hundreds of options. Browse the full live menu online or come pick something out in person.</p>
+    </div>
+    <div class="menu-grid">
+      <div class="menu-tile fade-in"><div><h3>Flower</h3><p>Top-shelf indoor and craft outdoor from Maine's best growers.</p></div><div class="arrow">→</div></div>
+      <div class="menu-tile fade-in"><div><h3>Edibles</h3><p>Gummies, chocolates, drinks — precisely dosed, fast onset.</p></div><div class="arrow">→</div></div>
+      <div class="menu-tile fade-in"><div><h3>Concentrates</h3><p>Live resin, rosin, badder, shatter — for the heads who know.</p></div><div class="arrow">→</div></div>
+      <div class="menu-tile fade-in"><div><h3>CBD &amp; Wellness</h3><p>Tinctures, topicals, capsules. Non-intoxicating relief, daily-use friendly.</p></div><div class="arrow">→</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="visit">
+  <div class="wrap">
+    <div class="section-head fade-in">
+      <h2>Find <span class="accent">us</span>.</h2>
+      <p>On Hammond Street, easy to spot. Walk-ins always welcome — bring a valid ID.</p>
+    </div>
+    <div class="visit-grid">
+      <div class="visit-card fade-in">
+        <div class="label">— The Shop</div>
+        <h3>Pho King — Bangor</h3>
+        <address>1114 Hammond Street, Suite 2<br>Bangor, ME 04401</address>
+        <a href="tel:+12075734309" class="phone">(207) 573-4309</a>
+        <a href="https://maps.google.com/?q=1114+Hammond+St+Bangor+ME" target="_blank" class="btn btn-ghost">Get Directions →</a>
+      </div>
+      <div class="visit-card fade-in">
+        <div class="label">— Hours</div>
+        <h3>Open 7 Days</h3>
+        <div class="hr">
+          <div class="day">Monday – Sunday</div><div>10:00 AM – 8:00 PM</div>
+          <div class="day">Online orders</div><div>Until 7:30 PM daily</div>
+          <div class="day">Holidays</div><div>Check our IG for updates</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-band" id="contact">
+  <h2 class="fade-in">Come <em style="font-style:italic;">pho real</em>.</h2>
+  <p class="fade-in">First-time? Ask for a recommendation. Returning? Tell us what hit. Either way, we'll make sure you leave happy.</p>
+  <a href="tel:+12075734309" class="btn btn-primary fade-in">Call (207) 573-4309</a>
+</section>
+
+<footer>
+  <div class="inner">
+    <div class="brand">PHO <span class="accent">KING</span></div>
+    <div class="small">© 2026 Pho King · Bangor, ME · Maine Office of Cannabis Policy Licensed</div>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
