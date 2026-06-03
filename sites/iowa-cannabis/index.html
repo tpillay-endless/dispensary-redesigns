@@ -7,59 +7,44 @@
 <meta name="description" content="Medical cannabis built for Iowa patients since 2018. Three locations: Waterloo, Iowa City, Council Bluffs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #f7f2e2;
-    --bg-2: #ede6cb;
-    --fg: #142235;
-    --fg-2: #1d2f47;
-    --fg-muted: #545f6f;
-    --accent: #d4a444;
-    --accent-2: #b8862e;
-    --border: rgba(20,34,53,0.13);
-    --maxw: 1240px;
+    --bg: #f7f2e2; --bg-2: #ede6cb; --bg-3: #ddd5b3;
+    --fg: #142235; --fg-2: #1d2f47; --fg-muted: #545f6f;
+    --accent: #d4a444; --accent-2: #b8862e;
+    --border: rgba(20,34,53,0.13); --maxw: 1240px;
   }
   *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: 'Source Sans 3', system-ui, sans-serif;
-    font-weight: 400;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
+  body { background: var(--bg); color: var(--fg); font-family: 'Source Sans 3', system-ui, sans-serif; line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  body.no-scroll { overflow: hidden; }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
-  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; letter-spacing: -0.005em; line-height: 1.1; }
+  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; font-weight: 500; line-height: 1.1; }
   h1 { font-size: clamp(2.8rem, 7vw, 5.6rem); font-weight: 400; }
   h2 { font-size: clamp(2rem, 4.4vw, 3.4rem); font-weight: 400; }
   h3 { font-size: 1.4rem; }
-  em, .ital { font-style: italic; color: var(--accent); }
+  em { font-style: italic; color: var(--accent); }
   a { color: inherit; text-decoration: none; transition: opacity .25s ease; }
   a:hover { opacity: .7; }
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 22px 32px;
-    background: rgba(247,242,226,0.88);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-  }
-  nav .inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  button { font-family: inherit; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 32px; background: rgba(247,242,226,0.9); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+  nav .inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
   nav .brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 500; }
   nav .brand em { font-style: italic; color: var(--accent-2); font-weight: 400; }
-  nav ul { list-style: none; display: flex; gap: 36px; }
-  nav ul a { font-size: 0.94rem; letter-spacing: 0.02em; font-weight: 500; }
+  nav ul { list-style: none; display: flex; gap: 32px; }
+  nav ul a { font-size: 0.92rem; font-weight: 500; }
+  nav .nav-right { display: flex; align-items: center; gap: 12px; }
+  nav .signin-btn, nav .cart-btn { background: transparent; border: 1px solid var(--fg); color: var(--fg); padding: 9px 18px; border-radius: 999px; font-size: 0.86rem; cursor: pointer; font-weight: 500; transition: all .2s ease; }
+  nav .signin-btn:hover, nav .cart-btn:hover { background: var(--fg); color: var(--bg); }
+  nav .cart-btn { display: inline-flex; align-items: center; gap: 10px; }
+  nav .cart-btn .count { background: var(--accent); color: var(--fg); padding: 2px 8px; border-radius: 999px; font-size: 0.72rem; font-weight: 700; min-width: 22px; text-align: center; }
+  nav .cart-btn .count.hidden { display: none; }
   nav .cta { background: var(--fg); color: var(--bg); padding: 11px 22px; border-radius: 999px; font-size: 0.88rem; font-weight: 600; }
   nav .cta:hover { background: var(--accent); color: var(--fg); opacity: 1; }
-  @media (max-width: 820px) { nav ul { display: none; } }
-  .hero {
-    min-height: 95vh; display: flex; align-items: center;
-    padding: 160px 32px 100px;
-    background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%);
-    position: relative;
-  }
+  @media (max-width: 980px) { nav ul { display: none; } }
+  @media (max-width: 640px) { nav .cta { display: none; } }
+  .hero { min-height: 95vh; display: flex; align-items: center; padding: 160px 32px 100px; background: linear-gradient(180deg, var(--bg) 0%, var(--bg-2) 100%); }
   .hero-inner { max-width: var(--maxw); margin: 0 auto; width: 100%; }
   .hero-content { display: grid; grid-template-columns: 1.3fr 1fr; gap: 80px; align-items: end; }
   @media (max-width: 980px) { .hero-content { grid-template-columns: 1fr; gap: 50px; } }
@@ -68,7 +53,7 @@
   .hero h1 { margin-bottom: 38px; max-width: 14ch; }
   .hero .hero-tag { font-family: 'Playfair Display', serif; font-style: italic; font-size: clamp(1.2rem, 1.8vw, 1.5rem); max-width: 50ch; color: var(--fg-2); margin-bottom: 46px; line-height: 1.45; }
   .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; border-radius: 999px; font-family: 'Source Sans 3', sans-serif; font-size: 0.92rem; font-weight: 600; letter-spacing: 0.02em; cursor: pointer; border: none; transition: transform .25s ease, background .25s ease, opacity .25s ease; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; border-radius: 999px; font-family: 'Source Sans 3', sans-serif; font-size: 0.92rem; font-weight: 600; cursor: pointer; border: none; transition: all .25s ease; }
   .btn-primary { background: var(--fg); color: var(--bg); }
   .btn-primary:hover { background: var(--accent); color: var(--fg); transform: translateY(-2px); opacity: 1; }
   .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--fg); }
@@ -79,31 +64,40 @@
   .hero-aside .row:last-of-type { border-bottom: 1px solid var(--border); }
   .hero-aside .row span:first-child { color: var(--fg-muted); }
   @media (max-width: 980px) { .hero-aside { border-left: none; padding-left: 0; border-top: 1px solid var(--border); padding-top: 40px; } }
-  section { padding: 130px 32px; }
-  section + section { border-top: 1px solid var(--border); }
-  section .wrap { max-width: var(--maxw); margin: 0 auto; }
-  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 60px; margin-bottom: 74px; flex-wrap: wrap; }
+  section { padding: 120px 32px; border-top: 1px solid var(--border); }
+  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 60px; margin-bottom: 60px; flex-wrap: wrap; }
   .section-head h2 { max-width: 20ch; flex: 1 1 50%; }
   .section-head p { flex: 1 1 40%; max-width: 42ch; color: var(--fg-muted); font-size: 1.04rem; font-style: italic; font-family: 'Playfair Display', serif; }
-  .commit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-  .commit-card { background: var(--fg); color: var(--bg); padding: 50px 44px; border-radius: 16px; transition: transform .3s ease; }
-  .commit-card:nth-child(2) { background: var(--accent); color: var(--fg); }
-  .commit-card:nth-child(3) { background: var(--bg-2); color: var(--fg); }
-  .commit-card:nth-child(4) { background: var(--fg-2); color: var(--bg); }
-  .commit-card:hover { transform: translateY(-6px); }
-  .commit-card .num { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; opacity: 0.7; margin-bottom: 30px; }
-  .commit-card h3 { font-size: 1.6rem; margin-bottom: 14px; }
-  .commit-card p { font-size: 1rem; opacity: 0.86; line-height: 1.55; }
-  @media (max-width: 820px) { .commit-grid { grid-template-columns: 1fr; } }
-  .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .menu-card { padding: 40px 32px; background: var(--bg-2); border-radius: 12px; transition: transform .3s ease, background .3s ease; }
-  .menu-card:hover { background: var(--fg); color: var(--bg); transform: translateY(-4px); }
-  .menu-card .label { font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent-2); font-weight: 600; margin-bottom: 22px; }
-  .menu-card:hover .label { color: var(--accent); }
-  .menu-card h3 { margin-bottom: 10px; }
-  .menu-card p { font-size: 0.96rem; color: var(--fg-muted); margin: 0; }
-  .menu-card:hover p { color: rgba(247,242,226,0.7); }
-  @media (max-width: 820px) { .menu-grid { grid-template-columns: 1fr; } }
+
+  .filter-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+  .filter-pill { padding: 9px 18px; border-radius: 999px; background: var(--bg-2); border: 1px solid var(--border); color: var(--fg-muted); font-size: 0.88rem; cursor: pointer; transition: all .2s ease; font-family: inherit; }
+  .filter-pill:hover { color: var(--fg); border-color: var(--fg-muted); }
+  .filter-pill.active { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+  .shop-meta { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px solid var(--border); color: var(--fg-muted); font-size: 0.94rem; font-style: italic; }
+  .shop-meta strong { color: var(--fg); font-style: normal; font-weight: 600; }
+  .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .product-grid { grid-template-columns: 1fr; } }
+  .product-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; display: flex; flex-direction: column; transition: all .3s ease; }
+  .product-card:hover { transform: translateY(-4px); border-color: var(--accent-2); }
+  .product-visual { aspect-ratio: 4/3; position: relative; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-size: 2.2rem; color: var(--bg); text-align: center; padding: 20px; font-style: italic; }
+  .product-visual::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 50%); }
+  .product-visual .badge { position: absolute; top: 12px; left: 12px; font-family: 'Source Sans 3', sans-serif; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; padding: 5px 11px; background: rgba(0,0,0,0.35); color: var(--bg); border-radius: 999px; font-style: normal; }
+  .product-visual .thc { position: absolute; bottom: 12px; right: 12px; font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.96rem; color: var(--bg); background: rgba(0,0,0,0.35); padding: 5px 11px; border-radius: 999px; }
+  .product-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+  .product-body h3 { font-size: 1.3rem; margin-bottom: 4px; }
+  .product-body .strain { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.96rem; color: var(--accent-2); margin-bottom: 14px; }
+  .product-body .desc { color: var(--fg-muted); font-size: 0.94rem; margin-bottom: 18px; flex: 1; }
+  .weight-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+  .weight-chip { padding: 7px 14px; background: var(--bg-3); border: 1px solid transparent; color: var(--fg-muted); font-size: 0.82rem; border-radius: 999px; cursor: pointer; transition: all .2s ease; font-family: inherit; }
+  .weight-chip:hover { color: var(--fg); }
+  .weight-chip.active { background: var(--fg); color: var(--bg); }
+  .product-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .product-price { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.6rem; color: var(--accent-2); }
+  .add-btn { background: var(--fg); color: var(--bg); border: none; padding: 10px 18px; border-radius: 999px; font-size: 0.84rem; font-weight: 600; cursor: pointer; transition: all .2s ease; }
+  .add-btn:hover { background: var(--accent); color: var(--fg); transform: translateY(-1px); }
+  .add-btn.added { background: var(--accent); color: var(--fg); }
+
   .locations { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
   .loc-card { background: var(--bg-2); padding: 40px 32px; border-radius: 12px; border: 1px solid var(--border); }
   .loc-card .city { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.4rem; color: var(--accent-2); margin-bottom: 14px; }
@@ -112,17 +106,127 @@
   .loc-card .phone { color: var(--accent-2); font-weight: 600; display: block; margin-bottom: 22px; font-size: 1.08rem; }
   .loc-card .hours { padding-top: 18px; border-top: 1px solid var(--border); font-size: 0.92rem; color: var(--fg-muted); }
   @media (max-width: 820px) { .locations { grid-template-columns: 1fr; } }
-  .cta-band { padding: 130px 32px; background: var(--fg); color: var(--bg); text-align: center; }
-  .cta-band h2 { margin: 0 auto 22px; max-width: 22ch; }
-  .cta-band h2 em { color: var(--accent); font-style: italic; }
-  .cta-band p { max-width: 50ch; margin: 0 auto 42px; opacity: 0.84; font-size: 1.08rem; font-style: italic; font-family: 'Playfair Display', serif; }
-  .cta-band .btn-primary { background: var(--accent); color: var(--fg); }
-  .cta-band .btn-primary:hover { background: var(--bg); }
-  footer { padding: 50px 32px 38px; background: var(--bg-2); }
+
+  footer { padding: 50px 32px 38px; background: var(--bg-2); border-top: 1px solid var(--border); }
   footer .inner { max-width: var(--maxw); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
   footer .brand { font-family: 'Playfair Display', serif; font-size: 1.4rem; }
   footer .brand em { font-style: italic; color: var(--accent-2); }
   footer .small { font-size: 0.85rem; color: var(--fg-muted); }
+
+  .scrim { position: fixed; inset: 0; background: rgba(0,0,0,0.45); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity .3s ease; z-index: 200; }
+  .scrim.open { opacity: 1; pointer-events: auto; }
+  .cart-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 440px; max-width: 100vw; background: var(--bg-2); border-left: 1px solid var(--border); z-index: 210; transform: translateX(100%); transition: transform .35s ease; display: flex; flex-direction: column; }
+  .cart-drawer.open { transform: translateX(0); }
+  .cart-head { padding: 22px 28px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .cart-head h3 { font-size: 1.6rem; }
+  .cart-close { background: transparent; border: none; color: var(--fg); cursor: pointer; width: 36px; height: 36px; font-size: 1.3rem; }
+  .cart-items { flex: 1; overflow-y: auto; padding: 18px 28px; }
+  .cart-empty { color: var(--fg-muted); text-align: center; padding: 60px 20px; font-style: italic; font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+  .cart-item { display: grid; grid-template-columns: 64px 1fr auto; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+  .ci-visual { width: 64px; height: 64px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.3rem; color: var(--bg); }
+  .ci-mid .name { font-size: 1rem; font-weight: 600; }
+  .ci-mid .meta { font-size: 0.8rem; color: var(--fg-muted); font-style: italic; font-family: 'Playfair Display', serif; }
+  .ci-qty { display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; }
+  .ci-qty button { width: 22px; height: 22px; border-radius: 4px; border: 1px solid var(--border); background: var(--bg-3); color: var(--fg); cursor: pointer; }
+  .ci-qty .q { font-size: 0.86rem; width: 22px; text-align: center; }
+  .ci-right { display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; }
+  .ci-right .price { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.2rem; color: var(--accent-2); }
+  .ci-right .rm { background: transparent; border: none; color: var(--fg-muted); font-size: 0.78rem; cursor: pointer; }
+  .cart-foot { padding: 22px 28px 28px; border-top: 1px solid var(--border); }
+  .cart-totals { display: grid; gap: 8px; margin-bottom: 18px; }
+  .cart-totals .row { display: flex; justify-content: space-between; font-size: 0.92rem; color: var(--fg-muted); }
+  .cart-totals .row.total { font-size: 1.1rem; color: var(--fg); padding-top: 10px; margin-top: 6px; border-top: 1px solid var(--border); font-weight: 600; }
+  .cart-totals .row.total .v { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.5rem; color: var(--accent-2); }
+  .checkout-btn { width: 100%; background: var(--fg); color: var(--bg); border: none; padding: 15px 20px; border-radius: 999px; font-size: 0.96rem; font-weight: 600; cursor: pointer; }
+  .checkout-btn:hover { background: var(--accent); color: var(--fg); }
+  .checkout-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .legal { font-size: 0.78rem; color: var(--fg-muted); text-align: center; margin-top: 12px; font-style: italic; }
+
+  .modal { position: fixed; inset: 0; z-index: 300; display: none; align-items: center; justify-content: center; padding: 24px; }
+  .modal.open { display: flex; }
+  .modal-card { background: var(--bg-2); border: 1px solid var(--border); border-radius: 14px; width: 100%; max-width: 540px; max-height: 92vh; overflow-y: auto; padding: 36px; position: relative; }
+  .modal-close { position: absolute; top: 18px; right: 18px; background: transparent; border: none; color: var(--fg-muted); cursor: pointer; width: 32px; height: 32px; border-radius: 50%; font-size: 1.2rem; }
+  .modal h3 { font-size: 1.8rem; margin-bottom: 8px; }
+  .modal .modal-sub { font-style: italic; color: var(--fg-muted); font-size: 1.02rem; margin-bottom: 24px; font-family: 'Playfair Display', serif; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 0.78rem; color: var(--fg-muted); margin-bottom: 6px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+  .field input, .field select { width: 100%; padding: 12px 14px; background: var(--bg); border: 1px solid var(--border); border-radius: 8px; color: var(--fg); font-family: inherit; font-size: 0.96rem; }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--accent-2); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .order-summary { background: var(--bg); border-radius: 8px; padding: 14px 16px; margin: 6px 0 22px; font-size: 0.9rem; }
+  .order-summary .os-row { display: flex; justify-content: space-between; padding: 4px 0; color: var(--fg-muted); }
+  .order-summary .os-row.os-total { color: var(--fg); margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--border); font-weight: 600; }
+  .submit-btn { width: 100%; background: var(--fg); color: var(--bg); border: none; padding: 15px 20px; border-radius: 999px; font-size: 0.98rem; font-weight: 600; cursor: pointer; }
+  .submit-btn:hover { background: var(--accent); color: var(--fg); }
+  .confirm { text-align: center; padding: 20px 0; }
+  .confirm .icon { width: 64px; height: 64px; border-radius: 50%; background: var(--accent); color: var(--fg); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-family: 'Playfair Display', serif; }
+  .confirm h3 { margin-bottom: 10px; }
+  .confirm p { color: var(--fg-muted); font-size: 0.98rem; margin-bottom: 8px; font-style: italic; font-family: 'Playfair Display', serif; }
+  .confirm .order-id { font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent-2); font-size: 1.4rem; margin: 16px 0 24px; }
+
+  .auth-tabs { display: flex; gap: 4px; background: var(--bg); padding: 4px; border-radius: 999px; margin-bottom: 24px; border: 1px solid var(--border); }
+  .auth-tabs button { flex: 1; padding: 9px 14px; border-radius: 999px; background: transparent; border: none; color: var(--fg-muted); font-size: 0.88rem; cursor: pointer; font-family: inherit; font-weight: 500; transition: all .2s ease; }
+  .auth-tabs button.active { background: var(--fg); color: var(--bg); }
+  .auth-divider { display: flex; align-items: center; gap: 12px; margin: 26px 0 18px; color: var(--fg-muted); font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 600; }
+  .auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .demo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .demo-row button { padding: 12px 14px; border: 1px solid var(--fg); background: transparent; color: var(--fg); border-radius: 999px; cursor: pointer; font-family: inherit; font-size: 0.86rem; font-weight: 600; transition: all .2s ease; }
+  .demo-row button:hover { background: var(--fg); color: var(--bg); }
+
+  .dashboard { position: fixed; inset: 0; z-index: 500; background: var(--bg); display: none; flex-direction: column; }
+  .dashboard.open { display: flex; }
+  .dash-header { padding: 18px 28px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; background: var(--bg-2); }
+  .dash-header .brand { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
+  .dash-header .brand em { font-style: italic; color: var(--accent-2); }
+  .dash-header .brand small { font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent-2); margin-left: 12px; padding: 4px 10px; background: var(--bg); border-radius: 999px; font-weight: 600; font-family: 'Source Sans 3', sans-serif; }
+  .view-switcher { display: flex; gap: 4px; background: var(--bg); padding: 4px; border-radius: 999px; border: 1px solid var(--border); }
+  .view-switcher button { padding: 8px 18px; border-radius: 999px; background: transparent; border: none; color: var(--fg-muted); font-size: 0.86rem; cursor: pointer; font-family: inherit; font-weight: 500; }
+  .view-switcher button.active { background: var(--fg); color: var(--bg); }
+  .dash-exit { background: transparent; border: 1px solid var(--fg); color: var(--fg); padding: 8px 18px; border-radius: 999px; cursor: pointer; font-size: 0.86rem; font-family: inherit; font-weight: 500; }
+  .dash-exit:hover { background: var(--fg); color: var(--bg); }
+  .dash-body { flex: 1; overflow-y: auto; padding: 36px 28px 60px; }
+  .dash-wrap { max-width: 1180px; margin: 0 auto; }
+  .dash-greet { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 6px; font-weight: 400; }
+  .dash-greet em { font-style: italic; color: var(--accent-2); }
+  .dash-sub { color: var(--fg-muted); font-size: 1rem; margin-bottom: 32px; font-style: italic; font-family: 'Playfair Display', serif; }
+  .dash-grid { display: grid; gap: 18px; }
+  .kpi-row { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+  .kpi { background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 22px; }
+  .kpi .lbl { font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-muted); margin-bottom: 12px; font-weight: 600; }
+  .kpi .v { font-family: 'Playfair Display', serif; font-style: italic; font-size: 2.4rem; line-height: 1; font-weight: 500; }
+  .kpi .v small { font-size: 0.88rem; color: var(--accent-2); margin-left: 6px; font-family: 'Source Sans 3', sans-serif; font-style: normal; font-weight: 600; }
+  .panel { background: var(--bg-2); border: 1px solid var(--border); border-radius: 10px; padding: 24px; }
+  .panel h4 { font-family: 'Playfair Display', serif; font-size: 1.3rem; margin-bottom: 18px; }
+  .panel h4 small { font-size: 0.84rem; color: var(--fg-muted); margin-left: 10px; font-family: 'Source Sans 3', sans-serif; font-style: italic; }
+  .two-col { grid-template-columns: 1.4fr 1fr; }
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+  .loyalty-card { background: linear-gradient(135deg, var(--fg) 0%, var(--accent-2) 100%); padding: 28px; color: var(--bg); border-radius: 10px; }
+  .loyalty-card .tier { display: inline-block; padding: 4px 12px; background: rgba(0,0,0,0.3); border-radius: 999px; font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; font-weight: 600; }
+  .loyalty-card .pts { font-family: 'Playfair Display', serif; font-style: italic; font-size: 3.2rem; line-height: 1; margin-bottom: 4px; }
+  .loyalty-card .pts small { font-size: 0.88rem; opacity: 0.85; font-family: 'Source Sans 3', sans-serif; margin-left: 4px; font-style: normal; }
+  .loyalty-card .progress { margin-top: 18px; }
+  .loyalty-card .bar { height: 6px; background: rgba(0,0,0,0.25); border-radius: 999px; overflow: hidden; margin: 8px 0; }
+  .loyalty-card .bar > div { height: 100%; background: var(--accent); border-radius: 999px; }
+  .loyalty-card .next { font-size: 0.86rem; opacity: 0.9; font-style: italic; font-family: 'Playfair Display', serif; }
+  .list-row { display: grid; grid-template-columns: 36px 1fr auto auto; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.94rem; }
+  .list-row .dot { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Playfair Display', serif; font-style: italic; font-size: 1rem; color: var(--bg); }
+  .list-row .meta { color: var(--fg-muted); font-size: 0.84rem; font-style: italic; font-family: 'Playfair Display', serif; }
+  .list-row .v { color: var(--accent-2); font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.05rem; }
+  .list-row .pill { padding: 3px 10px; background: var(--bg-3); border-radius: 999px; font-size: 0.74rem; color: var(--fg-muted); font-weight: 600; }
+  .list-row .pill.ok { background: rgba(212,164,68,0.18); color: var(--accent-2); }
+  .reward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .reward { padding: 16px; background: var(--bg); border-radius: 8px; border: 1px solid var(--border); }
+  .reward .cost { font-family: 'Playfair Display', serif; font-style: italic; color: var(--accent-2); font-size: 1.2rem; margin-bottom: 4px; }
+  .reward .name { font-size: 0.9rem; }
+  .tier-bar { display: grid; gap: 10px; }
+  .tier-bar .tb { display: grid; grid-template-columns: 90px 1fr 50px; gap: 12px; align-items: center; font-size: 0.88rem; }
+  .tier-bar .tb-bar { height: 8px; background: var(--bg-3); border-radius: 999px; overflow: hidden; }
+  .tier-bar .tb-bar > div { height: 100%; background: var(--accent); }
+  .tier-bar .tb-pct { color: var(--fg-muted); text-align: right; font-size: 0.86rem; font-style: italic; font-family: 'Playfair Display', serif; }
+
+  .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--fg); color: var(--bg); padding: 12px 22px; border-radius: 999px; font-size: 0.92rem; font-weight: 500; opacity: 0; pointer-events: none; transition: all .3s ease; z-index: 400; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
@@ -132,12 +236,14 @@
   <div class="inner">
     <a href="#top" class="brand">Iowa <em>Cannabis Co.</em></a>
     <ul>
-      <li><a href="#commitments">Commitments</a></li>
-      <li><a href="#menu">Products</a></li>
+      <li><a href="#shop">Products</a></li>
       <li><a href="#visit">Locations</a></li>
-      <li><a href="#contact">Get a Card</a></li>
     </ul>
-    <a href="#contact" class="cta">Become a Patient</a>
+    <div class="nav-right">
+      <button class="signin-btn" id="signinBtn">Patient Sign In</button>
+      <button class="cart-btn" id="cartBtn"><span>Cart</span><span class="count hidden" id="cartCount">0</span></button>
+      <a href="#contact" class="cta">Become a Patient</a>
+    </div>
   </div>
 </nav>
 
@@ -149,50 +255,30 @@
         <h1>Medical cannabis, built for <em>Iowa patients</em>.</h1>
         <p class="hero-tag">Three locations across the state. Tested, trusted products. Real conversations with patients who deserve more than a transaction.</p>
         <div class="hero-cta">
-          <a href="#contact" class="btn btn-primary">Become a Patient →</a>
-          <a href="#menu" class="btn btn-ghost">Browse Products</a>
+          <a href="#shop" class="btn btn-primary">Browse Products →</a>
+          <a href="#visit" class="btn btn-ghost">Find a Location</a>
         </div>
       </div>
       <div class="hero-aside">
         <div class="ks">— By the numbers</div>
         <div class="row"><span>Serving since</span><span>2018</span></div>
         <div class="row"><span>Iowa locations</span><span>3</span></div>
-        <div class="row"><span>Days open weekly</span><span>7</span></div>
-        <div class="row"><span>Product categories</span><span>12+</span></div>
+        <div class="row"><span>Open daily</span><span>7 days</span></div>
+        <div class="row"><span>Product types</span><span>12+</span></div>
       </div>
     </div>
   </div>
 </header>
 
-<section id="commitments">
+<section id="shop">
   <div class="wrap">
     <div class="section-head fade-in">
-      <h2>Patient care, the <em>Iowa way</em>.</h2>
-      <p>Four commitments we make to every patient who walks through any of our doors.</p>
+      <h2>Browse our <em>products</em>.</h2>
+      <p>Iowa medical cannabis allows tinctures, vapes, capsules, topicals, and edibles — no flower. Reserve online, pick up at any location.</p>
     </div>
-    <div class="commit-grid">
-      <div class="commit-card fade-in"><div class="num">i.</div><h3>Patient First, Always</h3><p>You set the pace of the conversation. We're here to listen, recommend, and only ever sell you what fits your needs.</p></div>
-      <div class="commit-card fade-in"><div class="num">ii.</div><h3>Tested &amp; Verified</h3><p>Every product we carry is independently lab-tested and traceable. No exceptions, no compromises.</p></div>
-      <div class="commit-card fade-in"><div class="num">iii.</div><h3>Fair, Predictable Pricing</h3><p>Patient pricing means honest pricing — no inflated MSRPs, no hidden fees, BOGO deals on the items you actually want.</p></div>
-      <div class="commit-card fade-in"><div class="num">iv.</div><h3>Education over Sales</h3><p>Whether it's CBD ratios or strain selection, our team takes the time to explain — because medical cannabis only works when you know how to use it.</p></div>
-    </div>
-  </div>
-</section>
-
-<section id="menu">
-  <div class="wrap">
-    <div class="section-head fade-in">
-      <h2>Featured <em>products</em>.</h2>
-      <p>A curated selection of tinctures, vapes, edibles, and topicals — all built for Iowa medical patients.</p>
-    </div>
-    <div class="menu-grid">
-      <div class="menu-card fade-in"><div class="label">— No. 01</div><h3>Vape Cartridges</h3><p>Full-spectrum and distillate. THC and CBD ratios for every patient type.</p></div>
-      <div class="menu-card fade-in"><div class="label">— No. 02</div><h3>Tinctures</h3><p>Sublingual drops in measured doses. Predictable, fast-acting relief.</p></div>
-      <div class="menu-card fade-in"><div class="label">— No. 03</div><h3>Capsules</h3><p>Pre-measured pills for patients who prefer a consistent daily routine.</p></div>
-      <div class="menu-card fade-in"><div class="label">— No. 04</div><h3>Edibles</h3><p>Chews and chocolates dosed for medical use. Mild, medium, and stronger options.</p></div>
-      <div class="menu-card fade-in"><div class="label">— No. 05</div><h3>Topicals</h3><p>Balms and lotions for targeted, localized relief — non-intoxicating.</p></div>
-      <div class="menu-card fade-in"><div class="label">— No. 06</div><h3>Suppositories</h3><p>An option for patients who need rapid, systemic delivery without inhalation.</p></div>
-    </div>
+    <div class="filter-row fade-in" id="filterRow"></div>
+    <div class="shop-meta"><div><strong id="productCount">0</strong> products in stock across all three locations</div><div>OMMA card required at pickup</div></div>
+    <div class="product-grid" id="productGrid"></div>
   </div>
 </section>
 
@@ -205,21 +291,21 @@
     <div class="locations">
       <div class="loc-card fade-in">
         <div class="city">Waterloo</div>
-        <h3>Iowa Cannabis Co. — Waterloo</h3>
+        <h3>— Waterloo Location</h3>
         <address>1955 LaPorte Road<br>Waterloo, IA 50702</address>
         <a href="tel:+13192495398" class="phone">(319) 249-5398</a>
         <div class="hours">Open daily<br>10:00 AM – 6:00 PM</div>
       </div>
       <div class="loc-card fade-in">
         <div class="city">Iowa City</div>
-        <h3>Iowa Cannabis Co. — Iowa City</h3>
+        <h3>— Iowa City Location</h3>
         <address>322 Hwy 1 West<br>Iowa City, IA 52246</address>
         <a href="tel:+13193823200" class="phone">(319) 382-3200</a>
         <div class="hours">Open daily<br>9:00 AM – 7:30 PM</div>
       </div>
       <div class="loc-card fade-in">
         <div class="city">Council Bluffs</div>
-        <h3>Iowa Cannabis Co. — Council Bluffs</h3>
+        <h3>— Council Bluffs Location</h3>
         <address>3615 9th Avenue<br>Council Bluffs, IA 51501</address>
         <a href="tel:+17123368575" class="phone">(712) 336-8575</a>
         <div class="hours">Open daily<br>10:00 AM – 6:00 PM</div>
@@ -228,24 +314,156 @@
   </div>
 </section>
 
-<section class="cta-band" id="contact">
-  <h2 class="fade-in">Not yet a patient? <em>We'll help.</em></h2>
-  <p class="fade-in">Iowa's medical cannabis program is more accessible than most people realize. Our team can walk you through qualifying conditions, documentation, and the application process.</p>
-  <a href="https://iacanna.com/become-a-patient" class="btn btn-primary fade-in">Start Your Application →</a>
-</section>
-
-<footer>
+<footer id="contact">
   <div class="inner">
     <div class="brand">Iowa <em>Cannabis Co.</em></div>
-    <div class="small">© 2026 Iowa Cannabis Company · Iowa Department of HHS Licensed Medical Dispensary</div>
+    <div class="small">© 2026 Iowa Cannabis Company · Iowa HHS Licensed Medical Dispensary</div>
   </div>
 </footer>
 
+<div class="scrim" id="scrim"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-head"><h3>Your Cart</h3><button class="cart-close" id="cartClose">×</button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty">Your cart awaits.</div></div>
+  <div class="cart-foot">
+    <div class="cart-totals">
+      <div class="row"><span>Subtotal</span><span class="v" id="cartSubtotal">$0.00</span></div>
+      <div class="row"><span>Tax (6%)</span><span class="v" id="cartTax">$0.00</span></div>
+      <div class="row total"><span>Total</span><span class="v" id="cartTotal">$0.00</span></div>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn" disabled>Reserve for Pickup</button>
+    <div class="legal">Iowa medical card &amp; ID required. Pay at pickup with cash or debit.</div>
+  </div>
+</aside>
+
+<div class="modal" id="checkoutModal">
+  <div class="modal-card">
+    <button class="modal-close" id="modalClose">×</button>
+    <div id="checkoutForm">
+      <h3>Reserve your order</h3>
+      <p class="modal-sub">We'll notify you when your order is ready at your selected location.</p>
+      <form id="orderForm">
+        <div class="field-row"><div class="field"><label>First</label><input required></div><div class="field"><label>Last</label><input required></div></div>
+        <div class="field"><label>Mobile</label><input type="tel" required></div>
+        <div class="field"><label>Email</label><input type="email" required></div>
+        <div class="field"><label>Iowa medical cannabis card #</label><input required placeholder="IA-MC00000000"></div>
+        <div class="field"><label>Pickup location</label><select required><option value="">Select…</option><option>Waterloo</option><option>Iowa City</option><option>Council Bluffs</option></select></div>
+        <div class="order-summary" id="orderSummary"></div>
+        <button class="submit-btn" type="submit">Place Reservation</button>
+      </form>
+    </div>
+    <div id="checkoutConfirm" style="display:none;">
+      <div class="confirm">
+        <div class="icon">✓</div>
+        <h3>Reserved.</h3>
+        <p>Confirmation sent to <span id="confirmEmail" style="color:var(--fg);font-style:normal;"></span></p>
+        <p>We'll text when your order is ready.</p>
+        <div class="order-id">#<span id="orderIdOut"></span></div>
+        <button class="btn btn-ghost" id="confirmDone">Continue Browsing</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="loginModal">
+  <div class="modal-card" style="max-width:460px;">
+    <button class="modal-close" id="loginClose">×</button>
+    <h3>Welcome to Iowa <em>Cannabis Co.</em></h3>
+    <p class="modal-sub">Sign in for orders, refills, rewards, and dose tracking.</p>
+    <div class="auth-tabs"><button class="active" data-auth-tab="signin">Sign In</button><button data-auth-tab="signup">Create Account</button></div>
+    <div id="signinPane"><form onsubmit="event.preventDefault(); openDashboard('customer');"><div class="field"><label>Email</label><input type="email" required></div><div class="field"><label>Password</label><input type="password" required></div><button class="submit-btn" type="submit">Sign In</button></form></div>
+    <div id="signupPane" style="display:none;"><form onsubmit="event.preventDefault(); openDashboard('customer');"><div class="field-row"><div class="field"><label>First</label><input required></div><div class="field"><label>Last</label><input required></div></div><div class="field"><label>Email</label><input type="email" required></div><div class="field"><label>Iowa medical card #</label><input required></div><div class="field"><label>Password</label><input type="password" required></div><button class="submit-btn" type="submit">Create Account</button></form></div>
+    <div class="auth-divider">Preview a Dashboard</div>
+    <div class="demo-row"><button onclick="openDashboard('customer')">Patient Demo →</button><button onclick="openDashboard('admin')">Admin Demo →</button></div>
+  </div>
+</div>
+
+<div class="dashboard" id="dashboard">
+  <div class="dash-header">
+    <div class="brand">Iowa <em>Cannabis Co.</em><small>Demo Dashboard</small></div>
+    <div class="view-switcher"><button class="active" data-view="customer">Patient</button><button data-view="admin">Admin</button></div>
+    <button class="dash-exit" id="dashExit">Exit Demo</button>
+  </div>
+  <div class="dash-body"><div class="dash-wrap" id="dashContent"></div></div>
+</div>
+
+<div class="toast" id="toast">Added</div>
+
 <script>
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+const products = [
+  { id:'tinct-bal',cat:'tinctures',name:'Balanced 1:1 Tincture',strain:'500mg THC : 500mg CBD',thc:50.0,c1:'#142235',c2:'#445a78',desc:'Sublingual 1:1, predictable, fast-acting. Daily medical use.',prices:[{w:'30ml',p:65}] },
+  { id:'tinct-thc',cat:'tinctures',name:'THC-Forward Tincture',strain:'1000mg THC',thc:100.0,c1:'#1d2f47',c2:'#5a6f8d',desc:'Higher-THC tincture for strong, predictable relief.',prices:[{w:'30ml',p:85}] },
+  { id:'tinct-cbd',cat:'tinctures',name:'CBD-Dominant Tincture',strain:'1000mg CBD',thc:0,c1:'#1c2a22',c2:'#52706a',desc:'Non-intoxicating CBD-dominant tincture for daytime use.',prices:[{w:'30ml',p:60}] },
+  { id:'cap-thc',cat:'capsules',name:'10mg THC Capsules',strain:'10mg × 30',thc:300.0,c1:'#262218',c2:'#a08832',desc:'Pre-measured capsules for consistent daily routine.',prices:[{w:'bottle',p:55}] },
+  { id:'cap-bal',cat:'capsules',name:'1:1 Balanced Capsules',strain:'5mg THC + 5mg CBD × 30',thc:150.0,c1:'#2a1c2a',c2:'#7a3a60',desc:'Balanced capsules for gradual, sustained relief.',prices:[{w:'bottle',p:60}] },
+  { id:'vape-dis',cat:'vapes',name:'Distillate Vape',strain:'500mg · Sativa',thc:84.0,c1:'#2a2412',c2:'#a08832',desc:'500mg distillate cartridge, 510-thread.',prices:[{w:'0.5g',p:42}] },
+  { id:'vape-lr',cat:'vapes',name:'Live Resin Vape',strain:'500mg · Indica',thc:80.0,c1:'#16203a',c2:'#3a5a8a',desc:'500mg live resin cartridge, full-spectrum.',prices:[{w:'0.5g',p:55}] },
+  { id:'ed-chew',cat:'edibles',name:'Patient Chews',strain:'5mg × 20',thc:100.0,c1:'#2a1828',c2:'#a23c6a',desc:'Microdose chews for medical patients. 5mg each.',prices:[{w:'pack',p:42}] },
+  { id:'ed-cap',cat:'edibles',name:'10mg Soft Chews',strain:'10mg × 10',thc:100.0,c1:'#262214',c2:'#b88a2c',desc:'Standard 10mg soft chews. Predictable onset.',prices:[{w:'pack',p:38}] },
+  { id:'top-balm',cat:'topicals',name:'CBD Recovery Balm',strain:'500mg CBD',thc:0,c1:'#1c2a22',c2:'#4a7a52',desc:'Targeted joint and muscle relief. Non-intoxicating.',prices:[{w:'jar',p:48}] },
+  { id:'top-lot',cat:'topicals',name:'1:1 Recovery Lotion',strain:'250mg THC + 250mg CBD',thc:50.0,c1:'#1d2f47',c2:'#52706a',desc:'Lotion-form THC/CBD blend for localized relief.',prices:[{w:'4oz',p:62}] },
+  { id:'sup-thc',cat:'suppositories',name:'THC Suppositories',strain:'50mg × 6',thc:300.0,c1:'#142235',c2:'#3a4a78',desc:'Rapid systemic delivery without inhalation.',prices:[{w:'6-pack',p:72}] }
+];
+const filters = [{id:'all',label:'All'},{id:'tinctures',label:'Tinctures'},{id:'capsules',label:'Capsules'},{id:'vapes',label:'Vapes'},{id:'edibles',label:'Edibles'},{id:'topicals',label:'Topicals'},{id:'suppositories',label:'Suppositories'}];
+const state = { filter:'all', cart:[], selectedWeight:{} };
+const $ = id => document.getElementById(id);
+const money = n => '$' + n.toFixed(2);
+const getP = id => products.find(p => p.id === id);
+const selW = p => state.selectedWeight[p.id] || p.prices[0].w;
+const priceFor = (p, w) => (p.prices.find(x => x.w === w) || p.prices[0]).p;
+function renderFilters() { $('filterRow').innerHTML = filters.map(f => `<button class="filter-pill ${f.id===state.filter?'active':''}" data-f="${f.id}">${f.label}</button>`).join(''); document.querySelectorAll('.filter-pill').forEach(b => b.addEventListener('click', () => { state.filter=b.dataset.f; renderFilters(); renderProducts(); })); }
+function visual(p) { return `<div class="product-visual" style="background:linear-gradient(135deg,${p.c1} 0%,${p.c2} 100%);"><span class="badge">${p.cat}</span><span>${p.name.split(' ').slice(0,2).join(' ')}</span><span class="thc">${p.thc} mg total</span></div>`; }
+function smallVis(p) { return `<div class="ci-visual" style="background:linear-gradient(135deg,${p.c1} 0%,${p.c2} 100%);">${p.name.split(' ').map(s=>s[0]).join('').slice(0,2)}</div>`; }
+function renderProducts() {
+  const list = state.filter==='all'?products:products.filter(p=>p.cat===state.filter);
+  $('productCount').textContent = list.length;
+  $('productGrid').innerHTML = list.map(p => { const w=selW(p), price=priceFor(p,w); return `<article class="product-card">${visual(p)}<div class="product-body"><h3>${p.name}</h3><div class="strain">— ${p.strain}</div><p class="desc">${p.desc}</p><div class="weight-row">${p.prices.map(o=>`<button class="weight-chip ${o.w===w?'active':''}" data-pid="${p.id}" data-w="${o.w}">${o.w}</button>`).join('')}</div><div class="product-foot"><div class="product-price">${money(price)}</div><button class="add-btn" data-add="${p.id}">Add</button></div></div></article>`; }).join('');
+  document.querySelectorAll('.weight-chip').forEach(b => b.addEventListener('click', () => { state.selectedWeight[b.dataset.pid]=b.dataset.w; renderProducts(); }));
+  document.querySelectorAll('.add-btn').forEach(b => b.addEventListener('click', () => { addToCart(b.dataset.add); b.textContent='Added ✓'; b.classList.add('added'); setTimeout(()=>{b.textContent='Add';b.classList.remove('added');},1400); }));
+}
+function addToCart(pid) { const p=getP(pid), w=selW(p), e=state.cart.find(i=>i.id===pid&&i.w===w); if(e) e.qty+=1; else state.cart.push({id:pid,w,qty:1}); renderCart(); toast(`${p.name} added`); }
+function chgQty(i,d) { state.cart[i].qty+=d; if(state.cart[i].qty<=0) state.cart.splice(i,1); renderCart(); }
+function rmItem(i) { state.cart.splice(i,1); renderCart(); }
+function subtotal() { return state.cart.reduce((s,i)=>s+priceFor(getP(i.id),i.w)*i.qty,0); }
+function renderCart() {
+  const items=$('cartItems'), count=state.cart.reduce((s,i)=>s+i.qty,0), sub=subtotal(), tax=sub*0.06, total=sub+tax;
+  $('cartCount').textContent=count; $('cartCount').classList.toggle('hidden',count===0);
+  $('cartSubtotal').textContent=money(sub); $('cartTax').textContent=money(tax); $('cartTotal').textContent=money(total);
+  $('checkoutBtn').disabled=count===0;
+  if(state.cart.length===0){items.innerHTML='<div class="cart-empty">Your cart awaits.</div>';return;}
+  items.innerHTML=state.cart.map((i,idx)=>{const p=getP(i.id),lp=priceFor(p,i.w)*i.qty;return `<div class="cart-item">${smallVis(p)}<div class="ci-mid"><div class="name">${p.name}</div><div class="meta">${i.w} · ${p.strain}</div><div class="ci-qty"><button data-qty="${idx}" data-d="-1">−</button><span class="q">${i.qty}</span><button data-qty="${idx}" data-d="1">+</button></div></div><div class="ci-right"><div class="price">${money(lp)}</div><button class="rm" data-rm="${idx}">Remove</button></div></div>`;}).join('');
+  items.querySelectorAll('[data-qty]').forEach(b=>b.addEventListener('click',()=>chgQty(+b.dataset.qty,+b.dataset.d)));
+  items.querySelectorAll('.rm').forEach(b=>b.addEventListener('click',()=>rmItem(+b.dataset.rm)));
+}
+function openCart(){$('cartDrawer').classList.add('open');$('scrim').classList.add('open');document.body.classList.add('no-scroll');}
+function closeCart(){$('cartDrawer').classList.remove('open');$('scrim').classList.remove('open');document.body.classList.remove('no-scroll');}
+function openCheckout(){closeCart();const sub=subtotal(),tax=sub*0.06,total=sub+tax;const lines=state.cart.map(i=>{const p=getP(i.id);return `<div class="os-row"><span>${i.qty} × ${p.name} (${i.w})</span><span>${money(priceFor(p,i.w)*i.qty)}</span></div>`;}).join('');$('orderSummary').innerHTML=`${lines}<div class="os-row"><span>Tax</span><span>${money(tax)}</span></div><div class="os-row os-total"><span>Total</span><span>${money(total)}</span></div>`;$('checkoutForm').style.display='block';$('checkoutConfirm').style.display='none';$('checkoutModal').classList.add('open');document.body.classList.add('no-scroll');}
+function closeCheckout(){$('checkoutModal').classList.remove('open');document.body.classList.remove('no-scroll');}
+function orderId(){const c='ABCDEFGHJKMNPQRSTUVWXYZ23456789';let s='';for(let i=0;i<6;i++) s+=c[Math.floor(Math.random()*c.length)];return s;}
+function customerDash(){return `<div class="dash-greet">Welcome back, <em>Patricia</em>.</div><div class="dash-sub">Patient since March 2023 · last refill 12 days ago</div><div class="dash-grid two-col"><div class="dash-grid" style="gap:18px;"><div class="loyalty-card"><div class="tier">★ Established Patient</div><div class="pts">1,180<small>pts</small></div><div class="next">320 more until <strong>Premier Patient</strong></div><div class="progress"><div class="bar"><div style="width:79%;"></div></div></div></div><div class="panel"><h4>Refill Reminders <small>2 due this week</small></h4><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#142235,#445a78);">BT</div><div><div>Balanced 1:1 Tincture</div><div class="meta">Last refilled May 22</div></div><div class="v">$65</div></div><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#262218,#a08832);">10C</div><div><div>10mg THC Capsules</div><div class="meta">Last refilled May 18</div></div><div class="v">$55</div></div></div></div><div class="dash-grid" style="gap:18px;"><div class="panel"><h4>Recent Orders</h4><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#142235,#445a78);">BT</div><div><div>Balanced 1:1 Tincture</div><div class="meta">#K4N9P2 · Waterloo · May 22</div></div><div class="v">$65</div><div class="pill ok">Picked up</div></div><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#262214,#b88a2c);">SC</div><div><div>10mg Soft Chews</div><div class="meta">#M7X3R8 · Waterloo · May 10</div></div><div class="v">$38</div><div class="pill ok">Picked up</div></div></div><div class="panel"><h4>Available Rewards</h4><div class="reward-grid"><div class="reward"><div class="cost">500 pts</div><div class="name">$10 off any tincture</div></div><div class="reward"><div class="cost">1,000 pts</div><div class="name">$25 off vape cart</div></div></div></div></div></div>`;}
+function adminDash(){return `<div class="dash-greet">Admin <em>Overview</em></div><div class="dash-sub">Real-time · Iowa Cannabis Co. · 3 locations</div><div class="dash-grid kpi-row"><div class="kpi"><div class="lbl">Revenue today</div><div class="v">$5,284<small>+7%</small></div></div><div class="kpi"><div class="lbl">Orders today</div><div class="v">58<small>+5</small></div></div><div class="kpi"><div class="lbl">Active patients</div><div class="v">2,184<small>+22</small></div></div><div class="kpi"><div class="lbl">Refill reminders sent</div><div class="v">147<small>this week</small></div></div></div><div class="dash-grid two-col" style="margin-top:18px;"><div class="panel"><h4>Top Products This Week</h4><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#142235,#445a78);">BT</div><div><div>Balanced 1:1 Tincture</div><div class="meta">Tinctures · most refilled</div></div><div class="v">114 sold</div></div><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#262218,#a08832);">10C</div><div><div>10mg THC Capsules</div><div class="meta">Capsules · daily use</div></div><div class="v">88 sold</div></div><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#16203a,#3a5a8a);">LR</div><div><div>Live Resin Vape</div><div class="meta">Vapes · 500mg</div></div><div class="v">62 sold</div></div></div><div class="panel"><h4>Patient Tier Distribution</h4><div class="tier-bar"><div class="tb"><span>New</span><div class="tb-bar"><div style="width:42%;"></div></div><span class="tb-pct">917</span></div><div class="tb"><span>Established</span><div class="tb-bar"><div style="width:36%;"></div></div><span class="tb-pct">787</span></div><div class="tb"><span>Premier</span><div class="tb-bar"><div style="width:16%;"></div></div><span class="tb-pct">349</span></div><div class="tb"><span>Founder</span><div class="tb-bar"><div style="width:6%;"></div></div><span class="tb-pct">131</span></div></div></div></div>`;}
+function renderDash(v){$('dashContent').innerHTML=v==='admin'?adminDash():customerDash();document.querySelectorAll('.view-switcher button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));}
+function openLogin(){$('loginModal').classList.add('open');document.body.classList.add('no-scroll');}
+function closeLogin(){$('loginModal').classList.remove('open');document.body.classList.remove('no-scroll');}
+function openDashboard(v){closeLogin();renderDash(v);$('dashboard').classList.add('open');document.body.classList.add('no-scroll');}
+function closeDashboard(){$('dashboard').classList.remove('open');document.body.classList.remove('no-scroll');}
+let toastT;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),1600);}
+$('cartBtn').addEventListener('click',openCart);
+$('cartClose').addEventListener('click',closeCart);
+$('scrim').addEventListener('click',()=>{closeCart();closeCheckout();});
+$('checkoutBtn').addEventListener('click',openCheckout);
+$('modalClose').addEventListener('click',closeCheckout);
+$('confirmDone').addEventListener('click',closeCheckout);
+$('orderForm').addEventListener('submit',e=>{e.preventDefault();$('orderIdOut').textContent=orderId();$('confirmEmail').textContent=e.target.querySelector('input[type=email]').value;$('checkoutForm').style.display='none';$('checkoutConfirm').style.display='block';state.cart=[];renderCart();e.target.reset();});
+$('signinBtn').addEventListener('click',openLogin);
+$('loginClose').addEventListener('click',closeLogin);
+$('dashExit').addEventListener('click',closeDashboard);
+document.querySelectorAll('[data-auth-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-auth-tab]').forEach(x=>x.classList.toggle('active',x===b));$('signinPane').style.display=b.dataset.authTab==='signin'?'block':'none';$('signupPane').style.display=b.dataset.authTab==='signup'?'block':'none';}));
+document.querySelectorAll('.view-switcher button').forEach(b=>b.addEventListener('click',()=>renderDash(b.dataset.view)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCart();closeCheckout();closeLogin();}});
+renderFilters();renderProducts();renderCart();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:0.12});
+document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>

@@ -324,6 +324,72 @@
     box-shadow: 0 12px 40px rgba(0,0,0,0.4);
   }
   .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* AUTH */
+  nav .signin-btn { background: transparent; border: 1px solid var(--border); color: var(--fg); padding: 9px 18px; border-radius: 999px; font-size: 0.88rem; font-weight: 500; cursor: pointer; transition: border-color .2s ease; }
+  nav .signin-btn:hover { border-color: var(--fg); }
+  .auth-tabs { display: flex; gap: 4px; background: var(--bg-3); padding: 4px; border-radius: 999px; margin-bottom: 24px; }
+  .auth-tabs button { flex: 1; padding: 9px 14px; border-radius: 999px; background: transparent; border: none; color: var(--fg-muted); font-size: 0.88rem; cursor: pointer; font-family: inherit; transition: all .2s ease; }
+  .auth-tabs button.active { background: var(--accent); color: var(--fg); }
+  .auth-divider { display: flex; align-items: center; gap: 12px; margin: 26px 0 18px; color: var(--fg-muted); font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .demo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .demo-row button { padding: 12px 14px; border: 1px solid var(--border); background: var(--bg-3); color: var(--fg); border-radius: 8px; cursor: pointer; font-family: inherit; font-size: 0.86rem; transition: all .2s ease; }
+  .demo-row button:hover { border-color: var(--accent); color: var(--accent-soft); }
+
+  /* DASHBOARD */
+  .dashboard { position: fixed; inset: 0; z-index: 500; background: var(--bg); display: none; flex-direction: column; }
+  .dashboard.open { display: flex; }
+  .dash-header { padding: 18px 28px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; background: var(--bg-2); }
+  .dash-header .brand { font-family: 'Fraunces', serif; font-size: 1.25rem; }
+  .dash-header .brand span { color: var(--accent); }
+  .dash-header .brand small { font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-muted); font-family: 'IBM Plex Sans', sans-serif; margin-left: 12px; padding: 4px 10px; background: var(--bg-3); border-radius: 999px; }
+  .view-switcher { display: flex; gap: 4px; background: var(--bg-3); padding: 4px; border-radius: 999px; }
+  .view-switcher button { padding: 8px 18px; border-radius: 999px; background: transparent; border: none; color: var(--fg-muted); font-size: 0.86rem; cursor: pointer; font-family: inherit; transition: all .2s ease; }
+  .view-switcher button.active { background: var(--accent); color: var(--fg); }
+  .dash-exit { background: transparent; border: 1px solid var(--border); color: var(--fg); padding: 8px 18px; border-radius: 999px; cursor: pointer; font-size: 0.86rem; font-family: inherit; }
+  .dash-exit:hover { border-color: var(--accent-soft); color: var(--accent-soft); }
+  .dash-body { flex: 1; overflow-y: auto; padding: 36px 28px 60px; }
+  .dash-wrap { max-width: 1180px; margin: 0 auto; }
+  .dash-greet { font-family: 'Fraunces', serif; font-size: clamp(1.8rem, 3.6vw, 2.6rem); margin-bottom: 6px; font-weight: 400; }
+  .dash-greet em { font-style: italic; color: var(--accent-soft); }
+  .dash-sub { color: var(--fg-muted); font-size: 1rem; margin-bottom: 32px; }
+  .dash-grid { display: grid; gap: 18px; }
+  .kpi-row { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+  .kpi { background: var(--bg-2); border: 1px solid var(--border); border-radius: 14px; padding: 22px; }
+  .kpi .lbl { font-size: 0.74rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--fg-muted); margin-bottom: 12px; }
+  .kpi .v { font-family: 'Fraunces', serif; font-size: 2.2rem; color: var(--fg); line-height: 1; }
+  .kpi .v small { font-size: 0.9rem; color: var(--accent-soft); margin-left: 6px; font-family: 'IBM Plex Sans', sans-serif; }
+  .panel { background: var(--bg-2); border: 1px solid var(--border); border-radius: 14px; padding: 24px; }
+  .panel h4 { font-family: 'Fraunces', serif; font-size: 1.3rem; font-weight: 500; margin-bottom: 18px; }
+  .panel h4 small { font-size: 0.78rem; color: var(--fg-muted); margin-left: 10px; font-family: 'IBM Plex Sans', sans-serif; }
+  .two-col { grid-template-columns: 1.4fr 1fr; }
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+  .loyalty-card { background: linear-gradient(135deg, var(--accent) 0%, #7d1827 100%); border: none; padding: 28px; color: var(--fg); border-radius: 14px; }
+  .loyalty-card .tier { display: inline-block; padding: 4px 12px; background: rgba(0,0,0,0.25); border-radius: 999px; font-size: 0.74rem; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 14px; }
+  .loyalty-card .pts { font-family: 'Fraunces', serif; font-size: 3rem; line-height: 1; margin-bottom: 4px; }
+  .loyalty-card .pts small { font-size: 0.9rem; opacity: 0.8; font-family: 'IBM Plex Sans', sans-serif; margin-left: 4px; }
+  .loyalty-card .progress { margin-top: 18px; }
+  .loyalty-card .bar { height: 6px; background: rgba(0,0,0,0.25); border-radius: 999px; overflow: hidden; margin: 8px 0; }
+  .loyalty-card .bar > div { height: 100%; background: var(--fg); border-radius: 999px; }
+  .loyalty-card .next { font-size: 0.84rem; opacity: 0.85; }
+  .list-row { display: grid; grid-template-columns: 36px 1fr auto auto; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.92rem; }
+  .list-row:last-child { border-bottom: none; }
+  .list-row .dot { width: 36px; height: 36px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Fraunces', serif; font-size: 0.96rem; color: var(--fg); }
+  .list-row .meta { color: var(--fg-muted); font-size: 0.82rem; }
+  .list-row .v { color: var(--accent-soft); font-family: 'Fraunces', serif; font-size: 1rem; }
+  .list-row .pill { padding: 3px 10px; background: var(--bg-3); border-radius: 999px; font-size: 0.74rem; color: var(--fg-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .list-row .pill.ok { background: rgba(108,230,128,0.12); color: #6ce680; }
+  .reward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .reward { padding: 16px; background: var(--bg-3); border-radius: 10px; border: 1px solid var(--border); }
+  .reward .cost { font-family: 'Fraunces', serif; color: var(--accent-soft); font-size: 1.1rem; margin-bottom: 4px; }
+  .reward .name { font-size: 0.88rem; }
+  .tier-bar { display: grid; gap: 10px; }
+  .tier-bar .tb { display: grid; grid-template-columns: 90px 1fr 50px; gap: 12px; align-items: center; font-size: 0.88rem; }
+  .tier-bar .tb-bar { height: 8px; background: var(--bg-3); border-radius: 999px; overflow: hidden; }
+  .tier-bar .tb-bar > div { height: 100%; background: var(--accent); }
+  .tier-bar .tb-pct { color: var(--fg-muted); text-align: right; font-size: 0.82rem; }
 </style>
 </head>
 <body>
@@ -337,6 +403,7 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-right">
+      <button class="signin-btn" id="signinBtn">Sign In</button>
       <button class="cart-btn" id="cartBtn" aria-label="Open cart">
         Cart <span class="count hidden" id="cartCount">0</span>
       </button>
@@ -506,6 +573,58 @@
         <button class="btn btn-ghost done-btn" id="confirmDone">Continue Shopping</button>
       </div>
     </div>
+  </div>
+</div>
+
+<!-- LOGIN MODAL -->
+<div class="modal" id="loginModal">
+  <div class="modal-card" style="max-width:460px;">
+    <button class="modal-close" id="loginClose" aria-label="Close">×</button>
+    <h3>Welcome to RedEye<span style="color:var(--accent);">.</span></h3>
+    <p class="modal-sub">Sign in to track orders, earn rewards, and reorder your favorites.</p>
+    <div class="auth-tabs">
+      <button class="active" data-auth-tab="signin">Sign In</button>
+      <button data-auth-tab="signup">Create Account</button>
+    </div>
+    <div id="signinPane">
+      <form onsubmit="event.preventDefault(); openDashboard('customer');">
+        <div class="field"><label>Email</label><input type="email" required placeholder="you@example.com"></div>
+        <div class="field"><label>Password</label><input type="password" required placeholder="••••••••"></div>
+        <button class="submit-btn" type="submit">Sign In</button>
+      </form>
+    </div>
+    <div id="signupPane" style="display:none;">
+      <form onsubmit="event.preventDefault(); openDashboard('customer');">
+        <div class="field-row">
+          <div class="field"><label>First name</label><input required></div>
+          <div class="field"><label>Last name</label><input required></div>
+        </div>
+        <div class="field"><label>Email</label><input type="email" required></div>
+        <div class="field"><label>OMMA license #</label><input required placeholder="P00000000-00000000"></div>
+        <div class="field"><label>Password</label><input type="password" required></div>
+        <button class="submit-btn" type="submit">Create Account</button>
+      </form>
+    </div>
+    <div class="auth-divider">Preview a Dashboard</div>
+    <div class="demo-row">
+      <button onclick="openDashboard('customer')">Customer Demo →</button>
+      <button onclick="openDashboard('admin')">Admin Demo →</button>
+    </div>
+  </div>
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+  <div class="dash-header">
+    <div class="brand">RedEye<span>.</span><small>Demo Dashboard</small></div>
+    <div class="view-switcher">
+      <button class="active" data-view="customer">Customer View</button>
+      <button data-view="admin">Admin View</button>
+    </div>
+    <button class="dash-exit" id="dashExit">Exit Demo</button>
+  </div>
+  <div class="dash-body">
+    <div class="dash-wrap" id="dashContent"></div>
   </div>
 </div>
 
@@ -782,6 +901,105 @@ function showToast(msg) {
   clearTimeout(toastTimer);
   toastTimer = setTimeout(() => t.classList.remove('show'), 1600);
 }
+
+/* AUTH + DASHBOARD */
+function customerDash() {
+  return `
+    <div class="dash-greet">Welcome back, <em>Jane</em>.</div>
+    <div class="dash-sub">Gold-tier member · joined Sept 2024 · last order 4 days ago</div>
+    <div class="dash-grid two-col">
+      <div class="dash-grid" style="gap:18px;">
+        <div class="loyalty-card">
+          <div class="tier">★ Gold Member</div>
+          <div class="pts">2,450<small>pts</small></div>
+          <div class="next">550 more points until <strong>Platinum</strong></div>
+          <div class="progress">
+            <div class="bar"><div style="width:81%;"></div></div>
+          </div>
+        </div>
+        <div class="panel">
+          <h4>Available Rewards <small>4 ready to redeem</small></h4>
+          <div class="reward-grid">
+            <div class="reward"><div class="cost">500 pts</div><div class="name">$10 off any order</div></div>
+            <div class="reward"><div class="cost">800 pts</div><div class="name">Free 1g pre-roll</div></div>
+            <div class="reward"><div class="cost">1,200 pts</div><div class="name">$25 off concentrates</div></div>
+            <div class="reward"><div class="cost">2,000 pts</div><div class="name">Free top-shelf eighth</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="dash-grid" style="gap:18px;">
+        <div class="panel">
+          <h4>Recent Orders</h4>
+          <div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#3a2018,#7d3a2c);">GC</div><div><div>GMO Cookies · 3.5g</div><div class="meta">Order #B4K9P2 · May 30</div></div><div class="v">$42.00</div><div class="pill ok">Picked up</div></div>
+          <div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#2a1812,#a86232);">LR</div><div><div>GMO Live Resin · 1g</div><div class="meta">Order #J7M2X8 · May 22</div></div><div class="v">$48.00</div><div class="pill ok">Picked up</div></div>
+          <div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#1c2a3a,#3a6788);">BD</div><div><div>Blue Dream Cart · 1g</div><div class="meta">Order #K9N3R4 · May 14</div></div><div class="v">$35.00</div><div class="pill ok">Picked up</div></div>
+        </div>
+        <div class="panel">
+          <h4>Recommended For You</h4>
+          <div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#2a1a26,#7c4a6f);">WC</div><div><div>Wedding Cake · 3.5g</div><div class="meta">Based on your GMO orders</div></div><div class="v">$42.00</div></div>
+          <div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#321a2a,#a04680);">RW</div><div><div>Wedding Cake Rosin · 1g</div><div class="meta">Premium pick for Gold members</div></div><div class="v">$65.00</div></div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function adminDash() {
+  return `
+    <div class="dash-greet">Admin <em>Overview</em></div>
+    <div class="dash-sub">Thursday, June 3 · in real time</div>
+    <div class="dash-grid kpi-row">
+      <div class="kpi"><div class="lbl">Revenue today</div><div class="v">$4,287<small>+12%</small></div></div>
+      <div class="kpi"><div class="lbl">Orders today</div><div class="v">68<small>+8</small></div></div>
+      <div class="kpi"><div class="lbl">Active customers</div><div class="v">1,842<small>+24</small></div></div>
+      <div class="kpi"><div class="lbl">Loyalty members</div><div class="v">1,206<small>65%</small></div></div>
+    </div>
+    <div class="dash-grid two-col" style="margin-top:18px;">
+      <div class="panel">
+        <h4>Top Products This Week</h4>
+        <div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#3a2018,#7d3a2c);">GC</div><div><div>GMO Cookies</div><div class="meta">Flower · top-shelf</div></div><div class="v">142 sold</div></div>
+        <div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#1c2a3a,#3a6788);">BD</div><div><div>Blue Dream Cart</div><div class="meta">Vapes · distillate</div></div><div class="v">98 sold</div></div>
+        <div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#3a1820,#c84860);">SG</div><div><div>Strawberry Gummies</div><div class="meta">Edibles · 10mg×10</div></div><div class="v">86 sold</div></div>
+        <div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#2a1818,#a83a3a);">IP</div><div><div>Infused Pre-Roll 5pk</div><div class="meta">Pre-rolls · infused</div></div><div class="v">74 sold</div></div>
+        <div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#2a1812,#a86232);">LR</div><div><div>GMO Live Resin</div><div class="meta">Concentrates · 1g</div></div><div class="v">62 sold</div></div>
+      </div>
+      <div class="panel">
+        <h4>Loyalty Tier Distribution</h4>
+        <div class="tier-bar">
+          <div class="tb"><span>Bronze</span><div class="tb-bar"><div style="width:48%;"></div></div><span class="tb-pct">582</span></div>
+          <div class="tb"><span>Silver</span><div class="tb-bar"><div style="width:30%;"></div></div><span class="tb-pct">364</span></div>
+          <div class="tb"><span>Gold</span><div class="tb-bar"><div style="width:16%;"></div></div><span class="tb-pct">198</span></div>
+          <div class="tb"><span>Platinum</span><div class="tb-bar"><div style="width:5%;"></div></div><span class="tb-pct">62</span></div>
+        </div>
+        <h4 style="margin-top:26px;">Recent Orders Live Feed</h4>
+        <div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#332416,#9c6a32);">AF</div><div><div>Apple Fritter · 7g</div><div class="meta">2 min ago · J. Reeves</div></div><div class="v">$70</div></div>
+        <div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#172218,#3d6740);">OG</div><div><div>OG Kush · 3.5g</div><div class="meta">7 min ago · K. Davis</div></div><div class="v">$36</div></div>
+        <div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#3a1f2c,#a14860);">SS</div><div><div>Sunset Sherbet · 1g</div><div class="meta">14 min ago · M. Holt</div></div><div class="v">$13</div></div>
+      </div>
+    </div>
+  `;
+}
+
+function renderDashboard(view) {
+  document.getElementById('dashContent').innerHTML = view === 'admin' ? adminDash() : customerDash();
+  document.querySelectorAll('.view-switcher button').forEach(b => b.classList.toggle('active', b.dataset.view === view));
+}
+function openLogin() { document.getElementById('loginModal').classList.add('open'); document.body.classList.add('no-scroll'); }
+function closeLogin() { document.getElementById('loginModal').classList.remove('open'); document.body.classList.remove('no-scroll'); }
+function openDashboard(view) { closeLogin(); renderDashboard(view); document.getElementById('dashboard').classList.add('open'); document.body.classList.add('no-scroll'); }
+function closeDashboard() { document.getElementById('dashboard').classList.remove('open'); document.body.classList.remove('no-scroll'); }
+
+document.getElementById('signinBtn').addEventListener('click', openLogin);
+document.getElementById('loginClose').addEventListener('click', closeLogin);
+document.getElementById('dashExit').addEventListener('click', closeDashboard);
+document.querySelectorAll('[data-auth-tab]').forEach(b => {
+  b.addEventListener('click', () => {
+    document.querySelectorAll('[data-auth-tab]').forEach(x => x.classList.toggle('active', x === b));
+    document.getElementById('signinPane').style.display = b.dataset.authTab === 'signin' ? 'block' : 'none';
+    document.getElementById('signupPane').style.display = b.dataset.authTab === 'signup' ? 'block' : 'none';
+  });
+});
+document.querySelectorAll('.view-switcher button').forEach(b => b.addEventListener('click', () => renderDashboard(b.dataset.view)));
 
 document.getElementById('cartBtn').addEventListener('click', openCart);
 document.getElementById('cartClose').addEventListener('click', closeCart);

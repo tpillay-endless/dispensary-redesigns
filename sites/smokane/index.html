@@ -7,121 +7,231 @@
 <meta name="description" content="Serving the Spokane cannabis community since 2014. Flower, concentrates, edibles, and more on East Sprague.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lora:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Lora:ital,wght@0,400;0,500;1,400&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0f1813;
-    --bg-2: #16221b;
-    --bg-3: #1e2c24;
-    --fg: #ebe6d9;
-    --fg-muted: #8e9088;
-    --accent: #c8a352;
-    --accent-2: #e0bc6a;
-    --border: rgba(235,230,217,0.08);
-    --maxw: 1240px;
+    --bg: #0f1813; --bg-2: #16221b; --bg-3: #1e2c24;
+    --fg: #ebe6d9; --fg-muted: #8e9088;
+    --accent: #c8a352; --accent-2: #e0bc6a;
+    --border: rgba(235,230,217,0.08); --maxw: 1240px;
   }
   *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: 'Manrope', system-ui, sans-serif;
-    font-weight: 400;
-    line-height: 1.6;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
+  body { background: var(--bg); color: var(--fg); font-family: 'Manrope', system-ui, sans-serif; line-height: 1.6; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  body.no-scroll { overflow: hidden; }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
   h1, h2 { font-family: 'Archivo Black', sans-serif; font-weight: 400; letter-spacing: -0.02em; line-height: 0.95; text-transform: uppercase; }
   h1 { font-size: clamp(3rem, 10vw, 8rem); }
   h2 { font-size: clamp(2.2rem, 5vw, 4rem); }
-  h3 { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 1.4rem; line-height: 1.2; font-weight: 500; }
+  h3 { font-family: 'Lora', Georgia, serif; font-style: italic; font-size: 1.4rem; line-height: 1.2; }
   a { color: inherit; text-decoration: none; transition: opacity .25s ease; }
   a:hover { opacity: .7; }
+  button { font-family: inherit; }
   .accent-italic { font-family: 'Lora', serif; font-style: italic; color: var(--accent); text-transform: none; font-weight: 500; }
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 22px 32px;
-    background: rgba(15,24,19,0.8);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-  }
-  nav .inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
-  nav .brand { font-family: 'Archivo Black', sans-serif; font-size: 1.4rem; letter-spacing: -0.02em; text-transform: uppercase; }
-  nav .brand em { font-family: 'Lora', serif; font-style: italic; color: var(--accent); font-weight: 500; text-transform: lowercase; }
-  nav ul { list-style: none; display: flex; gap: 36px; }
-  nav ul a { font-size: 0.84rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
-  nav .cta { background: var(--accent); color: var(--bg); padding: 11px 22px; border-radius: 2px; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 32px; background: rgba(15,24,19,0.85); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+  nav .inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  nav .brand { font-family: 'Archivo Black', sans-serif; font-size: 1.4rem; text-transform: uppercase; }
+  nav .brand em { font-family: 'Lora', serif; font-style: italic; color: var(--accent); text-transform: lowercase; font-weight: 500; }
+  nav ul { list-style: none; display: flex; gap: 32px; }
+  nav ul a { font-size: 0.8rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; }
+  nav .nav-right { display: flex; align-items: center; gap: 12px; }
+  nav .signin-btn, nav .cart-btn { background: transparent; border: 1px solid var(--border); color: var(--fg); padding: 9px 16px; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: all .2s ease; }
+  nav .signin-btn:hover, nav .cart-btn:hover { border-color: var(--accent); color: var(--accent); }
+  nav .cart-btn { display: inline-flex; align-items: center; gap: 10px; }
+  nav .cart-btn .count { background: var(--accent); color: var(--bg); padding: 2px 8px; font-size: 0.7rem; font-weight: 700; min-width: 22px; text-align: center; }
+  nav .cart-btn .count.hidden { display: none; }
+  nav .cta { background: var(--accent); color: var(--bg); padding: 11px 20px; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
   nav .cta:hover { background: var(--accent-2); opacity: 1; }
-  @media (max-width: 820px) { nav ul { display: none; } }
-  .hero {
-    min-height: 100vh; display: flex; align-items: center;
-    padding: 160px 32px 100px;
-    background:
-      linear-gradient(180deg, transparent 0%, rgba(15,24,19,0.6) 100%),
-      radial-gradient(circle at 80% 40%, rgba(200,163,82,0.18), transparent 50%),
-      var(--bg);
-    position: relative; overflow: hidden;
-  }
-  .hero::after {
-    content: ''; position: absolute; bottom: -40%; left: -10%;
-    width: 80%; height: 80%; border-radius: 50%;
-    background: radial-gradient(circle, rgba(200,163,82,0.06), transparent 60%);
-    pointer-events: none;
-  }
-  .hero-inner { max-width: var(--maxw); margin: 0 auto; width: 100%; position: relative; z-index: 1; }
+  @media (max-width: 980px) { nav ul { display: none; } }
+  @media (max-width: 640px) { nav .cta { display: none; } }
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 160px 32px 100px; background: radial-gradient(circle at 80% 40%, rgba(200,163,82,0.18), transparent 50%), var(--bg); }
+  .hero-inner { max-width: var(--maxw); margin: 0 auto; width: 100%; }
   .eyebrow { display: inline-flex; align-items: center; gap: 14px; font-size: 0.78rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); margin-bottom: 36px; font-weight: 600; }
   .eyebrow::before { content: ''; width: 38px; height: 1px; background: var(--accent); }
   .hero h1 { margin-bottom: 36px; max-width: 11ch; }
   .hero p { font-size: clamp(1.1rem, 1.6vw, 1.3rem); max-width: 54ch; color: var(--fg-muted); margin-bottom: 50px; line-height: 1.55; }
   .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; }
-  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 18px 32px; font-family: 'Manrope', sans-serif; font-size: 0.84rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; border: none; transition: transform .25s ease, background .25s ease, opacity .25s ease; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 18px 32px; font-family: 'Manrope', sans-serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; border: none; transition: all .25s ease; }
   .btn-primary { background: var(--accent); color: var(--bg); }
   .btn-primary:hover { background: var(--accent-2); transform: translateY(-2px); opacity: 1; }
   .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--border); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
-  .hero-meta { position: absolute; right: 32px; bottom: 60px; display: flex; flex-direction: column; gap: 8px; text-align: right; font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--fg-muted); }
-  .hero-meta span:first-child { color: var(--accent); font-weight: 600; }
-  @media (max-width: 820px) { .hero-meta { display: none; } }
-  section { padding: 130px 32px; border-top: 1px solid var(--border); }
+  section { padding: 120px 32px; border-top: 1px solid var(--border); }
   section .wrap { max-width: var(--maxw); margin: 0 auto; }
-  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 76px; flex-wrap: wrap; }
+  .section-head { display: flex; justify-content: space-between; align-items: end; gap: 40px; margin-bottom: 60px; flex-wrap: wrap; }
   .section-head h2 { max-width: 16ch; }
-  .section-head p { max-width: 42ch; color: var(--fg-muted); font-size: 1.02rem; }
+  .section-head p { max-width: 42ch; color: var(--fg-muted); font-size: 1rem; }
   .since { display: grid; grid-template-columns: 0.7fr 1fr; gap: 100px; align-items: center; }
   .since .year { font-family: 'Archivo Black', sans-serif; font-size: clamp(6rem, 16vw, 14rem); line-height: 0.85; color: var(--accent); letter-spacing: -0.04em; }
   .since p { font-size: 1.2rem; line-height: 1.6; max-width: 50ch; margin-bottom: 22px; }
   .since p + p { color: var(--fg-muted); font-size: 1.02rem; }
   @media (max-width: 820px) { .since { grid-template-columns: 1fr; gap: 40px; } }
-  .menu-list { display: grid; grid-template-columns: 1fr; gap: 0; border-top: 1px solid var(--border); }
-  .menu-item { display: grid; grid-template-columns: 80px 1fr 2fr 60px; gap: 30px; padding: 36px 8px; border-bottom: 1px solid var(--border); align-items: center; transition: padding .3s ease, background .3s ease; cursor: pointer; }
-  .menu-item:hover { padding-left: 20px; background: var(--bg-2); }
-  .menu-item:hover .arrow { color: var(--accent); transform: translateX(8px); }
-  .menu-item .n { font-family: 'Archivo Black', sans-serif; color: var(--accent); font-size: 1rem; letter-spacing: 0.1em; }
-  .menu-item .name { font-family: 'Archivo Black', sans-serif; font-size: 1.6rem; text-transform: uppercase; letter-spacing: -0.01em; }
-  .menu-item .desc { color: var(--fg-muted); font-size: 1rem; }
-  .menu-item .arrow { font-size: 1.5rem; color: var(--fg-muted); transition: transform .3s ease, color .3s ease; text-align: right; }
-  @media (max-width: 820px) { .menu-item { grid-template-columns: 50px 1fr; gap: 18px; } .menu-item .desc, .menu-item .arrow { grid-column: 2; } .menu-item .arrow { display: none; } }
+
+  /* SHOP */
+  .filter-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 28px; }
+  .filter-pill { padding: 9px 18px; background: transparent; border: 1px solid var(--border); color: var(--fg-muted); font-size: 0.74rem; cursor: pointer; transition: all .2s ease; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; font-family: inherit; }
+  .filter-pill:hover { color: var(--fg); border-color: var(--fg-muted); }
+  .filter-pill.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .shop-meta { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 24px; padding-bottom: 22px; border-bottom: 1px solid var(--border); }
+  .shop-meta div { color: var(--fg-muted); font-size: 0.84rem; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .shop-meta strong { color: var(--accent); font-weight: 700; }
+  .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .product-grid { grid-template-columns: 1fr; } }
+  .product-card { background: var(--bg-2); border: 1px solid var(--border); overflow: hidden; display: flex; flex-direction: column; transition: all .3s ease; }
+  .product-card:hover { transform: translateY(-4px); border-color: var(--accent); }
+  .product-visual { aspect-ratio: 4/3; position: relative; display: flex; align-items: center; justify-content: center; font-family: 'Archivo Black', sans-serif; font-size: 2rem; text-transform: uppercase; line-height: 1; text-align: center; padding: 20px; }
+  .product-visual::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.06), transparent 50%); }
+  .product-visual .badge { position: absolute; top: 12px; left: 12px; font-family: 'Manrope', sans-serif; font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; padding: 4px 10px; background: rgba(0,0,0,0.4); color: var(--fg); }
+  .product-visual .thc { position: absolute; bottom: 12px; right: 12px; font-family: 'Manrope', sans-serif; font-size: 0.72rem; font-weight: 700; color: var(--fg); background: rgba(0,0,0,0.4); padding: 4px 10px; }
+  .product-body { padding: 22px; display: flex; flex-direction: column; flex: 1; }
+  .product-body h3 { font-family: 'Archivo Black', sans-serif; font-style: normal; font-size: 1.2rem; text-transform: uppercase; margin-bottom: 4px; }
+  .product-body .strain { font-size: 0.72rem; color: var(--accent); letter-spacing: 0.14em; margin-bottom: 14px; text-transform: uppercase; font-weight: 700; }
+  .product-body .desc { color: var(--fg-muted); font-size: 0.9rem; line-height: 1.55; margin-bottom: 18px; flex: 1; }
+  .weight-row { display: flex; gap: 4px; flex-wrap: wrap; margin-bottom: 16px; }
+  .weight-chip { padding: 7px 12px; background: var(--bg-3); border: 1px solid transparent; color: var(--fg-muted); font-size: 0.74rem; cursor: pointer; transition: all .2s ease; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; font-family: inherit; }
+  .weight-chip:hover { color: var(--accent); }
+  .weight-chip.active { background: var(--accent); color: var(--bg); }
+  .product-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .product-price { font-family: 'Archivo Black', sans-serif; font-size: 1.4rem; color: var(--accent); }
+  .add-btn { background: var(--fg); color: var(--bg); border: none; padding: 10px 16px; font-size: 0.7rem; font-weight: 700; cursor: pointer; transition: all .2s ease; letter-spacing: 0.12em; text-transform: uppercase; }
+  .add-btn:hover { background: var(--accent); color: var(--bg); transform: translateY(-1px); }
+  .add-btn.added { background: var(--accent); }
+
   .visit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; }
   .visit-card { padding: 50px 44px; background: var(--bg-2); border: 1px solid var(--border); }
   .visit-card .label { font-size: 0.74rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--accent); font-weight: 600; margin-bottom: 22px; }
-  .visit-card h3 { font-family: 'Archivo Black', sans-serif; font-style: normal; font-size: 1.6rem; text-transform: uppercase; margin-bottom: 22px; letter-spacing: -0.01em; }
-  .visit-card address { font-style: normal; font-size: 1.1rem; margin-bottom: 24px; line-height: 1.5; }
-  .visit-card .phone { font-family: 'Archivo Black', sans-serif; font-size: 1.5rem; color: var(--accent); }
-  .visit-card .hours { display: grid; grid-template-columns: 1fr auto; gap: 12px 30px; }
-  .visit-card .hours .day { color: var(--fg-muted); font-size: 0.96rem; }
-  .visit-card .hours .time { font-size: 0.96rem; }
+  .visit-card h3 { font-family: 'Archivo Black', sans-serif; font-style: normal; font-size: 1.6rem; text-transform: uppercase; margin-bottom: 22px; }
+  .visit-card address { font-style: normal; font-size: 1.08rem; margin-bottom: 24px; line-height: 1.5; }
+  .visit-card .phone { font-family: 'Archivo Black', sans-serif; font-size: 1.4rem; color: var(--accent); }
+  .visit-card .hours { display: grid; grid-template-columns: 1fr auto; gap: 12px 30px; margin-top: 24px; }
+  .visit-card .hours .day { color: var(--fg-muted); font-size: 0.92rem; }
+  .visit-card .hours .time { font-size: 0.92rem; }
   @media (max-width: 820px) { .visit-grid { grid-template-columns: 1fr; gap: 24px; } }
-  .cta-band { padding: 130px 32px; text-align: center; background: var(--accent); color: var(--bg); }
-  .cta-band h2 { margin-bottom: 26px; max-width: 16ch; margin-left: auto; margin-right: auto; }
-  .cta-band p { max-width: 50ch; margin: 0 auto 44px; font-size: 1.1rem; line-height: 1.6; }
-  .cta-band .btn-primary { background: var(--bg); color: var(--accent); }
-  .cta-band .btn-primary:hover { background: var(--bg-2); }
-  footer { padding: 60px 32px 40px; }
+
+  footer { padding: 60px 32px 40px; border-top: 1px solid var(--border); }
   footer .inner { max-width: var(--maxw); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
-  footer .brand { font-family: 'Archivo Black', sans-serif; font-size: 1.4rem; letter-spacing: -0.02em; text-transform: uppercase; }
+  footer .brand { font-family: 'Archivo Black', sans-serif; font-size: 1.4rem; text-transform: uppercase; }
   footer .brand em { font-family: 'Lora', serif; font-style: italic; color: var(--accent); font-weight: 500; text-transform: lowercase; }
   footer .small { font-size: 0.78rem; color: var(--fg-muted); letter-spacing: 0.06em; }
+
+  .scrim { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity .3s ease; z-index: 200; }
+  .scrim.open { opacity: 1; pointer-events: auto; }
+  .cart-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 440px; max-width: 100vw; background: var(--bg-2); border-left: 1px solid var(--border); z-index: 210; transform: translateX(100%); transition: transform .35s ease; display: flex; flex-direction: column; }
+  .cart-drawer.open { transform: translateX(0); }
+  .cart-head { padding: 22px 28px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .cart-head h3 { font-family: 'Archivo Black', sans-serif; font-style: normal; font-size: 1.3rem; text-transform: uppercase; }
+  .cart-close { background: transparent; border: none; color: var(--fg); cursor: pointer; width: 36px; height: 36px; font-size: 1.3rem; }
+  .cart-close:hover { color: var(--accent); }
+  .cart-items { flex: 1; overflow-y: auto; padding: 18px 28px; }
+  .cart-empty { color: var(--fg-muted); text-align: center; padding: 60px 20px; font-size: 0.96rem; }
+  .cart-item { display: grid; grid-template-columns: 64px 1fr auto; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+  .ci-visual { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; font-family: 'Archivo Black', sans-serif; font-size: 1.1rem; color: var(--fg); text-transform: uppercase; }
+  .ci-mid .name { font-size: 0.96rem; font-weight: 600; }
+  .ci-mid .meta { font-size: 0.78rem; color: var(--fg-muted); }
+  .ci-qty { display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; }
+  .ci-qty button { width: 22px; height: 22px; background: var(--bg-3); border: 1px solid var(--border); color: var(--fg); cursor: pointer; }
+  .ci-qty .q { font-size: 0.86rem; width: 22px; text-align: center; }
+  .ci-right { display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; }
+  .ci-right .price { font-family: 'Archivo Black', sans-serif; font-size: 1rem; color: var(--accent); }
+  .ci-right .rm { background: transparent; border: none; color: var(--fg-muted); font-size: 0.74rem; cursor: pointer; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; }
+  .ci-right .rm:hover { color: var(--accent); }
+  .cart-foot { padding: 22px 28px 28px; border-top: 1px solid var(--border); }
+  .cart-totals { display: grid; gap: 8px; margin-bottom: 18px; }
+  .cart-totals .row { display: flex; justify-content: space-between; font-size: 0.88rem; color: var(--fg-muted); letter-spacing: 0.06em; text-transform: uppercase; }
+  .cart-totals .row.total { font-size: 1rem; color: var(--fg); padding-top: 10px; margin-top: 6px; border-top: 1px solid var(--border); font-weight: 700; }
+  .cart-totals .row.total .v { font-family: 'Archivo Black', sans-serif; font-size: 1.4rem; color: var(--accent); }
+  .checkout-btn { width: 100%; background: var(--accent); color: var(--bg); border: none; padding: 16px 20px; font-size: 0.84rem; font-weight: 700; cursor: pointer; letter-spacing: 0.14em; text-transform: uppercase; }
+  .checkout-btn:hover { background: var(--accent-2); }
+  .checkout-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .legal { font-size: 0.7rem; color: var(--fg-muted); text-align: center; margin-top: 12px; letter-spacing: 0.04em; }
+
+  .modal { position: fixed; inset: 0; z-index: 300; display: none; align-items: center; justify-content: center; padding: 24px; }
+  .modal.open { display: flex; }
+  .modal-card { background: var(--bg-2); border: 1px solid var(--border); width: 100%; max-width: 540px; max-height: 92vh; overflow-y: auto; padding: 36px; position: relative; }
+  .modal-close { position: absolute; top: 18px; right: 18px; background: transparent; border: none; color: var(--fg-muted); cursor: pointer; width: 32px; height: 32px; font-size: 1.2rem; }
+  .modal-close:hover { color: var(--accent); }
+  .modal h3 { font-family: 'Archivo Black', sans-serif; font-style: normal; font-size: 1.6rem; text-transform: uppercase; margin-bottom: 8px; }
+  .modal .modal-sub { color: var(--fg-muted); font-size: 0.96rem; margin-bottom: 24px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-size: 0.72rem; color: var(--fg-muted); margin-bottom: 6px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; }
+  .field input, .field select, .field textarea { width: 100%; padding: 12px 14px; background: var(--bg-3); border: 1px solid var(--border); color: var(--fg); font-family: inherit; font-size: 0.96rem; }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .order-summary { background: var(--bg-3); padding: 14px 16px; margin: 6px 0 22px; font-size: 0.88rem; }
+  .order-summary .os-row { display: flex; justify-content: space-between; padding: 4px 0; color: var(--fg-muted); }
+  .order-summary .os-row.os-total { color: var(--fg); margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--border); font-weight: 700; }
+  .submit-btn { width: 100%; background: var(--accent); color: var(--bg); border: none; padding: 16px 20px; font-size: 0.86rem; font-weight: 700; cursor: pointer; letter-spacing: 0.14em; text-transform: uppercase; }
+  .submit-btn:hover { background: var(--accent-2); }
+  .confirm { text-align: center; padding: 20px 0; }
+  .confirm .icon { width: 64px; height: 64px; background: var(--accent); color: var(--bg); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-family: 'Archivo Black', sans-serif; }
+  .confirm h3 { margin-bottom: 10px; }
+  .confirm p { color: var(--fg-muted); font-size: 0.96rem; margin-bottom: 8px; }
+  .confirm .order-id { font-family: 'Archivo Black', sans-serif; color: var(--accent); font-size: 1.4rem; margin: 16px 0 24px; letter-spacing: 0.04em; }
+
+  .auth-tabs { display: flex; gap: 0; background: var(--bg-3); padding: 0; margin-bottom: 24px; border: 1px solid var(--border); }
+  .auth-tabs button { flex: 1; padding: 12px 14px; background: transparent; border: none; color: var(--fg-muted); font-size: 0.74rem; cursor: pointer; font-family: inherit; font-weight: 700; transition: all .2s ease; letter-spacing: 0.14em; text-transform: uppercase; }
+  .auth-tabs button.active { background: var(--accent); color: var(--bg); }
+  .auth-divider { display: flex; align-items: center; gap: 12px; margin: 26px 0 18px; color: var(--fg-muted); font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; }
+  .auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .demo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .demo-row button { padding: 14px 14px; border: 1px solid var(--accent); background: transparent; color: var(--accent); cursor: pointer; font-family: inherit; font-size: 0.74rem; font-weight: 700; transition: all .2s ease; letter-spacing: 0.12em; text-transform: uppercase; }
+  .demo-row button:hover { background: var(--accent); color: var(--bg); }
+
+  .dashboard { position: fixed; inset: 0; z-index: 500; background: var(--bg); display: none; flex-direction: column; }
+  .dashboard.open { display: flex; }
+  .dash-header { padding: 18px 28px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; background: var(--bg-2); }
+  .dash-header .brand { font-family: 'Archivo Black', sans-serif; font-size: 1.3rem; text-transform: uppercase; }
+  .dash-header .brand em { font-family: 'Lora', serif; font-style: italic; color: var(--accent); text-transform: lowercase; font-weight: 500; }
+  .dash-header .brand small { font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-family: 'Manrope', sans-serif; margin-left: 12px; padding: 4px 10px; background: var(--bg-3); font-weight: 700; }
+  .view-switcher { display: flex; gap: 0; background: var(--bg-3); padding: 0; border: 1px solid var(--border); }
+  .view-switcher button { padding: 10px 18px; background: transparent; border: none; color: var(--fg-muted); font-size: 0.74rem; cursor: pointer; font-family: inherit; font-weight: 700; transition: all .2s ease; letter-spacing: 0.14em; text-transform: uppercase; }
+  .view-switcher button.active { background: var(--accent); color: var(--bg); }
+  .dash-exit { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 10px 18px; cursor: pointer; font-size: 0.74rem; font-family: inherit; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+  .dash-exit:hover { background: var(--accent); color: var(--bg); }
+  .dash-body { flex: 1; overflow-y: auto; padding: 36px 28px 60px; }
+  .dash-wrap { max-width: 1180px; margin: 0 auto; }
+  .dash-greet { font-family: 'Archivo Black', sans-serif; font-size: clamp(2rem, 4vw, 3rem); margin-bottom: 6px; text-transform: uppercase; line-height: 1; }
+  .dash-greet em { font-family: 'Lora', serif; font-style: italic; color: var(--accent); text-transform: lowercase; font-weight: 500; }
+  .dash-sub { color: var(--fg-muted); font-size: 0.92rem; margin-bottom: 32px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+  .dash-grid { display: grid; gap: 18px; }
+  .kpi-row { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+  .kpi { background: var(--bg-2); border: 1px solid var(--border); padding: 22px; }
+  .kpi .lbl { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-muted); margin-bottom: 12px; font-weight: 700; }
+  .kpi .v { font-family: 'Archivo Black', sans-serif; font-size: 2.2rem; line-height: 1; }
+  .kpi .v small { font-size: 0.84rem; color: var(--accent); margin-left: 6px; font-family: 'Manrope', sans-serif; font-weight: 600; }
+  .panel { background: var(--bg-2); border: 1px solid var(--border); padding: 24px; }
+  .panel h4 { font-family: 'Archivo Black', sans-serif; font-size: 1.1rem; text-transform: uppercase; margin-bottom: 18px; }
+  .panel h4 small { font-size: 0.7rem; color: var(--accent); margin-left: 10px; font-family: 'Manrope', sans-serif; font-weight: 700; letter-spacing: 0.1em; }
+  .two-col { grid-template-columns: 1.4fr 1fr; }
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+  .loyalty-card { background: linear-gradient(135deg, var(--accent) 0%, #8a6a2a 100%); padding: 28px; color: var(--bg); }
+  .loyalty-card .tier { display: inline-block; padding: 4px 12px; background: rgba(0,0,0,0.3); font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 14px; font-weight: 700; }
+  .loyalty-card .pts { font-family: 'Archivo Black', sans-serif; font-size: 3.2rem; line-height: 1; margin-bottom: 4px; }
+  .loyalty-card .pts small { font-size: 0.86rem; opacity: 0.8; font-family: 'Manrope', sans-serif; margin-left: 4px; }
+  .loyalty-card .progress { margin-top: 18px; }
+  .loyalty-card .bar { height: 6px; background: rgba(0,0,0,0.3); overflow: hidden; margin: 8px 0; }
+  .loyalty-card .bar > div { height: 100%; background: var(--bg); }
+  .loyalty-card .next { font-size: 0.84rem; opacity: 0.9; }
+  .list-row { display: grid; grid-template-columns: 36px 1fr auto auto; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.92rem; }
+  .list-row .dot { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-family: 'Archivo Black', sans-serif; font-size: 0.86rem; color: var(--fg); text-transform: uppercase; }
+  .list-row .meta { color: var(--fg-muted); font-size: 0.8rem; }
+  .list-row .v { color: var(--accent); font-family: 'Archivo Black', sans-serif; font-size: 0.96rem; }
+  .list-row .pill { padding: 3px 10px; font-size: 0.66rem; color: var(--fg-muted); letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; background: var(--bg-3); }
+  .list-row .pill.ok { background: rgba(200,163,82,0.15); color: var(--accent); }
+  .reward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .reward { padding: 16px; background: var(--bg-3); border: 1px solid var(--border); }
+  .reward .cost { font-family: 'Archivo Black', sans-serif; color: var(--accent); font-size: 1.1rem; margin-bottom: 4px; }
+  .reward .name { font-size: 0.86rem; }
+  .tier-bar { display: grid; gap: 10px; }
+  .tier-bar .tb { display: grid; grid-template-columns: 90px 1fr 50px; gap: 12px; align-items: center; font-size: 0.86rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; }
+  .tier-bar .tb-bar { height: 8px; background: var(--bg-3); overflow: hidden; }
+  .tier-bar .tb-bar > div { height: 100%; background: var(--accent); }
+  .tier-bar .tb-pct { color: var(--fg-muted); text-align: right; font-size: 0.82rem; }
+
+  .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--accent); color: var(--bg); padding: 12px 22px; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0; pointer-events: none; transition: all .3s ease; z-index: 400; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
@@ -134,14 +244,17 @@
       <li><a href="#story">Story</a></li>
       <li><a href="#shop">Shop</a></li>
       <li><a href="#visit">Visit</a></li>
-      <li><a href="#contact">Contact</a></li>
     </ul>
-    <a href="tel:+15095364000" class="cta">Order Now</a>
+    <div class="nav-right">
+      <button class="signin-btn" id="signinBtn">Sign In</button>
+      <button class="cart-btn" id="cartBtn"><span>Cart</span><span class="count hidden" id="cartCount">0</span></button>
+      <a href="tel:+15095364000" class="cta">Order</a>
+    </div>
   </div>
 </nav>
 
 <header class="hero" id="top">
-  <div class="hero-inner">
+  <div class="wrap" style="max-width:none;padding:0;">
     <div class="eyebrow">Spokane, Washington · since 2014</div>
     <h1>Spokane's <span class="accent-italic">most notorious</span> destination.</h1>
     <p>For over a decade we've been putting top-shelf flower, craft concentrates, and dialed-in edibles in the hands of the people who built this city's cannabis culture.</p>
@@ -149,10 +262,6 @@
       <a href="#shop" class="btn btn-primary">Shop Online</a>
       <a href="#visit" class="btn btn-ghost">Visit the Shop</a>
     </div>
-  </div>
-  <div class="hero-meta">
-    <span>3801 E Sprague Ave</span>
-    <span>Open Daily · 8AM – 11PM</span>
   </div>
 </header>
 
@@ -166,7 +275,7 @@
       <div class="year fade-in">2014</div>
       <div class="fade-in">
         <p>We were one of Spokane's first licensed cannabis retailers — and we never stopped treating it like a privilege. Every product on our shelf is here because it earned the spot.</p>
-        <p>That means working with Washington's best growers and processors, training budtenders who actually know what they're talking about, and pricing things so locals can afford to come back.</p>
+        <p>Washington's best growers, trained budtenders, prices that keep locals coming back.</p>
       </div>
     </div>
   </div>
@@ -175,67 +284,194 @@
 <section id="shop">
   <div class="wrap">
     <div class="section-head fade-in">
-      <h2>The shelf.</h2>
-      <p>Eight categories. Hundreds of products. New drops weekly. Browse online or come see for yourself.</p>
+      <h2>The <span class="accent-italic">shelf</span>.</h2>
+      <p>Online orders ready for in-store pickup in 30 minutes. 21+ with valid ID.</p>
     </div>
-    <div class="menu-list">
-      <div class="menu-item fade-in"><div class="n">01</div><div class="name">Flower</div><div class="desc">Indica, sativa, hybrid — top-shelf to budget eighths.</div><div class="arrow">→</div></div>
-      <div class="menu-item fade-in"><div class="n">02</div><div class="name">Pre-Rolls</div><div class="desc">Singles, packs, infused. Hand-rolled house options.</div><div class="arrow">→</div></div>
-      <div class="menu-item fade-in"><div class="n">03</div><div class="name">Vaporizers</div><div class="desc">Distillate, live resin, all-in-ones from trusted brands.</div><div class="arrow">→</div></div>
-      <div class="menu-item fade-in"><div class="n">04</div><div class="name">Concentrates</div><div class="desc">Rosin, resin, shatter, wax — for the heads who know.</div><div class="arrow">→</div></div>
-      <div class="menu-item fade-in"><div class="n">05</div><div class="name">Edibles</div><div class="desc">Gummies, chocolates, baked goods, dose-controlled.</div><div class="arrow">→</div></div>
-      <div class="menu-item fade-in"><div class="n">06</div><div class="name">Tinctures</div><div class="desc">Sublingual drops, fast-onset, predictable.</div><div class="arrow">→</div></div>
-      <div class="menu-item fade-in"><div class="n">07</div><div class="name">Topicals</div><div class="desc">Balms, salves, and CBD blends for daily relief.</div><div class="arrow">→</div></div>
-      <div class="menu-item fade-in"><div class="n">08</div><div class="name">Accessories</div><div class="desc">Glass, papers, grinders — gear worth keeping.</div><div class="arrow">→</div></div>
-    </div>
+    <div class="filter-row fade-in" id="filterRow"></div>
+    <div class="shop-meta"><div><strong id="productCount">0</strong> products live now</div><div>Pickup ready in 30 min</div></div>
+    <div class="product-grid" id="productGrid"></div>
   </div>
 </section>
 
 <section id="visit">
   <div class="wrap">
     <div class="section-head fade-in">
-      <h2>Come find us on <span class="accent-italic">Sprague</span>.</h2>
-      <p>Walk-ins welcome. 21+ with a valid ID. We're easy to spot.</p>
+      <h2>Find us on <span class="accent-italic">Sprague</span>.</h2>
+      <p>Walk-ins welcome. 21+ with a valid ID.</p>
     </div>
     <div class="visit-grid">
       <div class="visit-card fade-in">
-        <div class="label">Location</div>
+        <div class="label">— Location</div>
         <h3>The Shop</h3>
         <address>3801 E Sprague Ave<br>Spokane, WA 99202</address>
         <a href="tel:+15095364000" class="phone">(509) 536-4000</a><br><br>
         <a href="https://maps.google.com/?q=3801+E+Sprague+Ave+Spokane+WA" target="_blank" class="btn btn-ghost">Get Directions →</a>
       </div>
       <div class="visit-card fade-in">
-        <div class="label">Hours</div>
+        <div class="label">— Hours</div>
         <h3>Open Daily</h3>
         <div class="hours">
-          <div class="day">Monday – Wednesday</div><div class="time">8:00 AM – 10:00 PM</div>
-          <div class="day">Thursday – Saturday</div><div class="time">8:00 AM – 11:00 PM</div>
-          <div class="day">Sunday</div><div class="time">8:00 AM – 9:00 PM</div>
+          <div class="day">Mon – Wed</div><div class="time">8 AM – 10 PM</div>
+          <div class="day">Thu – Sat</div><div class="time">8 AM – 11 PM</div>
+          <div class="day">Sunday</div><div class="time">8 AM – 9 PM</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta-band" id="contact">
-  <h2 class="fade-in">Ready when you are.</h2>
-  <p class="fade-in">Place an order online for pickup, or come hang out and pick something out in person. Either way, we'll take care of you.</p>
-  <a href="mailto:customerservice@smokane502.com" class="btn btn-primary fade-in">Get In Touch</a>
-</section>
-
 <footer>
   <div class="inner">
     <div class="brand">Smok<em>ane</em></div>
-    <div class="small">© 2026 Smokane · Spokane, WA · WSLCB Licensed Cannabis Retailer</div>
+    <div class="small">© 2026 Smokane · Spokane, WA · WSLCB Licensed</div>
   </div>
 </footer>
 
+<div class="scrim" id="scrim"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-head"><h3>Your Cart</h3><button class="cart-close" id="cartClose">×</button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty">Your cart is empty.</div></div>
+  <div class="cart-foot">
+    <div class="cart-totals">
+      <div class="row"><span>Subtotal</span><span class="v" id="cartSubtotal">$0.00</span></div>
+      <div class="row"><span>Excise + Tax (47%)</span><span class="v" id="cartTax">$0.00</span></div>
+      <div class="row total"><span>Total</span><span class="v" id="cartTotal">$0.00</span></div>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn" disabled>Reserve for Pickup</button>
+    <div class="legal">No payment online. Pay at pickup with cash or debit. 21+ ID required.</div>
+  </div>
+</aside>
+
+<div class="modal" id="checkoutModal">
+  <div class="modal-card">
+    <button class="modal-close" id="modalClose">×</button>
+    <div id="checkoutForm">
+      <h3>Reserve Your Order</h3>
+      <p class="modal-sub">We'll text you when it's ready. Pay in person at pickup — cash or debit.</p>
+      <form id="orderForm">
+        <div class="field-row"><div class="field"><label>First name</label><input required></div><div class="field"><label>Last name</label><input required></div></div>
+        <div class="field"><label>Mobile</label><input type="tel" required></div>
+        <div class="field"><label>Email</label><input type="email" required></div>
+        <div class="field"><label>Date of birth</label><input type="date" required></div>
+        <div class="field"><label>Pickup window</label><select required><option value="">Select…</option><option>Within 30 min</option><option>Later today</option><option>Tomorrow</option></select></div>
+        <div class="order-summary" id="orderSummary"></div>
+        <button class="submit-btn" type="submit">Place Reservation</button>
+      </form>
+    </div>
+    <div id="checkoutConfirm" style="display:none;">
+      <div class="confirm">
+        <div class="icon">✓</div>
+        <h3>Order Reserved</h3>
+        <p>Confirmation sent to <span id="confirmEmail" style="color:var(--fg);"></span></p>
+        <p>Ready in your selected window. Bring valid 21+ ID.</p>
+        <div class="order-id">#<span id="orderIdOut"></span></div>
+        <button class="btn btn-ghost" id="confirmDone">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="loginModal">
+  <div class="modal-card" style="max-width:460px;">
+    <button class="modal-close" id="loginClose">×</button>
+    <h3>Welcome to Smok<span class="accent-italic">ane</span></h3>
+    <p class="modal-sub">Sign in to track orders, earn rewards, reorder favorites.</p>
+    <div class="auth-tabs"><button class="active" data-auth-tab="signin">Sign In</button><button data-auth-tab="signup">Create Account</button></div>
+    <div id="signinPane"><form onsubmit="event.preventDefault(); openDashboard('customer');"><div class="field"><label>Email</label><input type="email" required></div><div class="field"><label>Password</label><input type="password" required></div><button class="submit-btn" type="submit">Sign In</button></form></div>
+    <div id="signupPane" style="display:none;"><form onsubmit="event.preventDefault(); openDashboard('customer');"><div class="field-row"><div class="field"><label>First</label><input required></div><div class="field"><label>Last</label><input required></div></div><div class="field"><label>Email</label><input type="email" required></div><div class="field"><label>Date of birth</label><input type="date" required></div><div class="field"><label>Password</label><input type="password" required></div><button class="submit-btn" type="submit">Create Account</button></form></div>
+    <div class="auth-divider">Preview a Dashboard</div>
+    <div class="demo-row"><button onclick="openDashboard('customer')">Customer Demo →</button><button onclick="openDashboard('admin')">Admin Demo →</button></div>
+  </div>
+</div>
+
+<div class="dashboard" id="dashboard">
+  <div class="dash-header">
+    <div class="brand">Smok<em>ane</em><small>Demo Dashboard</small></div>
+    <div class="view-switcher"><button class="active" data-view="customer">Customer</button><button data-view="admin">Admin</button></div>
+    <button class="dash-exit" id="dashExit">Exit Demo</button>
+  </div>
+  <div class="dash-body"><div class="dash-wrap" id="dashContent"></div></div>
+</div>
+
+<div class="toast" id="toast">Added</div>
+
 <script>
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+const products = [
+  { id:'dtreat',cat:'flower',name:'Dutch Treat',strain:'Indica-hybrid',thc:23.4,c1:'#1c2a1c',c2:'#3a6740',desc:'PNW classic. Pine-sweet nose, mellow body.',prices:[{w:'1g',p:9},{w:'3.5g',p:30},{w:'7g',p:55},{w:'28g',p:200}] },
+  { id:'pinex', cat:'flower',name:'Pineapple Express',strain:'Sativa-hybrid',thc:22.8,c1:'#2a2412',c2:'#a08832',desc:'Bright tropical sativa-hybrid for daytime.',prices:[{w:'1g',p:10},{w:'3.5g',p:32},{w:'7g',p:58}] },
+  { id:'jh',    cat:'flower',name:'Jack Herer',strain:'Sativa',thc:24.0,c1:'#1f2818',c2:'#5a7a28',desc:'Energizing, focused sativa. Spokane staple.',prices:[{w:'1g',p:10},{w:'3.5g',p:32}] },
+  { id:'nl',    cat:'flower',name:'Northern Lights',strain:'Indica',thc:23.5,c1:'#16203a',c2:'#3a5a8a',desc:'Heavy indica, deep relaxation, classic body high.',prices:[{w:'1g',p:11},{w:'3.5g',p:34}] },
+  { id:'gscook',cat:'flower',name:'Girl Scout Cookies',strain:'Hybrid',thc:25.0,c1:'#2a1c2a',c2:'#7a3a60',desc:'Sweet, earthy hybrid. The original heavy-hitter.',prices:[{w:'1g',p:12},{w:'3.5g',p:36},{w:'7g',p:66}] },
+  { id:'spr-s', cat:'prerolls',name:'House Single',strain:'1g',thc:21.5,c1:'#26201a',c2:'#7a5a32',desc:'Daily house strain. Walk in, light up.',prices:[{w:'each',p:5}] },
+  { id:'spr-2g',cat:'prerolls',name:'2-Gram Joint',strain:'2g · Hybrid',thc:22.0,c1:'#2a2820',c2:'#7a7a3a',desc:'Big-format joint for sharing or a long session.',prices:[{w:'each',p:12}] },
+  { id:'sliveR',cat:'concentrates',name:'JH Live Resin',strain:'1g · Sativa',thc:80.0,c1:'#1f2818',c2:'#5a7a28',desc:'Cold-cured live resin. Glassy, terp-heavy.',prices:[{w:'1g',p:32}] },
+  { id:'srosin',cat:'concentrates',name:'GSC Rosin',strain:'1g · Solventless',thc:82.4,c1:'#2a1c2a',c2:'#8a4a70',desc:'Pressed from fresh-frozen Girl Scout Cookies.',prices:[{w:'1g',p:48}] },
+  { id:'scart', cat:'vapes',name:'Dutch Treat Cart',strain:'1g · Distillate',thc:84.0,c1:'#1c2a1c',c2:'#3a6740',desc:'510-thread distillate, strain-specific terps.',prices:[{w:'1g',p:28}] },
+  { id:'sdisp', cat:'vapes',name:'House Disposable',strain:'0.5g · Indica',thc:80.0,c1:'#1a1818',c2:'#4a4a4a',desc:'Rechargeable disposable, ready to go.',prices:[{w:'0.5g',p:22}] },
+  { id:'sgum',  cat:'edibles',name:'Berry Gummies',strain:'10mg × 10',thc:0,c1:'#2a1828',c2:'#7a2860',desc:'Real-fruit gummies, predictable onset.',prices:[{w:'pack',p:16}] },
+  { id:'schoc', cat:'edibles',name:'Milk Chocolate Bar',strain:'10mg × 10',thc:0,c1:'#241814',c2:'#6a4a3a',desc:'Each square 10mg. Smooth, easy onset.',prices:[{w:'bar',p:20}] },
+  { id:'stinct',cat:'topicals',name:'1:1 Tincture',strain:'600mg',thc:0,c1:'#1c2a22',c2:'#4a7a52',desc:'Sublingual relief. Daily-use friendly.',prices:[{w:'30ml',p:38}] }
+];
+const filters = [{id:'all',label:'All'},{id:'flower',label:'Flower'},{id:'prerolls',label:'Pre-Rolls'},{id:'concentrates',label:'Concentrates'},{id:'vapes',label:'Vapes'},{id:'edibles',label:'Edibles'},{id:'topicals',label:'Wellness'}];
+const state = { filter:'all', cart:[], selectedWeight:{} };
+const $ = id => document.getElementById(id);
+const money = n => '$' + n.toFixed(2);
+const getP = id => products.find(p => p.id === id);
+const selW = p => state.selectedWeight[p.id] || p.prices[0].w;
+const priceFor = (p, w) => (p.prices.find(x => x.w === w) || p.prices[0]).p;
+function renderFilters() { $('filterRow').innerHTML = filters.map(f => `<button class="filter-pill ${f.id===state.filter?'active':''}" data-f="${f.id}">${f.label}</button>`).join(''); document.querySelectorAll('.filter-pill').forEach(b => b.addEventListener('click', () => { state.filter=b.dataset.f; renderFilters(); renderProducts(); })); }
+function visual(p) { return `<div class="product-visual" style="background:linear-gradient(135deg,${p.c1} 0%,${p.c2} 100%);"><span class="badge">${p.strain.split(' · ')[0]}</span><span>${p.name.split(' ').slice(0,2).join(' ')}</span>${p.thc>0?`<span class="thc">${p.thc.toFixed(1)}%</span>`:''}</div>`; }
+function smallVis(p) { return `<div class="ci-visual" style="background:linear-gradient(135deg,${p.c1} 0%,${p.c2} 100%);">${p.name.split(' ').map(s=>s[0]).join('').slice(0,2)}</div>`; }
+function renderProducts() {
+  const list = state.filter==='all'?products:products.filter(p=>p.cat===state.filter);
+  $('productCount').textContent = list.length;
+  $('productGrid').innerHTML = list.map(p => { const w=selW(p), price=priceFor(p,w); return `<article class="product-card">${visual(p)}<div class="product-body"><h3>${p.name}</h3><div class="strain">${p.strain}</div><p class="desc">${p.desc}</p><div class="weight-row">${p.prices.map(o=>`<button class="weight-chip ${o.w===w?'active':''}" data-pid="${p.id}" data-w="${o.w}">${o.w}</button>`).join('')}</div><div class="product-foot"><div class="product-price">${money(price)}</div><button class="add-btn" data-add="${p.id}">Add</button></div></div></article>`; }).join('');
+  document.querySelectorAll('.weight-chip').forEach(b => b.addEventListener('click', () => { state.selectedWeight[b.dataset.pid]=b.dataset.w; renderProducts(); }));
+  document.querySelectorAll('.add-btn').forEach(b => b.addEventListener('click', () => { addToCart(b.dataset.add); b.textContent='Added ✓'; b.classList.add('added'); setTimeout(()=>{b.textContent='Add';b.classList.remove('added');},1400); }));
+}
+function addToCart(pid) { const p=getP(pid), w=selW(p), e=state.cart.find(i=>i.id===pid&&i.w===w); if(e) e.qty+=1; else state.cart.push({id:pid,w,qty:1}); renderCart(); toast(`${p.name} added`); }
+function chgQty(i,d) { state.cart[i].qty+=d; if(state.cart[i].qty<=0) state.cart.splice(i,1); renderCart(); }
+function rmItem(i) { state.cart.splice(i,1); renderCart(); }
+function subtotal() { return state.cart.reduce((s,i)=>s+priceFor(getP(i.id),i.w)*i.qty,0); }
+function renderCart() {
+  const items=$('cartItems'), count=state.cart.reduce((s,i)=>s+i.qty,0), sub=subtotal(), tax=sub*0.47, total=sub+tax;
+  $('cartCount').textContent=count; $('cartCount').classList.toggle('hidden',count===0);
+  $('cartSubtotal').textContent=money(sub); $('cartTax').textContent=money(tax); $('cartTotal').textContent=money(total);
+  $('checkoutBtn').disabled=count===0;
+  if(state.cart.length===0){items.innerHTML='<div class="cart-empty">Your cart is empty.</div>';return;}
+  items.innerHTML=state.cart.map((i,idx)=>{const p=getP(i.id),lp=priceFor(p,i.w)*i.qty;return `<div class="cart-item">${smallVis(p)}<div class="ci-mid"><div class="name">${p.name}</div><div class="meta">${i.w} · ${p.strain}</div><div class="ci-qty"><button data-qty="${idx}" data-d="-1">−</button><span class="q">${i.qty}</span><button data-qty="${idx}" data-d="1">+</button></div></div><div class="ci-right"><div class="price">${money(lp)}</div><button class="rm" data-rm="${idx}">Remove</button></div></div>`;}).join('');
+  items.querySelectorAll('[data-qty]').forEach(b=>b.addEventListener('click',()=>chgQty(+b.dataset.qty,+b.dataset.d)));
+  items.querySelectorAll('.rm').forEach(b=>b.addEventListener('click',()=>rmItem(+b.dataset.rm)));
+}
+function openCart(){$('cartDrawer').classList.add('open');$('scrim').classList.add('open');document.body.classList.add('no-scroll');}
+function closeCart(){$('cartDrawer').classList.remove('open');$('scrim').classList.remove('open');document.body.classList.remove('no-scroll');}
+function openCheckout(){closeCart();const sub=subtotal(),tax=sub*0.47,total=sub+tax;const lines=state.cart.map(i=>{const p=getP(i.id);return `<div class="os-row"><span>${i.qty} × ${p.name} (${i.w})</span><span>${money(priceFor(p,i.w)*i.qty)}</span></div>`;}).join('');$('orderSummary').innerHTML=`${lines}<div class="os-row"><span>Excise + Tax</span><span>${money(tax)}</span></div><div class="os-row os-total"><span>Total</span><span>${money(total)}</span></div>`;$('checkoutForm').style.display='block';$('checkoutConfirm').style.display='none';$('checkoutModal').classList.add('open');document.body.classList.add('no-scroll');}
+function closeCheckout(){$('checkoutModal').classList.remove('open');document.body.classList.remove('no-scroll');}
+function orderId(){const c='ABCDEFGHJKMNPQRSTUVWXYZ23456789';let s='';for(let i=0;i<6;i++) s+=c[Math.floor(Math.random()*c.length)];return s;}
+function customerDash(){return `<div class="dash-greet">Welcome back, <em>Sarah</em></div><div class="dash-sub">Gold tier · joined Oct 2024 · last order 3 days ago</div><div class="dash-grid two-col"><div class="dash-grid" style="gap:18px;"><div class="loyalty-card"><div class="tier">★ Gold</div><div class="pts">2,140<small>pts</small></div><div class="next">860 more until <strong>Platinum</strong></div><div class="progress"><div class="bar"><div style="width:71%;"></div></div></div></div><div class="panel"><h4>Available Rewards <small>4 ready</small></h4><div class="reward-grid"><div class="reward"><div class="cost">500 pts</div><div class="name">$10 off any order</div></div><div class="reward"><div class="cost">800 pts</div><div class="name">Free 1g pre-roll</div></div><div class="reward"><div class="cost">1,200 pts</div><div class="name">$25 off concentrates</div></div><div class="reward"><div class="cost">2,000 pts</div><div class="name">Free top-shelf 1/8</div></div></div></div></div><div class="dash-grid" style="gap:18px;"><div class="panel"><h4>Recent Orders</h4><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#1c2a1c,#3a6740);">DT</div><div><div>Dutch Treat · 3.5g</div><div class="meta">Order #N2P9K4 · May 31</div></div><div class="v">$30</div><div class="pill ok">Picked up</div></div><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#2a1c2a,#8a4a70);">GR</div><div><div>GSC Rosin · 1g</div><div class="meta">Order #M3X8R2 · May 23</div></div><div class="v">$48</div><div class="pill ok">Picked up</div></div></div><div class="panel"><h4>Picked For You</h4><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#16203a,#3a5a8a);">NL</div><div><div>Northern Lights · 3.5g</div><div class="meta">For your indica rotation</div></div><div class="v">$34</div></div><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#2a2412,#a08832);">PE</div><div><div>Pineapple Express · 7g</div><div class="meta">Gold-tier exclusive deal</div></div><div class="v">$58</div></div></div></div></div>`;}
+function adminDash(){return `<div class="dash-greet">Admin <em>Overview</em></div><div class="dash-sub">Real-time · Smokane Spokane</div><div class="dash-grid kpi-row"><div class="kpi"><div class="lbl">Revenue today</div><div class="v">$6,124<small>+14%</small></div></div><div class="kpi"><div class="lbl">Orders today</div><div class="v">82<small>+11</small></div></div><div class="kpi"><div class="lbl">Active customers</div><div class="v">2,107<small>+31</small></div></div><div class="kpi"><div class="lbl">Loyalty members</div><div class="v">1,388<small>66%</small></div></div></div><div class="dash-grid two-col" style="margin-top:18px;"><div class="panel"><h4>Top Movers This Week</h4><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#1c2a1c,#3a6740);">DT</div><div><div>Dutch Treat</div><div class="meta">Flower · indica-hybrid</div></div><div class="v">158 sold</div></div><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#2a1c2a,#7a3a60);">GS</div><div><div>Girl Scout Cookies</div><div class="meta">Flower · hybrid</div></div><div class="v">122 sold</div></div><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#1c2a1c,#3a6740);">DC</div><div><div>Dutch Treat Cart</div><div class="meta">Vapes · distillate</div></div><div class="v">94 sold</div></div></div><div class="panel"><h4>Loyalty Distribution</h4><div class="tier-bar"><div class="tb"><span>Bronze</span><div class="tb-bar"><div style="width:50%;"></div></div><span class="tb-pct">694</span></div><div class="tb"><span>Silver</span><div class="tb-bar"><div style="width:28%;"></div></div><span class="tb-pct">389</span></div><div class="tb"><span>Gold</span><div class="tb-bar"><div style="width:17%;"></div></div><span class="tb-pct">236</span></div><div class="tb"><span>Platinum</span><div class="tb-bar"><div style="width:5%;"></div></div><span class="tb-pct">69</span></div></div></div></div>`;}
+function renderDash(v){$('dashContent').innerHTML=v==='admin'?adminDash():customerDash();document.querySelectorAll('.view-switcher button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));}
+function openLogin(){$('loginModal').classList.add('open');document.body.classList.add('no-scroll');}
+function closeLogin(){$('loginModal').classList.remove('open');document.body.classList.remove('no-scroll');}
+function openDashboard(v){closeLogin();renderDash(v);$('dashboard').classList.add('open');document.body.classList.add('no-scroll');}
+function closeDashboard(){$('dashboard').classList.remove('open');document.body.classList.remove('no-scroll');}
+let toastT;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),1600);}
+$('cartBtn').addEventListener('click',openCart);
+$('cartClose').addEventListener('click',closeCart);
+$('scrim').addEventListener('click',()=>{closeCart();closeCheckout();});
+$('checkoutBtn').addEventListener('click',openCheckout);
+$('modalClose').addEventListener('click',closeCheckout);
+$('confirmDone').addEventListener('click',closeCheckout);
+$('orderForm').addEventListener('submit',e=>{e.preventDefault();$('orderIdOut').textContent=orderId();$('confirmEmail').textContent=e.target.querySelector('input[type=email]').value;$('checkoutForm').style.display='none';$('checkoutConfirm').style.display='block';state.cart=[];renderCart();e.target.reset();});
+$('signinBtn').addEventListener('click',openLogin);
+$('loginClose').addEventListener('click',closeLogin);
+$('dashExit').addEventListener('click',closeDashboard);
+document.querySelectorAll('[data-auth-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-auth-tab]').forEach(x=>x.classList.toggle('active',x===b));$('signinPane').style.display=b.dataset.authTab==='signin'?'block':'none';$('signupPane').style.display=b.dataset.authTab==='signup'?'block':'none';}));
+document.querySelectorAll('.view-switcher button').forEach(b=>b.addEventListener('click',()=>renderDash(b.dataset.view)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCart();closeCheckout();closeLogin();}});
+renderFilters();renderProducts();renderCart();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:0.12});
+document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>

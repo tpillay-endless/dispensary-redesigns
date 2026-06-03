@@ -7,129 +7,224 @@
 <meta name="description" content="Forest fine craft cannabis. Two locations in Helena, Montana. Award-winning strains, hand-trimmed and slow-cured.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Public+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+SC:wght@400;500;600&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #0e1612;
-    --bg-2: #16201b;
-    --bg-3: #1d2a23;
-    --fg: #ece6d6;
-    --fg-muted: #8d9183;
-    --accent: #d29b3a;
-    --accent-2: #e6b256;
-    --moss: #547a4a;
-    --border: rgba(236,230,214,0.09);
-    --maxw: 1240px;
+    --bg: #0e1612; --bg-2: #16201b; --bg-3: #1d2a23;
+    --fg: #ece6d6; --fg-muted: #8d9183;
+    --accent: #d29b3a; --accent-2: #e6b256; --moss: #547a4a;
+    --border: rgba(236,230,214,0.09); --maxw: 1240px;
   }
   *,*::before,*::after { box-sizing: border-box; margin: 0; padding: 0; }
   html { scroll-behavior: smooth; }
-  body {
-    background: var(--bg);
-    color: var(--fg);
-    font-family: 'Public Sans', system-ui, sans-serif;
-    font-weight: 300;
-    line-height: 1.65;
-    -webkit-font-smoothing: antialiased;
-    overflow-x: hidden;
-  }
+  body { background: var(--bg); color: var(--fg); font-family: 'Public Sans', system-ui, sans-serif; font-weight: 300; line-height: 1.65; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  body.no-scroll { overflow: hidden; }
   .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
   h1, h2, h3 { font-family: 'Cormorant SC', Georgia, serif; font-weight: 500; letter-spacing: 0.04em; line-height: 1.1; text-transform: uppercase; }
   h1 { font-size: clamp(2.6rem, 6.4vw, 4.8rem); }
   h2 { font-size: clamp(1.8rem, 3.8vw, 3rem); }
   h3 { font-size: 1.2rem; letter-spacing: 0.08em; }
-  em, .ital { font-family: 'Cormorant Garamond', serif; font-style: italic; text-transform: none; letter-spacing: 0; }
+  em, .ital { font-family: 'Cormorant Garamond', serif; font-style: italic; text-transform: none; letter-spacing: 0; color: var(--accent); }
   a { color: inherit; text-decoration: none; transition: opacity .25s ease; }
   a:hover { opacity: .7; }
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    padding: 22px 32px;
-    background: rgba(14,22,18,0.82);
-    backdrop-filter: blur(14px);
-    border-bottom: 1px solid var(--border);
-  }
-  nav .inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  button { font-family: inherit; }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 20px 32px; background: rgba(14,22,18,0.85); backdrop-filter: blur(14px); border-bottom: 1px solid var(--border); }
+  nav .inner { max-width: var(--maxw); margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
   nav .brand { font-family: 'Cormorant SC', serif; font-size: 1.05rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 500; }
   nav .brand .accent { color: var(--accent); }
-  nav ul { list-style: none; display: flex; gap: 36px; }
-  nav ul a { font-size: 0.78rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
-  nav .cta { background: var(--accent); color: var(--bg); padding: 11px 24px; border-radius: 0; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; }
+  nav ul { list-style: none; display: flex; gap: 32px; }
+  nav ul a { font-size: 0.76rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; }
+  nav .nav-right { display: flex; align-items: center; gap: 12px; }
+  nav .signin-btn, nav .cart-btn { background: transparent; border: 1px solid var(--border); color: var(--fg); padding: 9px 16px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: all .2s ease; }
+  nav .signin-btn:hover, nav .cart-btn:hover { border-color: var(--accent); color: var(--accent); }
+  nav .cart-btn { display: inline-flex; align-items: center; gap: 10px; }
+  nav .cart-btn .count { background: var(--accent); color: var(--bg); padding: 2px 8px; font-size: 0.7rem; font-weight: 700; min-width: 22px; text-align: center; letter-spacing: 0; }
+  nav .cart-btn .count.hidden { display: none; }
+  nav .cta { background: var(--accent); color: var(--bg); padding: 11px 22px; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; }
   nav .cta:hover { background: var(--accent-2); opacity: 1; }
-  @media (max-width: 820px) { nav ul { display: none; } }
-  .hero {
-    min-height: 100vh; display: flex; align-items: center;
-    padding: 160px 32px 100px;
-    background:
-      radial-gradient(ellipse 80% 60% at 50% 100%, rgba(84,122,74,0.18), transparent 60%),
-      radial-gradient(circle at 80% 30%, rgba(210,155,58,0.1), transparent 50%),
-      var(--bg);
-    text-align: center;
-    position: relative;
-    overflow: hidden;
-  }
-  .hero::before, .hero::after {
-    content: ''; position: absolute; left: 50%; transform: translateX(-50%);
-    width: 1px; background: var(--accent); opacity: 0.5;
-  }
+  @media (max-width: 980px) { nav ul { display: none; } }
+  @media (max-width: 640px) { nav .cta { display: none; } }
+  .hero { min-height: 100vh; display: flex; align-items: center; padding: 160px 32px 100px; background: radial-gradient(ellipse 80% 60% at 50% 100%, rgba(84,122,74,0.18), transparent 60%), radial-gradient(circle at 80% 30%, rgba(210,155,58,0.1), transparent 50%), var(--bg); text-align: center; position: relative; overflow: hidden; }
+  .hero::before, .hero::after { content: ''; position: absolute; left: 50%; transform: translateX(-50%); width: 1px; background: var(--accent); opacity: 0.5; }
   .hero::before { top: 100px; height: 40px; }
   .hero::after { bottom: 40px; height: 80px; }
   .hero-inner { max-width: 900px; margin: 0 auto; width: 100%; position: relative; z-index: 1; }
-  .crest { font-family: 'Cormorant SC', serif; font-size: 0.78rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); margin-bottom: 30px; }
+  .crest { font-family: 'Cormorant SC', serif; font-size: 0.76rem; letter-spacing: 0.36em; text-transform: uppercase; color: var(--accent); margin-bottom: 30px; }
   .crest .dot { color: var(--fg-muted); margin: 0 14px; }
   .hero h1 { margin: 0 auto 36px; max-width: 16ch; }
-  .hero h1 em { color: var(--accent); }
-  .hero p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.15rem, 1.6vw, 1.4rem); max-width: 50ch; margin: 0 auto 48px; color: var(--fg); line-height: 1.55; }
+  .hero p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.1rem, 1.6vw, 1.4rem); max-width: 50ch; margin: 0 auto 48px; }
   .hero-cta { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
-  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; font-family: 'Public Sans', sans-serif; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; border: none; transition: transform .25s ease, background .25s ease, opacity .25s ease; }
+  .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; font-family: 'Public Sans', sans-serif; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; border: none; transition: all .25s ease; }
   .btn-primary { background: var(--accent); color: var(--bg); }
   .btn-primary:hover { background: var(--accent-2); transform: translateY(-2px); opacity: 1; }
   .btn-ghost { background: transparent; color: var(--fg); border: 1px solid var(--border); }
   .btn-ghost:hover { border-color: var(--accent); color: var(--accent); opacity: 1; }
-  section { padding: 130px 32px; border-top: 1px solid var(--border); }
-  section .wrap { max-width: var(--maxw); margin: 0 auto; }
-  .section-head { text-align: center; margin-bottom: 80px; }
-  .section-head .eyebrow { font-family: 'Cormorant SC', serif; font-size: 0.78rem; letter-spacing: 0.3em; color: var(--accent); margin-bottom: 20px; }
-  .section-head h2 { margin: 0 auto 18px; max-width: 22ch; }
-  .section-head h2 em { color: var(--accent); }
-  .section-head p { font-family: 'Cormorant Garamond', serif; font-style: italic; max-width: 50ch; margin: 0 auto; color: var(--fg-muted); font-size: 1.18rem; }
-  .craft-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-  .craft-item { padding: 50px 36px; text-align: center; border-right: 1px solid var(--border); }
-  .craft-item:last-child { border-right: none; }
-  .craft-item .num { font-family: 'Cormorant SC', serif; color: var(--accent); font-size: 0.78rem; letter-spacing: 0.3em; margin-bottom: 24px; }
-  .craft-item h3 { margin-bottom: 16px; }
-  .craft-item p { font-size: 1rem; color: var(--fg-muted); line-height: 1.6; }
-  @media (max-width: 820px) { .craft-grid { grid-template-columns: 1fr; } .craft-item { border-right: none; border-top: 1px solid var(--border); } .craft-item:first-child { border-top: none; } }
-  .quote-block { padding: 100px 32px; text-align: center; background: var(--bg-2); }
-  .quote-block .q { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: clamp(1.6rem, 3.4vw, 2.6rem); line-height: 1.35; max-width: 26ch; margin: 0 auto 30px; color: var(--fg); }
-  .quote-block .q::before, .quote-block .q::after { color: var(--accent); }
-  .quote-block .q::before { content: '“'; }
-  .quote-block .q::after { content: '”'; }
-  .quote-block cite { font-family: 'Cormorant SC', serif; font-style: normal; font-size: 0.84rem; letter-spacing: 0.24em; color: var(--accent); }
-  .menu-list { display: grid; grid-template-columns: 1fr; gap: 0; }
-  .menu-row { display: grid; grid-template-columns: 1fr auto; gap: 40px; padding: 32px 12px; border-bottom: 1px solid var(--border); transition: padding .3s ease, background .3s ease; cursor: pointer; align-items: center; }
-  .menu-row:first-child { border-top: 1px solid var(--border); }
-  .menu-row:hover { padding-left: 30px; background: var(--bg-2); }
-  .menu-row .name { font-family: 'Cormorant SC', serif; font-size: 1.6rem; letter-spacing: 0.06em; text-transform: uppercase; }
-  .menu-row .desc { color: var(--fg-muted); font-size: 0.96rem; max-width: 50ch; margin-top: 4px; }
-  .menu-row .arrow { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.6rem; color: var(--accent); transition: transform .3s ease; }
-  .menu-row:hover .arrow { transform: translateX(6px); }
+  section { padding: 110px 32px; border-top: 1px solid var(--border); }
+  .section-head { text-align: center; margin-bottom: 60px; }
+  .section-head .eyebrow { font-family: 'Cormorant SC', serif; font-size: 0.74rem; letter-spacing: 0.3em; color: var(--accent); margin-bottom: 18px; text-transform: uppercase; }
+  .section-head h2 { margin: 0 auto 16px; max-width: 22ch; }
+  .section-head p { font-family: 'Cormorant Garamond', serif; font-style: italic; max-width: 50ch; margin: 0 auto; color: var(--fg-muted); font-size: 1.16rem; }
+
+  .filter-row { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; margin-bottom: 28px; }
+  .filter-pill { padding: 9px 18px; background: transparent; border: 1px solid var(--border); color: var(--fg-muted); font-family: 'Cormorant SC', serif; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: all .2s ease; }
+  .filter-pill:hover { color: var(--fg); border-color: var(--fg-muted); }
+  .filter-pill.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+  .shop-meta { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 28px; padding-bottom: 22px; border-bottom: 1px solid var(--border); font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--fg-muted); font-size: 1rem; }
+  .shop-meta strong { color: var(--accent); font-family: 'Cormorant SC', serif; font-style: normal; letter-spacing: 0.1em; }
+  .product-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+  @media (max-width: 900px) { .product-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 560px) { .product-grid { grid-template-columns: 1fr; } }
+  .product-card { background: var(--bg-2); border: 1px solid var(--border); overflow: hidden; display: flex; flex-direction: column; transition: all .3s ease; }
+  .product-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+  .product-visual { aspect-ratio: 4/3; position: relative; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant SC', serif; font-size: 1.6rem; letter-spacing: 0.06em; text-transform: uppercase; text-align: center; padding: 20px; color: var(--fg); }
+  .product-visual::after { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.08), transparent 50%); }
+  .product-visual .badge { position: absolute; top: 12px; left: 12px; font-family: 'Cormorant SC', serif; font-size: 0.66rem; letter-spacing: 0.22em; text-transform: uppercase; padding: 5px 11px; background: rgba(0,0,0,0.4); color: var(--fg); }
+  .product-visual .thc { position: absolute; bottom: 12px; right: 12px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.86rem; color: var(--fg); background: rgba(0,0,0,0.4); padding: 5px 11px; }
+  .product-body { padding: 24px; display: flex; flex-direction: column; flex: 1; }
+  .product-body h3 { font-size: 1.05rem; margin-bottom: 6px; }
+  .product-body .strain { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.92rem; color: var(--accent); margin-bottom: 14px; }
+  .product-body .desc { color: var(--fg-muted); font-size: 0.94rem; margin-bottom: 18px; flex: 1; }
+  .weight-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 16px; }
+  .weight-chip { padding: 7px 14px; background: var(--bg-3); border: 1px solid transparent; color: var(--fg-muted); font-family: 'Cormorant SC', serif; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; transition: all .2s ease; }
+  .weight-chip:hover { color: var(--fg); }
+  .weight-chip.active { background: var(--accent); color: var(--bg); }
+  .product-foot { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .product-price { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.6rem; color: var(--accent); }
+  .add-btn { background: var(--accent); color: var(--bg); border: none; padding: 11px 18px; font-family: 'Cormorant SC', serif; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: all .2s ease; }
+  .add-btn:hover { background: var(--accent-2); transform: translateY(-1px); }
+  .add-btn.added { background: var(--moss); }
+
   .locations { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-  .loc-card { padding: 50px 44px; background: var(--bg-2); border: 1px solid var(--border); text-align: left; }
-  .loc-card .badge { font-family: 'Cormorant SC', serif; font-size: 0.74rem; letter-spacing: 0.28em; color: var(--accent); margin-bottom: 22px; }
-  .loc-card h3 { font-size: 1.6rem; margin-bottom: 18px; }
-  .loc-card address { font-style: normal; font-size: 1.04rem; margin-bottom: 26px; line-height: 1.55; }
-  .loc-card .hr-row { display: flex; justify-content: space-between; padding: 13px 0; border-top: 1px solid var(--border); font-size: 0.94rem; }
-  .loc-card .hr-row:last-of-type { border-bottom: 1px solid var(--border); margin-bottom: 28px; }
+  .loc-card { padding: 50px 44px; background: var(--bg-2); border: 1px solid var(--border); }
+  .loc-card .badge { font-family: 'Cormorant SC', serif; font-size: 0.72rem; letter-spacing: 0.28em; color: var(--accent); margin-bottom: 20px; text-transform: uppercase; }
+  .loc-card h3 { font-size: 1.4rem; margin-bottom: 18px; }
+  .loc-card address { font-style: normal; font-size: 1.02rem; margin-bottom: 26px; line-height: 1.55; }
+  .loc-card .hr-row { display: flex; justify-content: space-between; padding: 12px 0; border-top: 1px solid var(--border); font-size: 0.92rem; }
+  .loc-card .hr-row:last-of-type { border-bottom: 1px solid var(--border); margin-bottom: 24px; }
   .loc-card .hr-row .day { color: var(--fg-muted); }
   @media (max-width: 820px) { .locations { grid-template-columns: 1fr; } }
-  .cta-band { padding: 130px 32px; text-align: center; }
-  .cta-band h2 { margin-bottom: 22px; max-width: 20ch; margin-left: auto; margin-right: auto; }
-  .cta-band h2 em { color: var(--accent); }
-  .cta-band p { font-family: 'Cormorant Garamond', serif; font-style: italic; max-width: 48ch; margin: 0 auto 38px; font-size: 1.18rem; color: var(--fg-muted); }
+
   footer { padding: 50px 32px 38px; border-top: 1px solid var(--border); }
   footer .inner { max-width: var(--maxw); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 18px; }
   footer .brand { font-family: 'Cormorant SC', serif; font-size: 1rem; letter-spacing: 0.18em; text-transform: uppercase; }
   footer .brand .accent { color: var(--accent); }
   footer .small { font-size: 0.78rem; color: var(--fg-muted); letter-spacing: 0.06em; }
+
+  .scrim { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); opacity: 0; pointer-events: none; transition: opacity .3s ease; z-index: 200; }
+  .scrim.open { opacity: 1; pointer-events: auto; }
+  .cart-drawer { position: fixed; top: 0; right: 0; bottom: 0; width: 440px; max-width: 100vw; background: var(--bg-2); border-left: 1px solid var(--border); z-index: 210; transform: translateX(100%); transition: transform .35s ease; display: flex; flex-direction: column; }
+  .cart-drawer.open { transform: translateX(0); }
+  .cart-head { padding: 22px 28px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; }
+  .cart-head h3 { font-size: 1.1rem; }
+  .cart-close { background: transparent; border: none; color: var(--fg); cursor: pointer; width: 36px; height: 36px; font-size: 1.3rem; }
+  .cart-items { flex: 1; overflow-y: auto; padding: 18px 28px; }
+  .cart-empty { color: var(--fg-muted); text-align: center; padding: 60px 20px; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; }
+  .cart-item { display: grid; grid-template-columns: 64px 1fr auto; gap: 14px; padding: 16px 0; border-bottom: 1px solid var(--border); }
+  .ci-visual { width: 64px; height: 64px; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant SC', serif; font-size: 1rem; letter-spacing: 0.06em; color: var(--fg); text-transform: uppercase; }
+  .ci-mid .name { font-family: 'Cormorant SC', serif; font-size: 0.92rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  .ci-mid .meta { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.86rem; color: var(--fg-muted); }
+  .ci-qty { display: inline-flex; align-items: center; gap: 4px; margin-top: 6px; }
+  .ci-qty button { width: 22px; height: 22px; background: var(--bg-3); border: 1px solid var(--border); color: var(--fg); cursor: pointer; }
+  .ci-qty .q { font-size: 0.86rem; width: 22px; text-align: center; }
+  .ci-right { display: flex; flex-direction: column; align-items: flex-end; justify-content: space-between; }
+  .ci-right .price { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; color: var(--accent); }
+  .ci-right .rm { background: transparent; border: none; color: var(--fg-muted); font-family: 'Cormorant SC', serif; font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer; }
+  .cart-foot { padding: 22px 28px 28px; border-top: 1px solid var(--border); }
+  .cart-totals { display: grid; gap: 8px; margin-bottom: 18px; }
+  .cart-totals .row { display: flex; justify-content: space-between; font-size: 0.92rem; color: var(--fg-muted); font-family: 'Cormorant Garamond', serif; font-style: italic; }
+  .cart-totals .row.total { font-size: 1.02rem; color: var(--fg); padding-top: 10px; margin-top: 6px; border-top: 1px solid var(--border); font-family: 'Cormorant SC', serif; font-style: normal; letter-spacing: 0.08em; text-transform: uppercase; }
+  .cart-totals .row.total .v { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.5rem; color: var(--accent); text-transform: none; letter-spacing: 0; }
+  .checkout-btn { width: 100%; background: var(--accent); color: var(--bg); border: none; padding: 16px 20px; font-family: 'Cormorant SC', serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; }
+  .checkout-btn:hover { background: var(--accent-2); }
+  .checkout-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+  .legal { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.86rem; color: var(--fg-muted); text-align: center; margin-top: 12px; }
+
+  .modal { position: fixed; inset: 0; z-index: 300; display: none; align-items: center; justify-content: center; padding: 24px; }
+  .modal.open { display: flex; }
+  .modal-card { background: var(--bg-2); border: 1px solid var(--border); width: 100%; max-width: 540px; max-height: 92vh; overflow-y: auto; padding: 36px; position: relative; }
+  .modal-close { position: absolute; top: 18px; right: 18px; background: transparent; border: none; color: var(--fg-muted); cursor: pointer; width: 32px; height: 32px; font-size: 1.2rem; }
+  .modal h3 { font-size: 1.3rem; margin-bottom: 8px; }
+  .modal .modal-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--fg-muted); font-size: 1.06rem; margin-bottom: 24px; }
+  .field { margin-bottom: 16px; }
+  .field label { display: block; font-family: 'Cormorant SC', serif; font-size: 0.7rem; color: var(--fg-muted); margin-bottom: 6px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .field input, .field select { width: 100%; padding: 12px 14px; background: var(--bg-3); border: 1px solid var(--border); color: var(--fg); font-family: 'Cormorant Garamond', serif; font-size: 1rem; }
+  .field input:focus, .field select:focus { outline: none; border-color: var(--accent); }
+  .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .order-summary { background: var(--bg-3); padding: 14px 16px; margin: 6px 0 22px; font-size: 0.9rem; }
+  .order-summary .os-row { display: flex; justify-content: space-between; padding: 4px 0; color: var(--fg-muted); font-family: 'Cormorant Garamond', serif; font-style: italic; }
+  .order-summary .os-row.os-total { color: var(--fg); margin-top: 6px; padding-top: 8px; border-top: 1px solid var(--border); font-family: 'Cormorant SC', serif; font-style: normal; letter-spacing: 0.08em; text-transform: uppercase; }
+  .submit-btn { width: 100%; background: var(--accent); color: var(--bg); border: none; padding: 16px 20px; font-family: 'Cormorant SC', serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; }
+  .submit-btn:hover { background: var(--accent-2); }
+  .confirm { text-align: center; padding: 20px 0; }
+  .confirm .icon { width: 64px; height: 64px; background: var(--accent); color: var(--bg); margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 1.8rem; font-family: 'Cormorant SC', serif; }
+  .confirm h3 { margin-bottom: 10px; }
+  .confirm p { color: var(--fg-muted); font-size: 1rem; margin-bottom: 8px; font-family: 'Cormorant Garamond', serif; font-style: italic; }
+  .confirm .order-id { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--accent); font-size: 1.4rem; margin: 16px 0 24px; }
+
+  .auth-tabs { display: flex; gap: 0; margin-bottom: 24px; border: 1px solid var(--border); }
+  .auth-tabs button { flex: 1; padding: 12px 14px; background: transparent; border: none; color: var(--fg-muted); font-family: 'Cormorant SC', serif; font-size: 0.74rem; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: all .2s ease; }
+  .auth-tabs button.active { background: var(--accent); color: var(--bg); }
+  .auth-divider { display: flex; align-items: center; gap: 12px; margin: 26px 0 18px; color: var(--fg-muted); font-family: 'Cormorant SC', serif; font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; }
+  .auth-divider::before, .auth-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  .demo-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .demo-row button { padding: 14px 14px; border: 1px solid var(--accent); background: transparent; color: var(--accent); cursor: pointer; font-family: 'Cormorant SC', serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; transition: all .2s ease; }
+  .demo-row button:hover { background: var(--accent); color: var(--bg); }
+
+  .dashboard { position: fixed; inset: 0; z-index: 500; background: var(--bg); display: none; flex-direction: column; }
+  .dashboard.open { display: flex; }
+  .dash-header { padding: 18px 28px; border-bottom: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; gap: 18px; flex-wrap: wrap; background: var(--bg-2); }
+  .dash-header .brand { font-family: 'Cormorant SC', serif; font-size: 0.94rem; letter-spacing: 0.18em; text-transform: uppercase; }
+  .dash-header .brand .accent { color: var(--accent); }
+  .dash-header .brand small { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.88rem; color: var(--accent); margin-left: 12px; padding: 4px 10px; background: var(--bg-3); letter-spacing: 0; text-transform: none; }
+  .view-switcher { display: flex; gap: 0; border: 1px solid var(--border); }
+  .view-switcher button { padding: 10px 18px; background: transparent; border: none; color: var(--fg-muted); font-family: 'Cormorant SC', serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: all .2s ease; }
+  .view-switcher button.active { background: var(--accent); color: var(--bg); }
+  .dash-exit { background: transparent; border: 1px solid var(--accent); color: var(--accent); padding: 10px 18px; cursor: pointer; font-family: 'Cormorant SC', serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; }
+  .dash-exit:hover { background: var(--accent); color: var(--bg); }
+  .dash-body { flex: 1; overflow-y: auto; padding: 36px 28px 60px; }
+  .dash-wrap { max-width: 1180px; margin: 0 auto; }
+  .dash-greet { font-family: 'Cormorant SC', serif; font-size: clamp(1.6rem, 3.2vw, 2.4rem); margin-bottom: 6px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .dash-greet em { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--accent); text-transform: none; letter-spacing: 0; }
+  .dash-sub { color: var(--fg-muted); font-size: 1.04rem; margin-bottom: 32px; font-family: 'Cormorant Garamond', serif; font-style: italic; }
+  .dash-grid { display: grid; gap: 18px; }
+  .kpi-row { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+  .kpi { background: var(--bg-2); border: 1px solid var(--border); padding: 22px; }
+  .kpi .lbl { font-family: 'Cormorant SC', serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-muted); margin-bottom: 12px; }
+  .kpi .v { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 2.4rem; line-height: 1; color: var(--fg); }
+  .kpi .v small { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.88rem; color: var(--accent); margin-left: 6px; }
+  .panel { background: var(--bg-2); border: 1px solid var(--border); padding: 24px; }
+  .panel h4 { font-family: 'Cormorant SC', serif; font-size: 1rem; letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 18px; }
+  .panel h4 small { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.84rem; color: var(--fg-muted); margin-left: 10px; letter-spacing: 0; text-transform: none; }
+  .two-col { grid-template-columns: 1.4fr 1fr; }
+  @media (max-width: 900px) { .two-col { grid-template-columns: 1fr; } }
+  .loyalty-card { background: linear-gradient(135deg, var(--moss) 0%, #2c4628 100%); padding: 28px; color: var(--fg); position: relative; overflow: hidden; }
+  .loyalty-card::after { content: ''; position: absolute; right: -40px; top: -40px; width: 160px; height: 160px; border-radius: 50%; background: radial-gradient(circle, var(--accent), transparent 70%); opacity: 0.25; }
+  .loyalty-card .tier { display: inline-block; padding: 4px 12px; background: rgba(0,0,0,0.3); font-family: 'Cormorant SC', serif; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 14px; position: relative; z-index: 1; }
+  .loyalty-card .pts { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 3.2rem; line-height: 1; margin-bottom: 4px; position: relative; z-index: 1; }
+  .loyalty-card .pts small { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.86rem; opacity: 0.8; margin-left: 4px; }
+  .loyalty-card .progress { margin-top: 18px; position: relative; z-index: 1; }
+  .loyalty-card .bar { height: 6px; background: rgba(0,0,0,0.3); overflow: hidden; margin: 8px 0; }
+  .loyalty-card .bar > div { height: 100%; background: var(--accent); }
+  .loyalty-card .next { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.92rem; opacity: 0.9; }
+  .list-row { display: grid; grid-template-columns: 36px 1fr auto auto; gap: 14px; align-items: center; padding: 12px 0; border-bottom: 1px solid var(--border); font-size: 0.94rem; }
+  .list-row .dot { width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant SC', serif; font-size: 0.88rem; color: var(--fg); letter-spacing: 0.06em; text-transform: uppercase; }
+  .list-row .meta { color: var(--fg-muted); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 0.86rem; }
+  .list-row .v { color: var(--accent); font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; }
+  .list-row .pill { padding: 3px 10px; font-family: 'Cormorant SC', serif; font-size: 0.66rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--fg-muted); background: var(--bg-3); }
+  .list-row .pill.ok { background: rgba(84,122,74,0.18); color: var(--moss); }
+  .reward-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .reward { padding: 16px; background: var(--bg-3); border: 1px solid var(--border); }
+  .reward .cost { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--accent); font-size: 1.1rem; margin-bottom: 4px; }
+  .reward .name { font-family: 'Cormorant SC', serif; font-size: 0.78rem; letter-spacing: 0.1em; text-transform: uppercase; }
+  .tier-bar { display: grid; gap: 10px; }
+  .tier-bar .tb { display: grid; grid-template-columns: 100px 1fr 50px; gap: 12px; align-items: center; font-family: 'Cormorant SC', serif; font-size: 0.76rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  .tier-bar .tb-bar { height: 8px; background: var(--bg-3); overflow: hidden; }
+  .tier-bar .tb-bar > div { height: 100%; background: var(--accent); }
+  .tier-bar .tb-pct { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--fg-muted); text-align: right; font-size: 0.88rem; letter-spacing: 0; text-transform: none; }
+
+  .toast { position: fixed; bottom: 28px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--accent); color: var(--bg); padding: 12px 22px; font-family: 'Cormorant SC', serif; font-size: 0.74rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0; pointer-events: none; transition: all .3s ease; z-index: 400; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
   .fade-in { opacity: 0; transform: translateY(30px); transition: opacity 1s ease, transform 1s ease; }
   .fade-in.visible { opacity: 1; transform: translateY(0); }
 </style>
@@ -139,12 +234,14 @@
   <div class="inner">
     <a href="#top" class="brand">Keeper <span class="accent">of the</span> Green</a>
     <ul>
-      <li><a href="#craft">Craft</a></li>
-      <li><a href="#menu">Menu</a></li>
-      <li><a href="#visit">Visit</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#shop">Menu</a></li>
+      <li><a href="#visit">Locations</a></li>
     </ul>
-    <a href="#menu" class="cta">Order Pickup</a>
+    <div class="nav-right">
+      <button class="signin-btn" id="signinBtn">Sign In</button>
+      <button class="cart-btn" id="cartBtn"><span>Cart</span><span class="count hidden" id="cartCount">0</span></button>
+      <a href="#shop" class="cta">Order Pickup</a>
+    </div>
   </div>
 </nav>
 
@@ -152,51 +249,24 @@
   <div class="hero-inner">
     <div class="crest">Helena, MT<span class="dot">·</span>Est. 2018<span class="dot">·</span>Forest Fine</div>
     <h1>Award-winning craft cannabis, <em>grown in the Montana woods</em>.</h1>
-    <p>Hand-trimmed. Slow-cured. Quietly excellent. Two locations in Helena serving the people who know the difference.</p>
+    <p>Hand-trimmed. Slow-cured. Quietly excellent. Two locations in Helena.</p>
     <div class="hero-cta">
-      <a href="#menu" class="btn btn-primary">Browse the Menu</a>
+      <a href="#shop" class="btn btn-primary">Browse the Menu</a>
       <a href="#visit" class="btn btn-ghost">Find Us</a>
     </div>
   </div>
 </header>
 
-<section id="craft">
+<section id="shop">
   <div class="wrap">
     <div class="section-head fade-in">
-      <div class="eyebrow">— Our Approach —</div>
-      <h2>Three things we <em>refuse to rush</em>.</h2>
-      <p>What makes a great craft dispensary is also what makes a great craft anything: patience, attention, and a refusal to cut corners.</p>
-    </div>
-    <div class="craft-grid">
-      <div class="craft-item fade-in"><div class="num">— I —</div><h3>The Grow</h3><p>Small-batch, indoor and greenhouse cultivation under organic-aligned methods. No corner-cutting, no fillers.</p></div>
-      <div class="craft-item fade-in"><div class="num">— II —</div><h3>The Cure</h3><p>Slow-cured in glass for weeks, not days. Every jar opens with a story.</p></div>
-      <div class="craft-item fade-in"><div class="num">— III —</div><h3>The Hand</h3><p>Hand-trimmed by people who care about the trichome shelf they leave behind.</p></div>
-    </div>
-  </div>
-</section>
-
-<section class="quote-block">
-  <div class="wrap">
-    <div class="q fade-in">If craft cannabis has a sound, it's the silence of a room full of people doing it right.</div>
-    <cite class="fade-in">— The Keeper's Note</cite>
-  </div>
-</section>
-
-<section id="menu">
-  <div class="wrap">
-    <div class="section-head fade-in">
-      <div class="eyebrow">— What's on the Shelf —</div>
+      <div class="eyebrow">— What's on the shelf —</div>
       <h2>Curated, never <em>crowded</em>.</h2>
-      <p>A focused selection of our own award-winning strains alongside the best products coming out of Montana's craft producers.</p>
+      <p>A focused selection of our award-winning house strains alongside the best from Montana's craft producers.</p>
     </div>
-    <div class="menu-list">
-      <div class="menu-row fade-in"><div><div class="name">House Flower</div><div class="desc">Our own indoor and greenhouse strains. The reason most regulars come back.</div></div><div class="arrow">→</div></div>
-      <div class="menu-row fade-in"><div><div class="name">Pre-Rolls</div><div class="desc">Hand-rolled with full nug, never shake or trim.</div></div><div class="arrow">→</div></div>
-      <div class="menu-row fade-in"><div><div class="name">Live Rosin &amp; Resin</div><div class="desc">Solventless concentrates pressed from our top-tier flower.</div></div><div class="arrow">→</div></div>
-      <div class="menu-row fade-in"><div><div class="name">Cartridges</div><div class="desc">Live resin and distillate from Montana producers we know personally.</div></div><div class="arrow">→</div></div>
-      <div class="menu-row fade-in"><div><div class="name">Edibles</div><div class="desc">Precisely dosed gummies, chocolates, and beverages.</div></div><div class="arrow">→</div></div>
-      <div class="menu-row fade-in"><div><div class="name">Topicals &amp; Tinctures</div><div class="desc">Slow-relief options for daily wellness routines.</div></div><div class="arrow">→</div></div>
-    </div>
+    <div class="filter-row fade-in" id="filterRow"></div>
+    <div class="shop-meta"><div><strong id="productCount">0</strong> in stock at both locations</div><div>Pickup ready in 30 minutes</div></div>
+    <div class="product-grid" id="productGrid"></div>
   </div>
 </section>
 
@@ -212,42 +282,172 @@
         <div class="badge">— Central Helena —</div>
         <h3>The Original Shop</h3>
         <address>1318 11th Avenue<br>Helena, MT 59601<br><br><a href="tel:+14064493699" style="color:var(--accent);">(406) 449-3699</a></address>
-        <div class="hr-row"><span class="day">Monday – Saturday</span><span>10:00 AM – 8:00 PM</span></div>
-        <div class="hr-row"><span class="day">Sunday</span><span>12:00 PM – 6:00 PM</span></div>
+        <div class="hr-row"><span class="day">Mon – Sat</span><span>10 AM – 8 PM</span></div>
+        <div class="hr-row"><span class="day">Sunday</span><span>12 – 6 PM</span></div>
         <a href="https://maps.google.com/?q=1318+11th+Ave+Helena+MT" target="_blank" class="btn btn-ghost">Directions</a>
       </div>
       <div class="loc-card fade-in">
         <div class="badge">— West Helena Valley —</div>
         <h3>The Valley Shop</h3>
         <address>3445 N Montana Avenue<br>Helena, MT 59602<br><br><a href="tel:+14064494357" style="color:var(--accent);">(406) 449-4357</a></address>
-        <div class="hr-row"><span class="day">Monday – Saturday</span><span>10:00 AM – 8:00 PM</span></div>
-        <div class="hr-row"><span class="day">Sunday</span><span>12:00 PM – 6:00 PM</span></div>
+        <div class="hr-row"><span class="day">Mon – Sat</span><span>10 AM – 8 PM</span></div>
+        <div class="hr-row"><span class="day">Sunday</span><span>12 – 6 PM</span></div>
         <a href="https://maps.google.com/?q=3445+N+Montana+Ave+Helena+MT" target="_blank" class="btn btn-ghost">Directions</a>
       </div>
     </div>
   </div>
 </section>
 
-<section class="cta-band" id="contact">
-  <div class="wrap">
-    <h2 class="fade-in">Step into the <em>forest fine</em>.</h2>
-    <p class="fade-in">Order online for fast pickup, or take your time and come browse the jars in person. We'll have the kettle on, metaphorically speaking.</p>
-    <a href="tel:+14064493699" class="btn btn-primary fade-in">Call the Shop</a>
-  </div>
-</section>
-
 <footer>
   <div class="inner">
     <div class="brand">Keeper <span class="accent">of the</span> Green</div>
-    <div class="small">© 2026 Keeper of the Green · Helena, MT · Montana Licensed Cannabis Provider</div>
+    <div class="small">© 2026 Keeper of the Green · Helena, MT · Montana Licensed</div>
   </div>
 </footer>
 
+<div class="scrim" id="scrim"></div>
+<aside class="cart-drawer" id="cartDrawer">
+  <div class="cart-head"><h3>Your Cart</h3><button class="cart-close" id="cartClose">×</button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty">Your cart is empty.</div></div>
+  <div class="cart-foot">
+    <div class="cart-totals">
+      <div class="row"><span>Subtotal</span><span class="v" id="cartSubtotal">$0.00</span></div>
+      <div class="row"><span>MT tax (4%)</span><span class="v" id="cartTax">$0.00</span></div>
+      <div class="row total"><span>Total</span><span class="v" id="cartTotal">$0.00</span></div>
+    </div>
+    <button class="checkout-btn" id="checkoutBtn" disabled>Reserve for Pickup</button>
+    <div class="legal">No payment online. Pay at pickup with cash or debit. 21+ ID or MT medical card required.</div>
+  </div>
+</aside>
+
+<div class="modal" id="checkoutModal">
+  <div class="modal-card">
+    <button class="modal-close" id="modalClose">×</button>
+    <div id="checkoutForm">
+      <h3>Reserve your order</h3>
+      <p class="modal-sub">We'll text you when your order is ready.</p>
+      <form id="orderForm">
+        <div class="field-row"><div class="field"><label>First</label><input required></div><div class="field"><label>Last</label><input required></div></div>
+        <div class="field"><label>Mobile</label><input type="tel" required></div>
+        <div class="field"><label>Email</label><input type="email" required></div>
+        <div class="field"><label>Date of birth</label><input type="date" required></div>
+        <div class="field"><label>Pickup at</label><select required><option value="">Select…</option><option>Central Helena</option><option>West Helena Valley</option></select></div>
+        <div class="order-summary" id="orderSummary"></div>
+        <button class="submit-btn" type="submit">Place Reservation</button>
+      </form>
+    </div>
+    <div id="checkoutConfirm" style="display:none;">
+      <div class="confirm">
+        <div class="icon">✓</div>
+        <h3>Reserved.</h3>
+        <p>Confirmation sent to <span id="confirmEmail" style="color:var(--fg);font-style:normal;font-family:'Cormorant SC';letter-spacing:0.06em;"></span></p>
+        <p>Ready within 30 minutes at your chosen shop.</p>
+        <div class="order-id">#<span id="orderIdOut"></span></div>
+        <button class="btn btn-ghost" id="confirmDone">Continue Browsing</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="loginModal">
+  <div class="modal-card" style="max-width:460px;">
+    <button class="modal-close" id="loginClose">×</button>
+    <h3>Welcome to <em>Keeper of the Green</em></h3>
+    <p class="modal-sub">Sign in to track orders, earn rewards, and reorder favorites.</p>
+    <div class="auth-tabs"><button class="active" data-auth-tab="signin">Sign In</button><button data-auth-tab="signup">Create Account</button></div>
+    <div id="signinPane"><form onsubmit="event.preventDefault(); openDashboard('customer');"><div class="field"><label>Email</label><input type="email" required></div><div class="field"><label>Password</label><input type="password" required></div><button class="submit-btn" type="submit">Sign In</button></form></div>
+    <div id="signupPane" style="display:none;"><form onsubmit="event.preventDefault(); openDashboard('customer');"><div class="field-row"><div class="field"><label>First</label><input required></div><div class="field"><label>Last</label><input required></div></div><div class="field"><label>Email</label><input type="email" required></div><div class="field"><label>Date of birth</label><input type="date" required></div><div class="field"><label>Password</label><input type="password" required></div><button class="submit-btn" type="submit">Create Account</button></form></div>
+    <div class="auth-divider">Preview a Dashboard</div>
+    <div class="demo-row"><button onclick="openDashboard('customer')">Customer Demo →</button><button onclick="openDashboard('admin')">Admin Demo →</button></div>
+  </div>
+</div>
+
+<div class="dashboard" id="dashboard">
+  <div class="dash-header">
+    <div class="brand">Keeper <span class="accent">of the</span> Green<small>Demo Dashboard</small></div>
+    <div class="view-switcher"><button class="active" data-view="customer">Customer</button><button data-view="admin">Admin</button></div>
+    <button class="dash-exit" id="dashExit">Exit Demo</button>
+  </div>
+  <div class="dash-body"><div class="dash-wrap" id="dashContent"></div></div>
+</div>
+
+<div class="toast" id="toast">Added</div>
+
 <script>
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); } });
-  }, { threshold: 0.12 });
-  document.querySelectorAll('.fade-in').forEach(el => io.observe(el));
+const products = [
+  { id:'forest',cat:'flower',name:'Forest Fine OG',strain:'Indica · House award winner',thc:24.2,c1:'#16201b',c2:'#547a4a',desc:'Our flagship indoor indica. Cured in glass for six weeks.',prices:[{w:'1g',p:14},{w:'3.5g',p:42},{w:'7g',p:78},{w:'28g',p:280}] },
+  { id:'lonepine',cat:'flower',name:'Lone Pine',strain:'Sativa-hybrid',thc:23.0,c1:'#1d2a23',c2:'#547a4a',desc:'Crisp, pine-forward hybrid. Daytime focus.',prices:[{w:'1g',p:14},{w:'3.5g',p:42},{w:'7g',p:78}] },
+  { id:'snowline',cat:'flower',name:'Snow Line',strain:'Indica',thc:25.4,c1:'#1f2826',c2:'#5e7670',desc:'Mountain indica. Deep snow, deep rest.',prices:[{w:'1g',p:15},{w:'3.5g',p:45}] },
+  { id:'thaw',  cat:'flower',name:'Spring Thaw',strain:'Hybrid',thc:23.5,c1:'#1f2820',c2:'#6e8a4a',desc:'Bright, balanced hybrid. Renewal in a jar.',prices:[{w:'1g',p:14},{w:'3.5g',p:42}] },
+  { id:'kogroll',cat:'prerolls',name:'House Pre-Roll',strain:'1g · Full nug',thc:23.0,c1:'#26201a',c2:'#a87a3a',desc:'Hand-rolled with Forest Fine OG. Full nug only.',prices:[{w:'each',p:8}] },
+  { id:'kog2g',cat:'prerolls',name:'The Long Walk',strain:'2g · Hybrid',thc:23.0,c1:'#1f2820',c2:'#a87a3a',desc:'Two-gram joint for the trail or the porch.',prices:[{w:'each',p:14}] },
+  { id:'koglr',cat:'concentrates',name:'Forest Fine Live Rosin',strain:'1g · Solventless',thc:82.5,c1:'#16201b',c2:'#547a4a',desc:'Solventless rosin from fresh-frozen flower.',prices:[{w:'1g',p:75}] },
+  { id:'kogbad',cat:'concentrates',name:'Snow Line Badder',strain:'1g · Live Resin',thc:78.0,c1:'#1f2826',c2:'#5e7670',desc:'Whipped live resin badder. Smooth on any rig.',prices:[{w:'1g',p:55}] },
+  { id:'kogcart',cat:'vapes',name:'Lone Pine Cart',strain:'1g · Live Resin',thc:80.0,c1:'#1d2a23',c2:'#547a4a',desc:'Live resin cart, 510-thread, ceramic core.',prices:[{w:'1g',p:48}] },
+  { id:'kogdisp',cat:'vapes',name:'Forest Fine Disposable',strain:'0.5g · Indica',thc:78.0,c1:'#16201b',c2:'#547a4a',desc:'Rechargeable disposable, ready to go.',prices:[{w:'0.5g',p:32}] },
+  { id:'koggum',cat:'edibles',name:'Huckleberry Gummies',strain:'10mg × 10',thc:0,c1:'#2a1828',c2:'#7a2860',desc:'Real Montana huckleberry, precisely dosed.',prices:[{w:'pack',p:24}] },
+  { id:'kogchoc',cat:'edibles',name:'Pine Honey Chocolate',strain:'10mg × 10',thc:0,c1:'#241814',c2:'#a87a3a',desc:'Local honey, dark chocolate, predictable onset.',prices:[{w:'bar',p:28}] }
+];
+const filters = [{id:'all',label:'All'},{id:'flower',label:'Flower'},{id:'prerolls',label:'Pre-Rolls'},{id:'concentrates',label:'Concentrates'},{id:'vapes',label:'Vapes'},{id:'edibles',label:'Edibles'}];
+const state = { filter:'all', cart:[], selectedWeight:{} };
+const $ = id => document.getElementById(id);
+const money = n => '$' + n.toFixed(2);
+const getP = id => products.find(p => p.id === id);
+const selW = p => state.selectedWeight[p.id] || p.prices[0].w;
+const priceFor = (p, w) => (p.prices.find(x => x.w === w) || p.prices[0]).p;
+function renderFilters() { $('filterRow').innerHTML = filters.map(f => `<button class="filter-pill ${f.id===state.filter?'active':''}" data-f="${f.id}">${f.label}</button>`).join(''); document.querySelectorAll('.filter-pill').forEach(b => b.addEventListener('click', () => { state.filter=b.dataset.f; renderFilters(); renderProducts(); })); }
+function visual(p) { return `<div class="product-visual" style="background:linear-gradient(135deg,${p.c1} 0%,${p.c2} 100%);"><span class="badge">${p.strain.split(' · ')[0]}</span><span>${p.name}</span>${p.thc>0?`<span class="thc">${p.thc.toFixed(1)}%</span>`:''}</div>`; }
+function smallVis(p) { return `<div class="ci-visual" style="background:linear-gradient(135deg,${p.c1} 0%,${p.c2} 100%);">${p.name.split(' ').map(s=>s[0]).join('').slice(0,2)}</div>`; }
+function renderProducts() {
+  const list = state.filter==='all'?products:products.filter(p=>p.cat===state.filter);
+  $('productCount').textContent = list.length;
+  $('productGrid').innerHTML = list.map(p => { const w=selW(p), price=priceFor(p,w); return `<article class="product-card">${visual(p)}<div class="product-body"><h3>${p.name}</h3><div class="strain">— ${p.strain}</div><p class="desc">${p.desc}</p><div class="weight-row">${p.prices.map(o=>`<button class="weight-chip ${o.w===w?'active':''}" data-pid="${p.id}" data-w="${o.w}">${o.w}</button>`).join('')}</div><div class="product-foot"><div class="product-price">${money(price)}</div><button class="add-btn" data-add="${p.id}">Add</button></div></div></article>`; }).join('');
+  document.querySelectorAll('.weight-chip').forEach(b => b.addEventListener('click', () => { state.selectedWeight[b.dataset.pid]=b.dataset.w; renderProducts(); }));
+  document.querySelectorAll('.add-btn').forEach(b => b.addEventListener('click', () => { addToCart(b.dataset.add); b.textContent='Added ✓'; b.classList.add('added'); setTimeout(()=>{b.textContent='Add';b.classList.remove('added');},1400); }));
+}
+function addToCart(pid) { const p=getP(pid), w=selW(p), e=state.cart.find(i=>i.id===pid&&i.w===w); if(e) e.qty+=1; else state.cart.push({id:pid,w,qty:1}); renderCart(); toast(`${p.name} added`); }
+function chgQty(i,d) { state.cart[i].qty+=d; if(state.cart[i].qty<=0) state.cart.splice(i,1); renderCart(); }
+function rmItem(i) { state.cart.splice(i,1); renderCart(); }
+function subtotal() { return state.cart.reduce((s,i)=>s+priceFor(getP(i.id),i.w)*i.qty,0); }
+function renderCart() {
+  const items=$('cartItems'), count=state.cart.reduce((s,i)=>s+i.qty,0), sub=subtotal(), tax=sub*0.04, total=sub+tax;
+  $('cartCount').textContent=count; $('cartCount').classList.toggle('hidden',count===0);
+  $('cartSubtotal').textContent=money(sub); $('cartTax').textContent=money(tax); $('cartTotal').textContent=money(total);
+  $('checkoutBtn').disabled=count===0;
+  if(state.cart.length===0){items.innerHTML='<div class="cart-empty">Your cart is empty.</div>';return;}
+  items.innerHTML=state.cart.map((i,idx)=>{const p=getP(i.id),lp=priceFor(p,i.w)*i.qty;return `<div class="cart-item">${smallVis(p)}<div class="ci-mid"><div class="name">${p.name}</div><div class="meta">${i.w} · ${p.strain}</div><div class="ci-qty"><button data-qty="${idx}" data-d="-1">−</button><span class="q">${i.qty}</span><button data-qty="${idx}" data-d="1">+</button></div></div><div class="ci-right"><div class="price">${money(lp)}</div><button class="rm" data-rm="${idx}">Remove</button></div></div>`;}).join('');
+  items.querySelectorAll('[data-qty]').forEach(b=>b.addEventListener('click',()=>chgQty(+b.dataset.qty,+b.dataset.d)));
+  items.querySelectorAll('.rm').forEach(b=>b.addEventListener('click',()=>rmItem(+b.dataset.rm)));
+}
+function openCart(){$('cartDrawer').classList.add('open');$('scrim').classList.add('open');document.body.classList.add('no-scroll');}
+function closeCart(){$('cartDrawer').classList.remove('open');$('scrim').classList.remove('open');document.body.classList.remove('no-scroll');}
+function openCheckout(){closeCart();const sub=subtotal(),tax=sub*0.04,total=sub+tax;const lines=state.cart.map(i=>{const p=getP(i.id);return `<div class="os-row"><span>${i.qty} × ${p.name} (${i.w})</span><span>${money(priceFor(p,i.w)*i.qty)}</span></div>`;}).join('');$('orderSummary').innerHTML=`${lines}<div class="os-row"><span>MT tax</span><span>${money(tax)}</span></div><div class="os-row os-total"><span>Total</span><span>${money(total)}</span></div>`;$('checkoutForm').style.display='block';$('checkoutConfirm').style.display='none';$('checkoutModal').classList.add('open');document.body.classList.add('no-scroll');}
+function closeCheckout(){$('checkoutModal').classList.remove('open');document.body.classList.remove('no-scroll');}
+function orderId(){const c='ABCDEFGHJKMNPQRSTUVWXYZ23456789';let s='';for(let i=0;i<6;i++) s+=c[Math.floor(Math.random()*c.length)];return s;}
+function customerDash(){return `<div class="dash-greet">Welcome back, <em>Henry</em>.</div><div class="dash-sub">Cedar tier · joined Jan 2025 · last visit 11 days ago</div><div class="dash-grid two-col"><div class="dash-grid" style="gap:18px;"><div class="loyalty-card"><div class="tier">★ Cedar Member</div><div class="pts">1,420<small>pts</small></div><div class="next">580 more until <strong>Pine Tier</strong></div><div class="progress"><div class="bar"><div style="width:71%;"></div></div></div></div><div class="panel"><h4>Available Rewards <small>3 ready</small></h4><div class="reward-grid"><div class="reward"><div class="cost">500 pts</div><div class="name">$10 off any order</div></div><div class="reward"><div class="cost">800 pts</div><div class="name">Free pre-roll</div></div><div class="reward"><div class="cost">1,200 pts</div><div class="name">$25 off rosin</div></div><div class="reward"><div class="cost">2,000 pts</div><div class="name">Free house eighth</div></div></div></div></div><div class="dash-grid" style="gap:18px;"><div class="panel"><h4>Recent Orders</h4><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#16201b,#547a4a);">FF</div><div><div>Forest Fine OG · 3.5g</div><div class="meta">Order #L4N8K2 · May 24</div></div><div class="v">$42</div><div class="pill ok">Picked up</div></div><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#1d2a23,#547a4a);">LP</div><div><div>Lone Pine Cart · 1g</div><div class="meta">Order #M2P7X4 · May 15</div></div><div class="v">$48</div><div class="pill ok">Picked up</div></div></div><div class="panel"><h4>Curated For You</h4><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#1f2826,#5e7670);">SL</div><div><div>Snow Line · 3.5g</div><div class="meta">Cold weather indica</div></div><div class="v">$45</div></div><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#16201b,#547a4a);">RO</div><div><div>Forest Fine Live Rosin</div><div class="meta">Solventless · Cedar exclusive</div></div><div class="v">$75</div></div></div></div></div>`;}
+function adminDash(){return `<div class="dash-greet">Admin <em>Overview</em></div><div class="dash-sub">Real-time · Keeper of the Green · Both locations</div><div class="dash-grid kpi-row"><div class="kpi"><div class="lbl">Revenue today</div><div class="v">$3,124<small>+8%</small></div></div><div class="kpi"><div class="lbl">Orders today</div><div class="v">42<small>+4</small></div></div><div class="kpi"><div class="lbl">Active members</div><div class="v">1,184<small>+12</small></div></div><div class="kpi"><div class="lbl">Loyalty signups</div><div class="v">724<small>61%</small></div></div></div><div class="dash-grid two-col" style="margin-top:18px;"><div class="panel"><h4>Top Movers This Week</h4><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#16201b,#547a4a);">FF</div><div><div>Forest Fine OG</div><div class="meta">Flower · house indica</div></div><div class="v">96 sold</div></div><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#1d2a23,#547a4a);">LP</div><div><div>Lone Pine</div><div class="meta">Flower · sativa-hybrid</div></div><div class="v">72 sold</div></div><div class="list-row"><div class="dot" style="background:linear-gradient(135deg,#16201b,#547a4a);">FR</div><div><div>Forest Fine Rosin</div><div class="meta">Concentrates · solventless</div></div><div class="v">54 sold</div></div></div><div class="panel"><h4>Loyalty Tiers</h4><div class="tier-bar"><div class="tb"><span>Moss</span><div class="tb-bar"><div style="width:46%;"></div></div><span class="tb-pct">333</span></div><div class="tb"><span>Cedar</span><div class="tb-bar"><div style="width:31%;"></div></div><span class="tb-pct">224</span></div><div class="tb"><span>Pine</span><div class="tb-bar"><div style="width:17%;"></div></div><span class="tb-pct">123</span></div><div class="tb"><span>Keeper</span><div class="tb-bar"><div style="width:6%;"></div></div><span class="tb-pct">44</span></div></div></div></div>`;}
+function renderDash(v){$('dashContent').innerHTML=v==='admin'?adminDash():customerDash();document.querySelectorAll('.view-switcher button').forEach(b=>b.classList.toggle('active',b.dataset.view===v));}
+function openLogin(){$('loginModal').classList.add('open');document.body.classList.add('no-scroll');}
+function closeLogin(){$('loginModal').classList.remove('open');document.body.classList.remove('no-scroll');}
+function openDashboard(v){closeLogin();renderDash(v);$('dashboard').classList.add('open');document.body.classList.add('no-scroll');}
+function closeDashboard(){$('dashboard').classList.remove('open');document.body.classList.remove('no-scroll');}
+let toastT;function toast(m){const t=$('toast');t.textContent=m;t.classList.add('show');clearTimeout(toastT);toastT=setTimeout(()=>t.classList.remove('show'),1600);}
+$('cartBtn').addEventListener('click',openCart);
+$('cartClose').addEventListener('click',closeCart);
+$('scrim').addEventListener('click',()=>{closeCart();closeCheckout();});
+$('checkoutBtn').addEventListener('click',openCheckout);
+$('modalClose').addEventListener('click',closeCheckout);
+$('confirmDone').addEventListener('click',closeCheckout);
+$('orderForm').addEventListener('submit',e=>{e.preventDefault();$('orderIdOut').textContent=orderId();$('confirmEmail').textContent=e.target.querySelector('input[type=email]').value;$('checkoutForm').style.display='none';$('checkoutConfirm').style.display='block';state.cart=[];renderCart();e.target.reset();});
+$('signinBtn').addEventListener('click',openLogin);
+$('loginClose').addEventListener('click',closeLogin);
+$('dashExit').addEventListener('click',closeDashboard);
+document.querySelectorAll('[data-auth-tab]').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('[data-auth-tab]').forEach(x=>x.classList.toggle('active',x===b));$('signinPane').style.display=b.dataset.authTab==='signin'?'block':'none';$('signupPane').style.display=b.dataset.authTab==='signup'?'block':'none';}));
+document.querySelectorAll('.view-switcher button').forEach(b=>b.addEventListener('click',()=>renderDash(b.dataset.view)));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeCart();closeCheckout();closeLogin();}});
+renderFilters();renderProducts();renderCart();
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}}),{threshold:0.12});
+document.querySelectorAll('.fade-in').forEach(el=>io.observe(el));
 </script>
 </body>
 </html>
